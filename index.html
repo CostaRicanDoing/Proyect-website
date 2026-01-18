@@ -1,55 +1,429 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Zipline Guanacaste - Aventura, canopy y adrenalina en Costa Rica">
-  <title>Zipline Guanacaste</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costa Rican Doing - Tours de Aventura en Costa Rica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="images/logo.png" alt="Costa Rican Doing" class="logo-img">
+                </a>
 
-  <!-- HEADER -->
-  <header class="header">
-    <img src="images/logo.png" alt="Logo Zipline Guanacaste" class="logo">
-    <h1>Zipline Guanacaste</h1>
-    <p class="subtitle">Aventura • Naturaleza • Adrenalina</p>
-  </header>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#la-fortuna" data-es="La Fortuna" data-en="La Fortuna">La Fortuna</a></li>
+                        <li><a href="#guanacaste" data-es="Guanacaste" data-en="Guanacaste">Guanacaste</a></li>
+                        <li><a href="#about" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</a></li>
+                        <li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
+                    </ul>
+                </nav>
 
-  <!-- MAIN -->
-  <main>
+                <div class="header-actions">
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="es">
+                            <img src="https://flagcdn.com/w20/cr.png" alt="ES"> ES
+                        </button>
+                        <button class="lang-btn" data-lang="en">
+                            <img src="https://flagcdn.com/w20/us.png" alt="EN"> EN
+                        </button>
+                    </div>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <!-- INTRO -->
-    <section class="intro">
-      <h2>Vive la mejor experiencia de Zipline</h2>
-      <p>
-        Disfruta de una aventura inolvidable en Guanacaste.
-        Canopy seguro, vistas increíbles y diversión garantizada.
-      </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-es="Vive la Aventura en Costa Rica" data-en="Live the Adventure in Costa Rica">Vive la Aventura en Costa Rica</h1>
+                <p data-es="Descubre experiencias inolvidables en los destinos mas espectaculares del pais" data-en="Discover unforgettable experiences in the most spectacular destinations of the country">Descubre experiencias inolvidables en los destinos mas espectaculares del pais</p>
+                <a href="#la-fortuna" class="btn btn-primary" data-es="Explorar Tours" data-en="Explore Tours">Explorar Tours</a>
+            </div>
+        </div>
     </section>
 
-    <!-- GALLERY -->
-    <section class="gallery">
-      <h2>Galería</h2>
-      <div class="gallery-grid">
-        <img src="images/zipline-guanacaste/zipline-01.jpg" alt="Zipline en la montaña">
-        <img src="images/zipline-guanacaste/zipline-02.jpg" alt="Personas disfrutando zipline">
-        <img src="images/zipline-guanacaste/zipline-03.jpg" alt="Canopy en Guanacaste">
-        <img src="images/zipline-guanacaste/zipline-04.jpg" alt="Aventura extrema">
-        <img src="images/zipline-guanacaste/zipline-05.jpg" alt="Vista aérea zipline">
-      </div>
+    <!-- La Fortuna Section -->
+    <section id="la-fortuna" class="tours-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-es="Tours en La Fortuna" data-en="Tours in La Fortuna">Tours en La Fortuna</h2>
+                <p data-es="Aventuras al pie del majestuoso Volcan Arenal" data-en="Adventures at the foot of the majestic Arenal Volcano">Aventuras al pie del majestuoso Volcan Arenal</p>
+            </div>
+
+            <div class="tours-grid">
+                <!-- ATV Tour -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop" alt="ATV Tour">
+                        <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3>ATV Tour</h3>
+                        <p data-es="Recorre senderos de montana y cruza rios a bordo de un ATV. Una experiencia llena de adrenalina con vistas al Volcan Arenal." data-en="Ride through mountain trails and cross rivers aboard an ATV. An adrenaline-filled experience with views of Arenal Volcano.">Recorre senderos de montana y cruza rios a bordo de un ATV. Una experiencia llena de adrenalina con vistas al Volcan Arenal.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="3 horas" data-en="3 hours">3 horas</span></span>
+                            <span><i class="fas fa-users"></i> <span data-es="Grupos pequenos" data-en="Small groups">Grupos pequenos</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- Canyoning -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&h=400&fit=crop" alt="Canyoning">
+                        <div class="tour-badge" data-es="Extremo" data-en="Extreme">Extremo</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3>Canyoning</h3>
+                        <p data-es="Desciende por cascadas naturales haciendo rapel. Siente la emocion de bajar por paredes de roca con el agua cayendo a tu alrededor." data-en="Descend through natural waterfalls by rappelling. Feel the thrill of going down rock walls with water falling around you.">Desciende por cascadas naturales haciendo rapel. Siente la emocion de bajar por paredes de roca con el agua cayendo a tu alrededor.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="4 horas" data-en="4 hours">4 horas</span></span>
+                            <span><i class="fas fa-mountain"></i> <span data-es="5 cascadas" data-en="5 waterfalls">5 cascadas</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- Zipline -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&h=400&fit=crop" alt="Zipline">
+                        <div class="tour-badge" data-es="Popular" data-en="Popular">Popular</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3>Zipline</h3>
+                        <p data-es="Vuela sobre el dosel del bosque tropical con vistas panoramicas del volcan. Multiples cables para una experiencia completa." data-en="Fly over the tropical forest canopy with panoramic views of the volcano. Multiple cables for a complete experience.">Vuela sobre el dosel del bosque tropical con vistas panoramicas del volcan. Multiples cables para una experiencia completa.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="2.5 horas" data-en="2.5 hours">2.5 horas</span></span>
+                            <span><i class="fas fa-wind"></i> <span data-es="10 cables" data-en="10 cables">10 cables</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- Rafting -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=600&h=400&fit=crop" alt="Rafting">
+                        <div class="tour-badge" data-es="Clase III" data-en="Class III">Clase III</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3 data-es="Rafting Clase III" data-en="Class III Rafting">Rafting Clase III</h3>
+                        <p data-es="Navega los rapidos del Rio Pacuare o Balsa. Aguas bravas perfectas para aventureros con o sin experiencia previa." data-en="Navigate the rapids of the Pacuare or Balsa River. White waters perfect for adventurers with or without previous experience.">Navega los rapidos del Rio Pacuare o Balsa. Aguas bravas perfectas para aventureros con o sin experiencia previa.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="Medio dia" data-en="Half day">Medio dia</span></span>
+                            <span><i class="fas fa-water"></i> <span data-es="Incluye almuerzo" data-en="Lunch included">Incluye almuerzo</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- Cabalgata -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=600&h=400&fit=crop" alt="Cabalgata">
+                        <div class="tour-badge" data-es="Naturaleza" data-en="Nature">Naturaleza</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3 data-es="Cabalgata a la Catarata" data-en="Horseback Ride to Waterfall">Cabalgata a la Catarata</h3>
+                        <p data-es="Paseo a caballo por senderos naturales hasta una impresionante catarata escondida. Ideal para conectar con la naturaleza." data-en="Horseback ride through natural trails to an impressive hidden waterfall. Ideal for connecting with nature.">Paseo a caballo por senderos naturales hasta una impresionante catarata escondida. Ideal para conectar con la naturaleza.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="3 horas" data-en="3 hours">3 horas</span></span>
+                            <span><i class="fas fa-leaf"></i> <span data-es="Guia bilingue" data-en="Bilingual guide">Guia bilingue</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-  </main>
+    <!-- Guanacaste Section -->
+    <section id="guanacaste" class="tours-section tours-section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-es="Tours en Guanacaste" data-en="Tours in Guanacaste">Tours en Guanacaste</h2>
+                <p data-es="Aventuras tropicales en la costa del Pacifico" data-en="Tropical adventures on the Pacific coast">Aventuras tropicales en la costa del Pacifico</p>
+            </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 Zipline Guanacaste. Todos los derechos reservados.</p>
-  </footer>
+            <div class="tours-grid">
+                <!-- Zipline Kid Friendly -->
+                <div class="tour-card tour-card-featured">
+                    <div class="tour-image tour-carousel" data-tour="zipline-guanacaste">
+                        <div class="carousel-container">
+                            <img src="images/zipline-guanacaste/zipline-01.jpg" alt="Zipline Guanacaste" class="carousel-slide active">
+                            <img src="images/zipline-guanacaste/zipline-02.jpg" alt="Zipline Puente" class="carousel-slide">
+                            <img src="images/zipline-guanacaste/zipline-03.jpg" alt="Zipline Atardecer" class="carousel-slide">
+                            <img src="images/zipline-guanacaste/zipline-04.jpg" alt="Zipline Rappel" class="carousel-slide">
+                            <img src="images/zipline-guanacaste/zipline-05.jpg" alt="Zipline Familia" class="carousel-slide">
+                        </div>
+                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
+                        <div class="carousel-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="tour-badge badge-family" data-es="Familiar" data-en="Family">Familiar</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3 data-es="Zipline para Ninos" data-en="Kid Friendly Zipline">Zipline para Ninos</h3>
+                        <p data-es="Circuito de canopy disenado especialmente para familias con ninos. Seguro, divertido y con cables adaptados para los mas pequenos." data-en="Canopy circuit specially designed for families with children. Safe, fun and with cables adapted for the little ones.">Circuito de canopy disenado especialmente para familias con ninos. Seguro, divertido y con cables adaptados para los mas pequenos.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="2 horas" data-en="2 hours">2 horas</span></span>
+                            <span><i class="fas fa-child"></i> <span data-es="Desde 4 anos" data-en="Ages 4+">Desde 4 anos</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
 
-  <!-- JS -->
-  <script src="script.js"></script>
+                <!-- UTV -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&h=400&fit=crop" alt="UTV Tour">
+                        <div class="tour-badge" data-es="Premium" data-en="Premium">Premium</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3>UTV Tour</h3>
+                        <p data-es="Conduce un vehiculo todo terreno de lado a lado por caminos rurales y playas. Perfecto para parejas o familias que buscan aventura." data-en="Drive a side-by-side all-terrain vehicle through rural roads and beaches. Perfect for couples or families seeking adventure.">Conduce un vehiculo todo terreno de lado a lado por caminos rurales y playas. Perfecto para parejas o familias que buscan aventura.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="3 horas" data-en="3 hours">3 horas</span></span>
+                            <span><i class="fas fa-road"></i> <span data-es="Playa incluida" data-en="Beach included">Playa incluida</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- ATV Guanacaste -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&h=400&fit=crop" alt="ATV Tour Guanacaste">
+                        <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3 data-es="ATV Guanacaste" data-en="Guanacaste ATV">ATV Guanacaste</h3>
+                        <p data-es="Explora los paisajes tropicales secos de Guanacaste en cuadraciclo. Atraviesa fincas, rios y disfruta de vistas al oceano Pacifico." data-en="Explore the dry tropical landscapes of Guanacaste by ATV. Cross farms, rivers and enjoy views of the Pacific Ocean.">Explora los paisajes tropicales secos de Guanacaste en cuadraciclo. Atraviesa fincas, rios y disfruta de vistas al oceano Pacifico.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="2.5 horas" data-en="2.5 hours">2.5 horas</span></span>
+                            <span><i class="fas fa-sun"></i> <span data-es="Paisaje tropical" data-en="Tropical landscape">Paisaje tropical</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- Cascada La Leona -->
+                <div class="tour-card">
+                    <div class="tour-image">
+                        <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=600&h=400&fit=crop" alt="Cascada La Leona">
+                        <div class="tour-badge badge-nature" data-es="Naturaleza" data-en="Nature">Naturaleza</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3 data-es="Cascada La Leona" data-en="La Leona Waterfall">Cascada La Leona</h3>
+                        <p data-es="Caminata por el bosque tropical hasta la espectacular Cascada La Leona. Banate en sus aguas cristalinas y disfruta del entorno natural." data-en="Hike through the tropical forest to the spectacular La Leona Waterfall. Swim in its crystal clear waters and enjoy the natural surroundings.">Caminata por el bosque tropical hasta la espectacular Cascada La Leona. Banate en sus aguas cristalinas y disfruta del entorno natural.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-clock"></i> <span data-es="4 horas" data-en="4 hours">4 horas</span></span>
+                            <span><i class="fas fa-swimming-pool"></i> <span data-es="Bano incluido" data-en="Swimming included">Bano incluido</span></span>
+                        </div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</h2>
+                    <p data-es="Costa Rican Doing es una empresa de tours de aventura comprometida con brindarte las mejores experiencias en Costa Rica. Con anos de experiencia en la industria turistica, nuestro equipo de guias profesionales certificados te llevara a descubrir los rincones mas espectaculares del pais." data-en="Costa Rican Doing is an adventure tour company committed to providing you with the best experiences in Costa Rica. With years of experience in the tourism industry, our team of certified professional guides will take you to discover the most spectacular corners of the country.">Costa Rican Doing es una empresa de tours de aventura comprometida con brindarte las mejores experiencias en Costa Rica. Con anos de experiencia en la industria turistica, nuestro equipo de guias profesionales certificados te llevara a descubrir los rincones mas espectaculares del pais.</p>
+
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4 data-es="Seguridad Garantizada" data-en="Guaranteed Safety">Seguridad Garantizada</h4>
+                                <p data-es="Equipos de ultima generacion y protocolos estrictos de seguridad." data-en="State-of-the-art equipment and strict safety protocols.">Equipos de ultima generacion y protocolos estrictos de seguridad.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4 data-es="Guias Expertos" data-en="Expert Guides">Guias Expertos</h4>
+                                <p data-es="Personal bilingue certificado con amplio conocimiento local." data-en="Certified bilingual staff with extensive local knowledge.">Personal bilingue certificado con amplio conocimiento local.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h4 data-es="Turismo Sostenible" data-en="Sustainable Tourism">Turismo Sostenible</h4>
+                                <p data-es="Comprometidos con la conservacion del medio ambiente." data-en="Committed to environmental conservation.">Comprometidos con la conservacion del medio ambiente.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <h4 data-es="Experiencias Unicas" data-en="Unique Experiences">Experiencias Unicas</h4>
+                                <p data-es="Tours disenados para crear recuerdos inolvidables." data-en="Tours designed to create unforgettable memories.">Tours disenados para crear recuerdos inolvidables.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop" alt="Costa Rica Nature">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-es="Contactanos" data-en="Contact Us">Contactanos</h2>
+                <p data-es="Estamos listos para ayudarte a planear tu proxima aventura" data-en="We are ready to help you plan your next adventure">Estamos listos para ayudarte a planear tu proxima aventura</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" data-es="Nombre Completo" data-en="Full Name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-es="Correo Electronico" data-en="Email">Correo Electronico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-es="Telefono" data-en="Phone">Telefono</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="tour" data-es="Tour de Interes" data-en="Tour of Interest">Tour de Interes</label>
+                            <select id="tour" name="tour">
+                                <option value="" data-es="Selecciona un tour" data-en="Select a tour">Selecciona un tour</option>
+                                <optgroup label="La Fortuna">
+                                    <option value="atv-fortuna">ATV Tour</option>
+                                    <option value="canyoning">Canyoning</option>
+                                    <option value="zipline-fortuna">Zipline</option>
+                                    <option value="rafting" data-es="Rafting Clase III" data-en="Class III Rafting">Rafting Clase III</option>
+                                    <option value="cabalgata" data-es="Cabalgata a la Catarata" data-en="Horseback Ride to Waterfall">Cabalgata a la Catarata</option>
+                                </optgroup>
+                                <optgroup label="Guanacaste">
+                                    <option value="zipline-kids" data-es="Zipline para Ninos" data-en="Kid Friendly Zipline">Zipline para Ninos</option>
+                                    <option value="utv">UTV Tour</option>
+                                    <option value="atv-guanacaste" data-es="ATV Guanacaste" data-en="Guanacaste ATV">ATV Guanacaste</option>
+                                    <option value="cascada" data-es="Cascada La Leona" data-en="La Leona Waterfall">Cascada La Leona</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date" data-es="Fecha Preferida" data-en="Preferred Date">Fecha Preferida</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="people" data-es="Numero de Personas" data-en="Number of People">Numero de Personas</label>
+                            <input type="number" id="people" name="people" min="1" max="20" value="2">
+                        </div>
+                        <div class="form-group form-group-full">
+                            <label for="message" data-es="Mensaje" data-en="Message">Mensaje</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" data-es="Enviar Consulta" data-en="Send Inquiry">Enviar Consulta</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3 data-es="Informacion de Contacto" data-en="Contact Information">Informacion de Contacto</h3>
+                        <ul>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>reservations@costaricandoing.com</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>+506 8895-2387</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>La Fortuna, Alajuela, Costa Rica</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/50688952387" target="_blank" class="btn btn-whatsapp btn-full">
+                        <i class="fab fa-whatsapp"></i>
+                        <span data-es="Contactar por WhatsApp" data-en="Contact via WhatsApp">Contactar por WhatsApp</span>
+                    </a>
+
+                    <a href="https://paypal.me/reservations@costaricandoing.com" target="_blank" class="btn btn-paypal btn-full">
+                        <i class="fab fa-paypal"></i>
+                        <span data-es="Pagar con PayPal" data-en="Pay with PayPal">Pagar con PayPal</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="images/logo.png" alt="Costa Rican Doing" class="logo-img logo-footer">
+                    </a>
+                    <p data-es="Tu aventura comienza aqui" data-en="Your adventure starts here">Tu aventura comienza aqui</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-es="Enlaces Rapidos" data-en="Quick Links">Enlaces Rapidos</h4>
+                    <ul>
+                        <li><a href="#la-fortuna">La Fortuna</a></li>
+                        <li><a href="#guanacaste">Guanacaste</a></li>
+                        <li><a href="#about" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</a></li>
+                        <li><a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4 data-es="Siguenos" data-en="Follow Us">Siguenos</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/50688952387" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Costa Rican Doing. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/50688952387" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
 </body>
 </html>
