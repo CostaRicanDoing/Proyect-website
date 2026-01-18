@@ -174,21 +174,27 @@ img {
 .logo {
     display: flex;
     align-items: center;
-}
-
-.logo-img {
-    height: 50px;
-    width: auto;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
     transition: var(--transition);
 }
 
-.logo:hover .logo-img {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo-text {
+    color: var(--color-white);
+}
+
+.logo-accent {
+    color: var(--color-primary);
 }
 
 .logo-footer {
-    height: 60px;
+    font-size: 1.75rem;
 }
 
 .nav-list {
@@ -909,12 +915,12 @@ img {
         padding: 12px 0;
     }
 
-    .logo-img {
-        height: 40px;
+    .logo {
+        font-size: 1.1rem;
     }
 
     .logo-footer {
-        height: 50px;
+        font-size: 1.3rem;
     }
 
     .language-toggle {
