@@ -144,7 +144,92 @@ document.addEventListener('DOMContentLoaded', function() {
         const today = new Date().toISOString().split('T')[0];
         dateInput.setAttribute('min', today);
     }
+
+    // Initialize Tour Carousels
+    initCarousels();
 });
+
+// Carousel functionality
+function initCarousels() {
+    const carousels = document.querySelectorAll('.tour-carousel');
+
+    carousels.forEach(carousel => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.dot');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        let currentSlide = 0;
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            // Handle wrap-around
+            if (index >= slides.length) index = 0;
+            if (index < 0) index = slides.length - 1;
+            currentSlide = index;
+
+            // Update slides
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                prevSlide();
+                stopAutoPlay();
+                startAutoPlay();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextSlide();
+                stopAutoPlay();
+                startAutoPlay();
+            });
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showSlide(i);
+                stopAutoPlay();
+                startAutoPlay();
+            });
+        });
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+
+        // Start auto-play
+        startAutoPlay();
+    });
+}
 
 // Language switching function
 function setLanguage(lang) {
