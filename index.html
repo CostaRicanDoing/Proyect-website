@@ -339,21 +339,21 @@
                         </div>
                         <div class="form-group">
                             <label for="tour" data-es="Tour de Interes" data-en="Tour of Interest">Tour de Interes</label>
-                            <select id="tour" name="tour">
-                                <option value="" data-es="Selecciona un tour" data-en="Select a tour">Selecciona un tour</option>
+                            <select id="tour" name="tour" required>
+                                <option value="" data-price="0" data-es="Selecciona un tour" data-en="Select a tour">Selecciona un tour</option>
                                 <optgroup label="La Fortuna">
-                                    <option value="atv-fortuna">ATV Tour</option>
-                                    <option value="canyoning">Canyoning</option>
-                                    <option value="zipline-fortuna">Zipline</option>
-                                    <option value="rafting" data-es="Rafting Clase III" data-en="Class III Rafting">Rafting Clase III</option>
-                                    <option value="cabalgata" data-es="Cabalgata a la Catarata" data-en="Horseback Ride to Waterfall">Cabalgata a la Catarata</option>
-                                    <option value="rio-celeste" data-es="Río Celeste" data-en="Río Celeste">Río Celeste</option>
+                                    <option value="atv-fortuna" data-price="130">ATV Tour - $130</option>
+                                    <option value="canyoning" data-price="110">Canyoning - $110</option>
+                                    <option value="zipline-fortuna" data-price="85">Zipline - $85</option>
+                                    <option value="rafting" data-price="95">Rafting Clase III - $95</option>
+                                    <option value="cabalgata" data-price="80">Cabalgata a la Catarata - $80</option>
+                                    <option value="rio-celeste" data-price="120">Río Celeste - $120</option>
                                 </optgroup>
                                 <optgroup label="Guanacaste">
-                                    <option value="zipline-kids" data-es="Zipline para Ninos" data-en="Kid Friendly Zipline">Zipline para Ninos</option>
-                                    <option value="utv">UTV Tour</option>
-                                    <option value="atv-guanacaste" data-es="ATV Guanacaste" data-en="Guanacaste ATV">ATV Guanacaste</option>
-                                    <option value="cascada" data-es="Cascada La Leona" data-en="La Leona Waterfall">Cascada La Leona</option>
+                                    <option value="zipline-guanacaste" data-price="75">Zipline - $75</option>
+                                    <option value="utv" data-price="365" data-price-type="fixed">UTV Tour - $365 (por vehículo)</option>
+                                    <option value="cuadraciclo" data-price="95">Cuadraciclo - $95</option>
+                                    <option value="cascada" data-price="0">Cascada La Leona - Consultar</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -363,13 +363,28 @@
                         </div>
                         <div class="form-group">
                             <label for="people" data-es="Numero de Personas" data-en="Number of People">Numero de Personas</label>
-                            <input type="number" id="people" name="people" min="1" max="20" value="2">
+                            <input type="number" id="people" name="people" min="1" max="20" value="1" required>
                         </div>
+
+                        <!-- Price Summary -->
+                        <div class="form-group form-group-full price-summary" id="price-summary" style="display: none;">
+                            <div class="price-breakdown">
+                                <div class="price-row">
+                                    <span id="tour-name-display">Tour</span>
+                                    <span>x <span id="people-count">1</span> <span data-es="persona(s)" data-en="person(s)">persona(s)</span></span>
+                                </div>
+                                <div class="price-total">
+                                    <span data-es="Total a pagar:" data-en="Total to pay:">Total a pagar:</span>
+                                    <span id="total-price">$0</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group form-group-full">
-                            <label for="message" data-es="Mensaje" data-en="Message">Mensaje</label>
-                            <textarea id="message" name="message" rows="4"></textarea>
+                            <label for="message" data-es="Mensaje (opcional)" data-en="Message (optional)">Mensaje (opcional)</label>
+                            <textarea id="message" name="message" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full" data-es="Enviar Consulta" data-en="Send Inquiry">Enviar Consulta</button>
+                        <button type="submit" class="btn btn-primary btn-full" id="submit-btn" data-es="Continuar al Pago" data-en="Continue to Payment">Continuar al Pago</button>
                     </form>
 
                     <!-- Confirmation message with PayPal (hidden by default) -->
@@ -377,14 +392,35 @@
                         <div class="confirmation-icon">
                             <i class="fas fa-check-circle"></i>
                         </div>
-                        <h3 data-es="¡Reserva Enviada!" data-en="Reservation Sent!">¡Reserva Enviada!</h3>
-                        <p data-es="Gracias por tu reserva. Te contactaremos pronto para confirmar los detalles." data-en="Thank you for your reservation. We will contact you soon to confirm the details.">Gracias por tu reserva. Te contactaremos pronto para confirmar los detalles.</p>
-                        <p data-es="Si deseas realizar el pago ahora, puedes hacerlo a través de PayPal:" data-en="If you wish to make the payment now, you can do so through PayPal:">Si deseas realizar el pago ahora, puedes hacerlo a través de PayPal:</p>
-                        <a href="https://paypal.me/mbonillamontero" target="_blank" class="btn btn-paypal btn-full">
+                        <h3 data-es="¡Confirma tu Reserva!" data-en="Confirm your Reservation!">¡Confirma tu Reserva!</h3>
+
+                        <div class="payment-summary">
+                            <div class="summary-row">
+                                <span data-es="Tour:" data-en="Tour:">Tour:</span>
+                                <span id="confirm-tour-name"></span>
+                            </div>
+                            <div class="summary-row">
+                                <span data-es="Fecha:" data-en="Date:">Fecha:</span>
+                                <span id="confirm-date"></span>
+                            </div>
+                            <div class="summary-row">
+                                <span data-es="Personas:" data-en="People:">Personas:</span>
+                                <span id="confirm-people"></span>
+                            </div>
+                            <div class="summary-row summary-total">
+                                <span data-es="Total:" data-en="Total:">Total:</span>
+                                <span id="confirm-total"></span>
+                            </div>
+                        </div>
+
+                        <p data-es="Haz clic en el botón para completar tu pago de forma segura con PayPal:" data-en="Click the button to complete your secure payment with PayPal:">Haz clic en el botón para completar tu pago de forma segura con PayPal:</p>
+
+                        <a href="#" id="paypal-pay-btn" target="_blank" class="btn btn-paypal btn-full">
                             <i class="fab fa-paypal"></i>
                             <span data-es="Pagar con PayPal" data-en="Pay with PayPal">Pagar con PayPal</span>
                         </a>
-                        <button id="new-reservation-btn" class="btn btn-secondary btn-full" style="margin-top: 1rem;" data-es="Hacer otra reserva" data-en="Make another reservation">Hacer otra reserva</button>
+
+                        <button id="new-reservation-btn" class="btn btn-secondary btn-full" style="margin-top: 1rem;" data-es="Modificar reserva" data-en="Modify reservation">Modificar reserva</button>
                     </div>
                 </div>
 

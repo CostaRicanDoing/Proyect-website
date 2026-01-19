@@ -104,6 +104,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Price Calculator
+    const tourSelect = document.getElementById('tour');
+    const peopleInput = document.getElementById('people');
+    const priceSummary = document.getElementById('price-summary');
+    const tourNameDisplay = document.getElementById('tour-name-display');
+    const peopleCount = document.getElementById('people-count');
+    const totalPrice = document.getElementById('total-price');
+
+    let currentTotal = 0;
+    let currentTourName = '';
+
+    function updatePriceCalculator() {
+        if (!tourSelect || !peopleInput) return;
+
+        const selectedOption = tourSelect.options[tourSelect.selectedIndex];
+        const price = parseFloat(selectedOption.dataset.price) || 0;
+        const priceType = selectedOption.dataset.priceType || 'per-person';
+        const people = parseInt(peopleInput.value) || 1;
+        currentTourName = selectedOption.text.split(' - ')[0];
+
+        if (price > 0) {
+            if (priceType === 'fixed') {
+                // Fixed price (like UTV)
+                currentTotal = price;
+            } else {
+                // Per person price
+                currentTotal = price * people;
+            }
+
+            tourNameDisplay.textContent = currentTourName;
+            peopleCount.textContent = people;
+            totalPrice.textContent = '$' + currentTotal;
+            priceSummary.style.display = 'block';
+        } else {
+            priceSummary.style.display = 'none';
+            currentTotal = 0;
+        }
+    }
+
+    if (tourSelect) {
+        tourSelect.addEventListener('change', updatePriceCalculator);
+    }
+    if (peopleInput) {
+        peopleInput.addEventListener('input', updatePriceCalculator);
+    }
+
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -113,48 +159,65 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
-
-            // Create WhatsApp message
             const lang = localStorage.getItem('language') || 'es';
-            let message = '';
 
-            if (lang === 'es') {
-                message = `Hola! Me gustaria hacer una reserva:\n\n`;
-                message += `Nombre: ${data.name}\n`;
-                message += `Email: ${data.email}\n`;
-                if (data.phone) message += `Telefono: ${data.phone}\n`;
-                if (data.tour) message += `Tour: ${data.tour}\n`;
-                if (data.date) message += `Fecha: ${data.date}\n`;
-                if (data.people) message += `Personas: ${data.people}\n`;
-                if (data.message) message += `Mensaje: ${data.message}\n`;
-            } else {
-                message = `Hello! I would like to make a reservation:\n\n`;
-                message += `Name: ${data.name}\n`;
-                message += `Email: ${data.email}\n`;
-                if (data.phone) message += `Phone: ${data.phone}\n`;
-                if (data.tour) message += `Tour: ${data.tour}\n`;
-                if (data.date) message += `Date: ${data.date}\n`;
-                if (data.people) message += `People: ${data.people}\n`;
-                if (data.message) message += `Message: ${data.message}\n`;
+            // Check if tour has a price
+            if (currentTotal === 0) {
+                // No price - redirect to WhatsApp for consultation
+                let message = '';
+                if (lang === 'es') {
+                    message = `Hola! Me gustaria consultar sobre una reserva:\n\n`;
+                    message += `Nombre: ${data.name}\n`;
+                    message += `Email: ${data.email}\n`;
+                    if (data.phone) message += `Telefono: ${data.phone}\n`;
+                    message += `Tour: ${currentTourName || data.tour}\n`;
+                    if (data.date) message += `Fecha: ${data.date}\n`;
+                    if (data.people) message += `Personas: ${data.people}\n`;
+                    if (data.message) message += `Mensaje: ${data.message}\n`;
+                } else {
+                    message = `Hello! I would like to inquire about a reservation:\n\n`;
+                    message += `Name: ${data.name}\n`;
+                    message += `Email: ${data.email}\n`;
+                    if (data.phone) message += `Phone: ${data.phone}\n`;
+                    message += `Tour: ${currentTourName || data.tour}\n`;
+                    if (data.date) message += `Date: ${data.date}\n`;
+                    if (data.people) message += `People: ${data.people}\n`;
+                    if (data.message) message += `Message: ${data.message}\n`;
+                }
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/50688952387?text=${encodedMessage}`, '_blank');
+                showNotification(lang === 'es' ? 'Redirigiendo a WhatsApp...' : 'Redirecting to WhatsApp...');
+                return;
             }
 
-            // Encode message and open WhatsApp
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/50688952387?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
-
-            // Show success message
-            showNotification(lang === 'es' ? 'Redirigiendo a WhatsApp...' : 'Redirecting to WhatsApp...');
-
-            // Reset form
-            this.reset();
-
-            // Show confirmation with PayPal option
+            // Show confirmation with payment details
             const confirmation = document.getElementById('reservation-confirmation');
-            if (confirmation) {
-                contactForm.style.display = 'none';
-                confirmation.style.display = 'block';
-            }
+            document.getElementById('confirm-tour-name').textContent = currentTourName;
+            document.getElementById('confirm-date').textContent = data.date || (lang === 'es' ? 'Por confirmar' : 'To be confirmed');
+            document.getElementById('confirm-people').textContent = data.people;
+            document.getElementById('confirm-total').textContent = '$' + currentTotal;
+
+            // Set PayPal link with amount
+            const paypalBtn = document.getElementById('paypal-pay-btn');
+            paypalBtn.href = `https://paypal.me/mbonillamontero/${currentTotal}USD`;
+
+            // Store reservation data for potential WhatsApp notification
+            window.reservationData = {
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                tour: currentTourName,
+                date: data.date,
+                people: data.people,
+                total: currentTotal,
+                message: data.message
+            };
+
+            // Hide form, show confirmation
+            contactForm.style.display = 'none';
+            confirmation.style.display = 'block';
+
+            showNotification(lang === 'es' ? 'Revisa los detalles y procede al pago' : 'Review details and proceed to payment');
         });
     }
 

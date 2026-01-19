@@ -1497,3 +1497,80 @@ img {
         text-align: center;
     }
 }
+
+/* =============================================
+   PRICE CALCULATOR & PAYMENT
+   ============================================= */
+
+.price-summary {
+    background: var(--color-gray-dark);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 2px solid var(--color-primary);
+}
+
+.price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-gray-light);
+    font-size: 0.95rem;
+}
+
+.price-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--color-gray);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.price-total span:last-child {
+    color: var(--color-primary);
+}
+
+/* Payment Summary in Confirmation */
+.payment-summary {
+    background: var(--color-gray-dark);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid var(--color-gray);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    color: var(--color-gray-light);
+    border-bottom: 1px solid var(--color-gray-dark);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row span:last-child {
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.summary-total {
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 2px solid var(--color-primary) !important;
+    font-size: 1.2rem;
+}
+
+.summary-total span:last-child {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+}
