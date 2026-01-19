@@ -251,19 +251,23 @@ document.addEventListener('DOMContentLoaded', function() {
             const tourCard = this.closest('.tour-card');
             if (tourCard && tourCard.dataset.tourId) {
                 const tourId = tourCard.dataset.tourId;
-                const tourSelect = document.getElementById('tour');
 
-                if (tourSelect) {
-                    // Find and select the matching option
-                    for (let i = 0; i < tourSelect.options.length; i++) {
-                        if (tourSelect.options[i].value === tourId) {
-                            tourSelect.selectedIndex = i;
-                            // Trigger the price calculator
-                            updatePriceCalculator();
-                            break;
+                // Use setTimeout to ensure the DOM is ready after scroll
+                setTimeout(() => {
+                    const tourSelect = document.getElementById('tour');
+                    if (tourSelect) {
+                        // Find and select the matching option
+                        for (let i = 0; i < tourSelect.options.length; i++) {
+                            if (tourSelect.options[i].value === tourId) {
+                                tourSelect.selectedIndex = i;
+                                tourSelect.value = tourId; // Explicitly set the value
+                                // Trigger change event to update price calculator and form validation
+                                tourSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                                break;
+                            }
                         }
                     }
-                }
+                }, 150);
             }
         });
     });
@@ -745,10 +749,35 @@ function initTourModal() {
         }
     });
 
-    // Reserve button closes modal and scrolls to contact
+    // Reserve button closes modal and scrolls to contact, and pre-selects the tour
     const reserveBtn = document.getElementById('modal-reserve-btn');
     if (reserveBtn) {
         reserveBtn.addEventListener('click', function() {
+            // Get the current tour from the modal title
+            const modalTitle = document.getElementById('modal-title');
+            if (modalTitle) {
+                const tourName = modalTitle.textContent;
+                // Find the matching tour ID from tourData
+                for (const [tourId, data] of Object.entries(tourData)) {
+                    if (data.title.es === tourName || data.title.en === tourName) {
+                        // Pre-select tour in form after modal closes
+                        setTimeout(() => {
+                            const tourSelect = document.getElementById('tour');
+                            if (tourSelect) {
+                                for (let i = 0; i < tourSelect.options.length; i++) {
+                                    if (tourSelect.options[i].value === tourId) {
+                                        tourSelect.selectedIndex = i;
+                                        tourSelect.value = tourId;
+                                        tourSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                                        break;
+                                    }
+                                }
+                            }
+                        }, 150);
+                        break;
+                    }
+                }
+            }
             closeTourModal();
         });
     }
