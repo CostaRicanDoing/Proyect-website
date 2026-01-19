@@ -55,27 +55,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Header hide on scroll down, show on scroll up
+    // Header behavior: expand/compact on scroll (like Sky Adventures)
     const header = document.querySelector('.header');
     let lastScrollY = window.scrollY;
     let ticking = false;
+    const scrollThreshold = 80; // When to start compacting header
+
+    // Initialize header state based on initial scroll position
+    if (window.scrollY > scrollThreshold) {
+        header.classList.add('header-scrolled');
+    }
 
     window.addEventListener('scroll', function() {
         if (!ticking) {
             window.requestAnimationFrame(function() {
                 const currentScrollY = window.scrollY;
 
-                // Only hide/show after scrolling past 100px
-                if (currentScrollY > 100) {
-                    if (currentScrollY > lastScrollY) {
-                        // Scrolling down - hide header
+                // Compact/expand header based on scroll position
+                if (currentScrollY > scrollThreshold) {
+                    // Scrolled down - compact header
+                    header.classList.add('header-scrolled');
+
+                    // Optional: hide header when scrolling down fast, show when scrolling up
+                    if (currentScrollY > lastScrollY + 10 && currentScrollY > 200) {
+                        // Scrolling down fast - hide header
                         header.classList.add('header-hidden');
-                    } else {
+                    } else if (currentScrollY < lastScrollY - 5) {
                         // Scrolling up - show header
                         header.classList.remove('header-hidden');
                     }
                 } else {
-                    // At top of page - always show header
+                    // At top of page - expand header and always show
+                    header.classList.remove('header-scrolled');
                     header.classList.remove('header-hidden');
                 }
 

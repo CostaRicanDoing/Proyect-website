@@ -214,10 +214,23 @@ img {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header expandido (cuando está arriba de la página) */
+.header:not(.header-scrolled) {
+    background: rgba(10, 10, 10, 0.6);
+    padding: 10px 0;
+}
+
+/* Header compacto (cuando se hace scroll) */
+.header.header-scrolled {
+    background: rgba(10, 10, 10, 0.98);
     border-bottom: 1px solid var(--color-gray-dark);
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .header.header-hidden {
@@ -230,6 +243,19 @@ img {
     justify-content: space-between;
     padding: 8px 0;
     min-height: 70px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header expandido - contenido más espacioso */
+.header:not(.header-scrolled) .header-content {
+    min-height: 100px;
+    padding: 15px 0;
+}
+
+/* Header compacto - contenido más ajustado */
+.header.header-scrolled .header-content {
+    min-height: 60px;
+    padding: 5px 0;
 }
 
 .logo {
@@ -240,13 +266,19 @@ img {
 .logo-img {
     height: auto;
     object-fit: contain;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Logo del Header - Estilo prominente como Sky Adventures */
+/* Logo del Header - Estilo prominente (estado expandido) */
 .logo-header {
-    width: 200px;
-    max-height: 55px;
+    width: 220px;
+    max-height: 70px;
+}
+
+/* Logo del Header compacto */
+.header.header-scrolled .logo-header {
+    width: 150px;
+    max-height: 45px;
 }
 
 .logo:hover .logo-img {
@@ -264,6 +296,17 @@ img {
     display: flex;
     list-style: none;
     gap: 40px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Nav expandido */
+.header:not(.header-scrolled) .nav-list {
+    gap: 45px;
+}
+
+/* Nav compacto */
+.header.header-scrolled .nav-list {
+    gap: 30px;
 }
 
 .nav-list a {
@@ -271,6 +314,13 @@ img {
     color: var(--color-white);
     padding: 8px 0;
     position: relative;
+    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Links más pequeños cuando está scrolled */
+.header.header-scrolled .nav-list a {
+    font-size: 0.9rem;
 }
 
 .nav-list a::after {
@@ -927,14 +977,19 @@ img {
 @media (max-width: 768px) {
     .nav {
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: 0;
         width: 100%;
         background: var(--color-dark);
         padding: 20px;
         transform: translateX(-100%);
-        transition: var(--transition);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         border-bottom: 1px solid var(--color-gray-dark);
+    }
+
+    /* Ajustar posición del nav cuando header está compacto */
+    .header.header-scrolled .nav {
+        top: 55px;
     }
 
     .nav.active {
@@ -946,8 +1001,42 @@ img {
         gap: 20px;
     }
 
+    .header.header-scrolled .nav-list,
+    .header:not(.header-scrolled) .nav-list {
+        gap: 20px;
+    }
+
+    .header.header-scrolled .nav-list a,
+    .header:not(.header-scrolled) .nav-list a {
+        font-size: 1rem;
+    }
+
     .mobile-menu-btn {
         display: block;
+    }
+
+    /* Header móvil - expandido */
+    .header:not(.header-scrolled) .header-content {
+        min-height: 80px;
+        padding: 10px 0;
+    }
+
+    /* Header móvil - compacto */
+    .header.header-scrolled .header-content {
+        min-height: 55px;
+        padding: 5px 0;
+    }
+
+    /* Logo móvil expandido */
+    .header:not(.header-scrolled) .logo-header {
+        width: 160px;
+        max-height: 50px;
+    }
+
+    /* Logo móvil compacto */
+    .header.header-scrolled .logo-header {
+        width: 120px;
+        max-height: 38px;
     }
 
     .tours-grid {
@@ -968,7 +1057,7 @@ img {
     }
 
     .hero-content {
-        padding: 120px 20px 80px;
+        padding: 140px 20px 80px;
     }
 
     .hero p {
@@ -987,13 +1076,28 @@ img {
 }
 
 @media (max-width: 480px) {
-    .header-content {
-        padding: 5px 0;
+    /* Header móvil pequeño - expandido */
+    .header:not(.header-scrolled) .header-content {
+        min-height: 70px;
+        padding: 8px 0;
     }
 
-    .logo-header {
+    /* Header móvil pequeño - compacto */
+    .header.header-scrolled .header-content {
+        min-height: 50px;
+        padding: 4px 0;
+    }
+
+    /* Logo móvil pequeño expandido */
+    .header:not(.header-scrolled) .logo-header {
         width: 140px;
         max-height: 45px;
+    }
+
+    /* Logo móvil pequeño compacto */
+    .header.header-scrolled .logo-header {
+        width: 100px;
+        max-height: 32px;
     }
 
     .logo-footer {
@@ -1020,6 +1124,18 @@ img {
         font-size: 1.5rem;
         bottom: 20px;
         right: 20px;
+    }
+
+    .nav {
+        top: 70px;
+    }
+
+    .header.header-scrolled .nav {
+        top: 50px;
+    }
+
+    .hero-content {
+        padding: 120px 20px 60px;
     }
 }
 
