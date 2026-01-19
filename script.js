@@ -498,26 +498,48 @@ const tourData = {
             en: ['Duration: 3 hours', 'No experience required', 'Maximum weight: 220 lbs', 'Ideal for families']
         }
     },
+    'rio-celeste': {
+        title: { es: 'Río Celeste', en: 'Río Celeste' },
+        image: 'images/rio-celeste-nueva.webp',
+        badge: { es: 'Naturaleza', en: 'Nature' },
+        description: {
+            es: 'Visita el famoso río de color turquesa en el Parque Nacional Volcán Tenorio. Un fenómeno natural único causado por minerales volcánicos que le dan al río su característico color celeste.',
+            en: 'Visit the famous turquoise-colored river in Tenorio Volcano National Park. A unique natural phenomenon caused by volcanic minerals that give the river its characteristic sky-blue color.'
+        },
+        price: { es: '$120', en: '$120' },
+        includes: {
+            es: ['Transporte desde La Fortuna', 'Guía naturalista bilingüe', 'Entrada al Parque Nacional Volcán Tenorio', 'Desayuno y almuerzo', 'Agua y snacks'],
+            en: ['Transportation from La Fortuna', 'Bilingual naturalist guide', 'Tenorio Volcano National Park entrance fee', 'Breakfast and lunch', 'Water and snacks']
+        },
+        bring: {
+            es: ['Zapatos de senderismo (obligatorio)', 'Ropa cómoda y ligera', 'Impermeable o poncho', 'Protector solar biodegradable', 'Repelente de insectos', 'Cámara', 'Traje de baño (para áreas permitidas)'],
+            en: ['Hiking shoes (required)', 'Comfortable, light clothing', 'Rain jacket or poncho', 'Biodegradable sunscreen', 'Insect repellent', 'Camera', 'Swimsuit (for permitted areas)']
+        },
+        info: {
+            es: ['Duración: Día completo (8-10 horas)', 'Caminata de 6 km (ida y vuelta)', 'Dificultad: Moderada', 'Está prohibido bañarse en la catarata principal', 'Senderos pueden estar resbalosos', 'Salida temprano: 6:00 AM'],
+            en: ['Duration: Full day (8-10 hours)', '6 km hike (round trip)', 'Difficulty: Moderate', 'Swimming is prohibited at the main waterfall', 'Trails can be slippery', 'Early departure: 6:00 AM']
+        }
+    },
     'zipline-guanacaste': {
         title: { es: 'Zipline', en: 'Zipline' },
         image: 'images/zipline-kid-friendly-guanacaste-nueva.webp',
         badge: { es: 'Familiar', en: 'Family' },
         description: {
-            es: 'Circuito de canopy diseñado especialmente para familias. Seguro, divertido y con cables adaptados para todas las edades.',
-            en: 'Canopy circuit specially designed for families. Safe, fun and with cables adapted for all ages.'
+            es: 'Operado por Skyline Canopy Tour. Circuito de 10 cables diseñado para toda la familia. Comienza ascendiendo por una escalera de caracol alrededor de un majestuoso árbol de Guanacaste. El cable más largo tiene 400 metros. Incluye puente colgante y salto estilo Tarzán.',
+            en: 'Operated by Skyline Canopy Tour. 10-cable circuit designed for the whole family. Starts by ascending a spiral staircase around a majestic Guanacaste tree. The longest cable is 400 meters. Includes hanging bridge and Tarzan-style rope swing.'
         },
         price: { es: '$75', en: '$75' },
         includes: {
-            es: ['Guía profesional', 'Equipo de seguridad para niños y adultos', 'Agua', 'Transporte'],
-            en: ['Professional guide', 'Safety equipment for children and adults', 'Water', 'Transportation']
+            es: ['10 cables de tirolesa (el más largo de 400m)', 'Guías bilingües certificados por el ICT', 'Equipo de seguridad completo', 'Escalera de caracol y puente colgante', 'Salto de cuerda estilo Tarzán', 'Agua y toalla fría al finalizar', 'Video del tour disponible para compra'],
+            en: ['10 zipline cables (longest 400m)', 'Bilingual guides certified by ICT', 'Complete safety equipment', 'Spiral staircase and hanging bridge', 'Tarzan-style rope swing', 'Water and cold towel at the end', 'Tour video available for purchase']
         },
         bring: {
-            es: ['Ropa cómoda', 'Zapatos cerrados', 'Protector solar', 'Repelente de insectos'],
-            en: ['Comfortable clothes', 'Closed-toe shoes', 'Sunscreen', 'Insect repellent']
+            es: ['Ropa cómoda', 'Zapatos cerrados (obligatorio)', 'Protector solar', 'Repelente de insectos', 'Cámara con correa de seguridad'],
+            en: ['Comfortable clothes', 'Closed-toe shoes (required)', 'Sunscreen', 'Insect repellent', 'Camera with safety strap']
         },
         info: {
-            es: ['Duración: 2 horas', 'Edad mínima: 2 años', 'Sistema de doble línea para mayor seguridad', 'Ideal para niños'],
-            en: ['Duration: 2 hours', 'Minimum age: 2 years', 'Double line system for extra safety', 'Ideal for children']
+            es: ['Duración: aproximadamente 2 horas', 'Edad mínima: 2 años', 'Peso máximo: 300 libras (136 kg)', 'Niños de 2-6 años van en tándem con guía certificado', 'Primera tirolesa a 30 metros de altura', 'Transporte disponible ($10 extra) desde Tamarindo, Flamingo, Conchal'],
+            en: ['Duration: approximately 2 hours', 'Minimum age: 2 years', 'Maximum weight: 300 lbs (136 kg)', 'Children 2-6 years ride tandem with certified guide', 'First zipline at 30 meters height', 'Transportation available ($10 extra) from Tamarindo, Flamingo, Conchal']
         }
     },
     'utv': {
@@ -525,21 +547,21 @@ const tourData = {
         image: 'images/utv-guanacaste-nueva.jpg',
         badge: { es: 'Aventura', en: 'Adventure' },
         description: {
-            es: 'Conduce un vehículo todo terreno por caminos rurales y visita uno de los pueblos más antiguos de Guanacaste. Explora los paisajes del bosque tropical seco.',
-            en: 'Drive an all-terrain vehicle through rural roads and visit one of the oldest towns in Guanacaste. Explore the dry tropical forest landscapes.'
+            es: 'Operado por Skyline Canopy Tour. Conduce un UTV (side-by-side) por senderos privados del parque y caminos rurales de Guanacaste. Explora el bosque tropical seco con vistas espectaculares. Ideal para grupos y familias.',
+            en: 'Operated by Skyline Canopy Tour. Drive a UTV (side-by-side) through private park trails and rural roads of Guanacaste. Explore the dry tropical forest with spectacular views. Ideal for groups and families.'
         },
         price: { es: 'Desde $365', en: 'From $365' },
         includes: {
-            es: ['UTV para 2-4 personas', 'Guía bilingüe', 'Equipo de seguridad', 'Visita a pueblo histórico', 'Refrigerio'],
-            en: ['UTV for 2-4 people', 'Bilingual guide', 'Safety equipment', 'Historic town visit', 'Snack']
+            es: ['UTV para 2-4 pasajeros', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos privados', 'Agua y refrigerio', 'Seguro de accidentes'],
+            en: ['UTV for 2-4 passengers', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Private trail tour', 'Water and snack', 'Accident insurance']
         },
         bring: {
-            es: ['Ropa cómoda', 'Zapatos cerrados', 'Gafas de sol', 'Pañuelo para el polvo', 'Protector solar'],
-            en: ['Comfortable clothes', 'Closed-toe shoes', 'Sunglasses', 'Bandana for dust', 'Sunscreen']
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Gafas de sol', 'Pañuelo o buff para el polvo', 'Protector solar', 'Cambio de ropa'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Sunglasses', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
         },
         info: {
-            es: ['Duración: 3 horas', 'Licencia de conducir requerida', 'Precio varía según participantes', 'Mínimo 2 personas'],
-            en: ['Duration: 3 hours', 'Driver\'s license required', 'Price varies by participants', 'Minimum 2 people']
+            es: ['Duración: 3 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 2-4 personas por UTV', 'Precio varía según número de participantes', 'Depósito: $25 por UTV', 'Transporte disponible desde hoteles de la zona'],
+            en: ['Duration: 3 hours', 'Driver\'s license required to drive', 'Capacity: 2-4 people per UTV', 'Price varies by number of participants', 'Deposit: $25 per UTV', 'Transportation available from area hotels']
         }
     },
     'cuadraciclo': {
@@ -547,21 +569,21 @@ const tourData = {
         image: 'images/atv-guanacaste-nueva.jpg',
         badge: { es: 'Aventura', en: 'Adventure' },
         description: {
-            es: 'Explora los paisajes del bosque tropical seco de Guanacaste en cuadraciclo. Atraviesa fincas, ríos y visita uno de los pueblos más antiguos de la región.',
-            en: 'Explore the dry tropical forest landscapes of Guanacaste by ATV. Cross farms, rivers and visit one of the oldest towns in the region.'
+            es: 'Operado por Skyline Canopy Tour. Aventura en cuadraciclo (ATV) por los senderos privados del parque. Recorre el bosque tropical seco de Guanacaste con adrenalina pura. Disponible en modalidad individual o doble.',
+            en: 'Operated by Skyline Canopy Tour. ATV adventure through private park trails. Ride through the dry tropical forest of Guanacaste with pure adrenaline. Available in single or double mode.'
         },
         price: { es: 'Desde $95', en: 'From $95' },
         includes: {
-            es: ['Cuadraciclo individual o doble', 'Guía experto', 'Equipo de seguridad', 'Agua'],
-            en: ['Single or double ATV', 'Expert guide', 'Safety equipment', 'Water']
+            es: ['Cuadraciclo individual o doble', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos del parque', 'Agua y toalla fría', 'Seguro de accidentes'],
+            en: ['Single or double ATV', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Park trail tour', 'Water and cold towel', 'Accident insurance']
         },
         bring: {
-            es: ['Ropa que se pueda ensuciar', 'Zapatos cerrados', 'Gafas de sol', 'Cambio de ropa', 'Protector solar'],
-            en: ['Clothes that can get dirty', 'Closed-toe shoes', 'Sunglasses', 'Change of clothes', 'Sunscreen']
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Gafas de sol', 'Pañuelo para el polvo', 'Protector solar', 'Cambio de ropa recomendado'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Sunglasses', 'Bandana for dust', 'Sunscreen', 'Change of clothes recommended']
         },
         info: {
-            es: ['Duración: 2.5 horas', 'Edad mínima: 6 años como pasajero', 'Precio varía según participantes', 'No requiere experiencia'],
-            en: ['Duration: 2.5 hours', 'Minimum age: 6 years as passenger', 'Price varies by participants', 'No experience required']
+            es: ['Duración: 2.5 horas', 'Edad mínima: 6 años como pasajero', 'Cuadraciclo individual o doble disponible', 'Depósito: $15 (individual) / $20 (doble)', 'No requiere experiencia previa', 'Transporte disponible desde hoteles de la zona'],
+            en: ['Duration: 2.5 hours', 'Minimum age: 6 years as passenger', 'Single or double ATV available', 'Deposit: $15 (single) / $20 (double)', 'No prior experience required', 'Transportation available from area hotels']
         }
     },
     'cascada': {
