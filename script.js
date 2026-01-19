@@ -197,9 +197,8 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('confirm-people').textContent = data.people;
             document.getElementById('confirm-total').textContent = '$' + currentTotal;
 
-            // Set PayPal link with amount
-            const paypalBtn = document.getElementById('paypal-pay-btn');
-            paypalBtn.href = `https://www.paypal.com/paypalme/mbonillamontero/${currentTotal}`;
+            // Store PayPal amount for button click
+            window.paypalAmount = currentTotal;
 
             // Store reservation data for potential WhatsApp notification
             window.reservationData = {
@@ -230,6 +229,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (confirmation && contactForm) {
                 confirmation.style.display = 'none';
                 contactForm.style.display = 'grid';
+            }
+        });
+    }
+
+    // PayPal button click handler
+    const paypalBtn = document.getElementById('paypal-pay-btn');
+    if (paypalBtn) {
+        paypalBtn.addEventListener('click', function() {
+            if (window.paypalAmount && window.paypalAmount > 0) {
+                const paypalUrl = `https://www.paypal.me/mbonillamontero/${window.paypalAmount}`;
+                window.open(paypalUrl, '_blank');
             }
         });
     }
