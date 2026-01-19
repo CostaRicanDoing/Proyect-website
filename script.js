@@ -330,11 +330,3 @@ function showNotification(message) {
     }, 3000);
 }
 
-// Parallax effect for hero section
-window.addEventListener('scroll', function() {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const scrolled = window.pageYOffset;
-        hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
-    }
-});
