@@ -454,6 +454,16 @@ img {
     color: var(--color-primary);
 }
 
+.tour-price {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    padding: 8px 0;
+    border-top: 1px solid var(--color-gray-dark);
+}
+
 /* Tour Card Featured */
 .tour-card-featured {
     border-color: var(--color-primary);
