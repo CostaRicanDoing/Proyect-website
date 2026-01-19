@@ -244,6 +244,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Pre-select tour when clicking "Reservar Ahora" from a tour card
+    const reserveButtons = document.querySelectorAll('.tour-card .btn-secondary');
+    reserveButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const tourCard = this.closest('.tour-card');
+            if (tourCard && tourCard.dataset.tourId) {
+                const tourId = tourCard.dataset.tourId;
+                const tourSelect = document.getElementById('tour');
+
+                if (tourSelect) {
+                    // Find and select the matching option
+                    for (let i = 0; i < tourSelect.options.length; i++) {
+                        if (tourSelect.options[i].value === tourId) {
+                            tourSelect.selectedIndex = i;
+                            // Trigger the price calculator
+                            updatePriceCalculator();
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+    });
+
     // Intersection Observer for animations
     const observerOptions = {
         threshold: 0.1,
