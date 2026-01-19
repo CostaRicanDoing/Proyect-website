@@ -281,7 +281,7 @@ img {
     align-items: center;
     background-image: url('images/hero.webp');
     background-size: cover;
-    background-position: center;
+    background-position: center bottom;
     background-repeat: no-repeat;
 }
 
