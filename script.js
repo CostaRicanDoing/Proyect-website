@@ -525,21 +525,21 @@ const tourData = {
         image: 'images/zipline-kid-friendly-guanacaste-nueva.webp',
         badge: { es: 'Familiar', en: 'Family' },
         description: {
-            es: 'Operado por Skyline Canopy Tour. Circuito de 10 cables diseñado para toda la familia. Comienza ascendiendo por una escalera de caracol alrededor de un majestuoso árbol de Guanacaste. El cable más largo tiene 400 metros. Incluye puente colgante y salto estilo Tarzán.',
-            en: 'Operated by Skyline Canopy Tour. 10-cable circuit designed for the whole family. Starts by ascending a spiral staircase around a majestic Guanacaste tree. The longest cable is 400 meters. Includes hanging bridge and Tarzan-style rope swing.'
+            es: 'Operado por Skyline Canopy Tour. Circuito de 10 cables diseñado para toda la familia. Comienza ascendiendo por una escalera de caracol alrededor de un majestuoso árbol de Guanacaste. El cable más largo tiene 400 metros. Incluye puente colgante.',
+            en: 'Operated by Skyline Canopy Tour. 10-cable circuit designed for the whole family. Starts by ascending a spiral staircase around a majestic Guanacaste tree. The longest cable is 400 meters. Includes hanging bridge.'
         },
         price: { es: '$75', en: '$75' },
         includes: {
-            es: ['10 cables de tirolesa (el más largo de 400m)', 'Guías bilingües certificados por el ICT', 'Equipo de seguridad completo', 'Escalera de caracol y puente colgante', 'Salto de cuerda estilo Tarzán', 'Agua y toalla fría al finalizar', 'Video del tour disponible para compra'],
-            en: ['10 zipline cables (longest 400m)', 'Bilingual guides certified by ICT', 'Complete safety equipment', 'Spiral staircase and hanging bridge', 'Tarzan-style rope swing', 'Water and cold towel at the end', 'Tour video available for purchase']
+            es: ['10 cables de tirolesa (el más largo de 400m)', 'Guías bilingües', 'Equipo de seguridad completo', 'Escalera de caracol y puente colgante', 'Agua y toalla fría al finalizar'],
+            en: ['10 zipline cables (longest 400m)', 'Bilingual guides', 'Complete safety equipment', 'Spiral staircase and hanging bridge', 'Water and cold towel at the end']
         },
         bring: {
-            es: ['Ropa cómoda', 'Zapatos cerrados (obligatorio)', 'Protector solar', 'Repelente de insectos', 'Cámara con correa de seguridad'],
-            en: ['Comfortable clothes', 'Closed-toe shoes (required)', 'Sunscreen', 'Insect repellent', 'Camera with safety strap']
+            es: ['Ropa cómoda', 'Zapatos cerrados (obligatorio)', 'Protector solar', 'Repelente de insectos'],
+            en: ['Comfortable clothes', 'Closed-toe shoes (required)', 'Sunscreen', 'Insect repellent']
         },
         info: {
-            es: ['Duración: aproximadamente 2 horas', 'Edad mínima: 2 años', 'Peso máximo: 300 libras (136 kg)', 'Niños de 2-6 años van en tándem con guía certificado', 'Primera tirolesa a 30 metros de altura', 'Transporte disponible ($10 extra) desde Tamarindo, Flamingo, Conchal'],
-            en: ['Duration: approximately 2 hours', 'Minimum age: 2 years', 'Maximum weight: 300 lbs (136 kg)', 'Children 2-6 years ride tandem with certified guide', 'First zipline at 30 meters height', 'Transportation available ($10 extra) from Tamarindo, Flamingo, Conchal']
+            es: ['Duración: aproximadamente 2 horas', 'Edad mínima: 2 años', 'Peso máximo: 300 libras (136 kg)', 'Primera tirolesa a 20 metros de altura', 'Transporte disponible (consultar con 12 horas de anticipación)'],
+            en: ['Duration: approximately 2 hours', 'Minimum age: 2 years', 'Maximum weight: 300 lbs (136 kg)', 'First zipline at 20 meters height', 'Transportation available (check availability 12 hours in advance)']
         }
     },
     'utv': {
