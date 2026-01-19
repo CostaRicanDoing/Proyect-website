@@ -574,16 +574,16 @@ const tourData = {
         },
         price: { es: 'Desde $95', en: 'From $95' },
         includes: {
-            es: ['Cuadraciclo individual o doble', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos del parque', 'Agua y toalla fría', 'Seguro de accidentes'],
-            en: ['Single or double ATV', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Park trail tour', 'Water and cold towel', 'Accident insurance']
+            es: ['Cuadraciclo individual o doble', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos privados', 'Agua', 'Seguro de accidentes'],
+            en: ['Single or double ATV', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Private trail tour', 'Water', 'Accident insurance']
         },
         bring: {
-            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Gafas de sol', 'Pañuelo para el polvo', 'Protector solar', 'Cambio de ropa recomendado'],
-            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Sunglasses', 'Bandana for dust', 'Sunscreen', 'Change of clothes recommended']
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Pañuelo o buff para el polvo', 'Protector solar', 'Cambio de ropa'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
         },
         info: {
-            es: ['Duración: 2.5 horas', 'Edad mínima: 6 años como pasajero', 'Cuadraciclo individual o doble disponible', 'Depósito: $15 (individual) / $20 (doble)', 'No requiere experiencia previa', 'Transporte disponible desde hoteles de la zona'],
-            en: ['Duration: 2.5 hours', 'Minimum age: 6 years as passenger', 'Single or double ATV available', 'Deposit: $15 (single) / $20 (double)', 'No prior experience required', 'Transportation available from area hotels']
+            es: ['Duración: 3 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 1-2 personas por cuadraciclo', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
+            en: ['Duration: 3 hours', 'Driver\'s license required to drive', 'Capacity: 1-2 people per ATV', 'Price varies by number of participants', 'Transportation available (check availability)']
         }
     },
     'cascada': {
