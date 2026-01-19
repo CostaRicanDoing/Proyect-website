@@ -191,20 +191,35 @@ img {
 
 /* Help Message */
 .help-message {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
-    font-size: 0.9rem;
+    padding: 20px;
+    background: var(--color-gray-dark);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-gray);
 }
 
 .help-message a {
-    color: var(--color-gray-light);
+    color: var(--color-white);
     text-decoration: none;
     transition: var(--transition);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.help-message a::before {
+    content: '\f232';
+    font-family: 'Font Awesome 6 Brands';
+    font-size: 1.4rem;
+    color: var(--color-whatsapp);
 }
 
 .help-message a:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
+    color: var(--color-whatsapp);
 }
 
 /* Header */
