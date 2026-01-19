@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Set PayPal link with amount
             const paypalBtn = document.getElementById('paypal-pay-btn');
-            paypalBtn.href = `https://paypal.me/mbonillamontero/${currentTotal}USD`;
+            paypalBtn.href = `https://www.paypal.com/paypalme/mbonillamontero/${currentTotal}`;
 
             // Store reservation data for potential WhatsApp notification
             window.reservationData = {
@@ -252,11 +252,13 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Set minimum date for date input
+    // Set minimum date for date input (48 hours / 2 days from now)
     const dateInput = document.getElementById('date');
     if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
+        const minDate = new Date();
+        minDate.setDate(minDate.getDate() + 2); // Add 2 days (48 hours)
+        dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+        dateInput.setAttribute('required', 'true');
     }
 
     // Initialize Tour Carousels
