@@ -189,6 +189,24 @@ img {
     width: 100%;
 }
 
+/* Help Message */
+.help-message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.help-message a {
+    color: var(--color-gray-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.help-message a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
 /* Header */
 .header {
     position: fixed;
