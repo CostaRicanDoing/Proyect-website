@@ -72,22 +72,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const currentScrollY = window.scrollY;
 
                 // Compact/expand header based on scroll position
+                // Header always stays visible (like Sky Adventures)
                 if (currentScrollY > scrollThreshold) {
-                    // Scrolled down - compact header
+                    // Scrolled down - show expanded/scrolled header style
                     header.classList.add('header-scrolled');
-
-                    // Optional: hide header when scrolling down fast, show when scrolling up
-                    if (currentScrollY > lastScrollY + 10 && currentScrollY > 200) {
-                        // Scrolling down fast - hide header
-                        header.classList.add('header-hidden');
-                    } else if (currentScrollY < lastScrollY - 5) {
-                        // Scrolling up - show header
-                        header.classList.remove('header-hidden');
-                    }
                 } else {
-                    // At top of page - expand header and always show
+                    // At top of page - show compact header style
                     header.classList.remove('header-scrolled');
-                    header.classList.remove('header-hidden');
                 }
 
                 lastScrollY = currentScrollY;
