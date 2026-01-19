@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Costa Rican Doing - Tours de Aventura en Costa Rica</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="images/hero.webp" as="image" type="image/webp">
+    <link rel="preload" href="images/logo.png" as="image">
+
+    <!-- Fonts with display swap for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -73,7 +83,7 @@
                 <!-- ATV Tour -->
                 <div class="tour-card" data-tour-id="atv-fortuna">
                     <div class="tour-image">
-                        <img src="images/atv-to-the-volcano-nueva.webp" alt="ATV Tour Volcán Arenal">
+                        <img src="images/atv-to-the-volcano-nueva.webp" alt="ATV Tour Volcán Arenal" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
                     </div>
                     <div class="tour-content">
@@ -91,7 +101,7 @@
                 <!-- Canyoning -->
                 <div class="tour-card" data-tour-id="canyoning">
                     <div class="tour-image">
-                        <img src="images/canyoning-nueva.webp" alt="Canyoning">
+                        <img src="images/canyoning-nueva.webp" alt="Canyoning" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Extremo" data-en="Extreme">Extremo</div>
                     </div>
                     <div class="tour-content">
@@ -110,7 +120,7 @@
                 <!-- Zipline -->
                 <div class="tour-card" data-tour-id="zipline-fortuna">
                     <div class="tour-image">
-                        <img src="images/zipline-la-fortuna-nueva.webp" alt="Zipline La Fortuna">
+                        <img src="images/zipline-la-fortuna-nueva.webp" alt="Zipline La Fortuna" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Popular" data-en="Popular">Popular</div>
                     </div>
                     <div class="tour-content">
@@ -128,7 +138,7 @@
                 <!-- Rafting -->
                 <div class="tour-card" data-tour-id="rafting">
                     <div class="tour-image">
-                        <img src="images/rafting-class-lll-nueva.webp" alt="Rafting Clase III">
+                        <img src="images/rafting-class-lll-nueva.webp" alt="Rafting Clase III" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Clase III" data-en="Class III">Clase III</div>
                     </div>
                     <div class="tour-content">
@@ -146,7 +156,7 @@
                 <!-- Cabalgata -->
                 <div class="tour-card" data-tour-id="cabalgata">
                     <div class="tour-image">
-                        <img src="images/horse-back-riding-waterfall-nueva.webp" alt="Cabalgata a la Catarata">
+                        <img src="images/horse-back-riding-waterfall-nueva.webp" alt="Cabalgata a la Catarata" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Naturaleza" data-en="Nature">Naturaleza</div>
                     </div>
                     <div class="tour-content">
@@ -164,7 +174,7 @@
                 <!-- Río Celeste -->
                 <div class="tour-card" data-tour-id="rio-celeste">
                     <div class="tour-image">
-                        <img src="images/rio-celeste-nueva.webp" alt="Río Celeste">
+                        <img src="images/rio-celeste-nueva.webp" alt="Río Celeste" loading="lazy" width="400" height="220">
                         <div class="tour-badge badge-nature" data-es="Naturaleza" data-en="Nature">Naturaleza</div>
                     </div>
                     <div class="tour-content">
@@ -194,7 +204,7 @@
                 <!-- Zipline Kid Friendly -->
                 <div class="tour-card tour-card-featured" data-tour-id="zipline-guanacaste">
                     <div class="tour-image">
-                        <img src="images/zipline-kid-friendly-guanacaste-nueva.webp" alt="Zipline Familiar">
+                        <img src="images/zipline-kid-friendly-guanacaste-nueva.webp" alt="Zipline Familiar" loading="lazy" width="400" height="220">
                         <div class="tour-badge badge-family" data-es="Familiar" data-en="Family">Familiar</div>
                     </div>
                     <div class="tour-content">
@@ -212,7 +222,7 @@
                 <!-- UTV Tour -->
                 <div class="tour-card" data-tour-id="utv">
                     <div class="tour-image">
-                        <img src="images/utv-guanacaste-nueva.jpg" alt="UTV Tour">
+                        <img src="images/utv-guanacaste-nueva.jpg" alt="UTV Tour" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
                     </div>
                     <div class="tour-content">
@@ -230,7 +240,7 @@
                 <!-- Cuadraciclo -->
                 <div class="tour-card" data-tour-id="cuadraciclo">
                     <div class="tour-image">
-                        <img src="images/atv-guanacaste-nueva.jpg" alt="Cuadraciclo">
+                        <img src="images/atv-guanacaste-nueva.jpg" alt="Cuadraciclo" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
                     </div>
                     <div class="tour-content">
@@ -248,7 +258,7 @@
                 <!-- Cascada La Leona -->
                 <div class="tour-card" data-tour-id="cascada">
                     <div class="tour-image">
-                        <img src="images/la-leona-waterfall-nueva.webp" alt="Cascada La Leona">
+                        <img src="images/la-leona-waterfall-nueva.webp" alt="Cascada La Leona" loading="lazy" width="400" height="220">
                         <div class="tour-badge badge-nature" data-es="Temporada Seca" data-en="Dry Season">Temporada Seca</div>
                     </div>
                     <div class="tour-content">
@@ -308,7 +318,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/cascadas-nueva.jpg" alt="Costa Rican Doing - Aventura en Costa Rica">
+                    <img src="images/cascadas-nueva.webp" alt="Costa Rican Doing - Aventura en Costa Rica" loading="lazy" width="600" height="400">
                 </div>
             </div>
         </div>
