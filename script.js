@@ -552,16 +552,16 @@ const tourData = {
         },
         price: { es: 'Desde $365', en: 'From $365' },
         includes: {
-            es: ['UTV para 2-4 pasajeros', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos privados', 'Agua y refrigerio', 'Seguro de accidentes'],
-            en: ['UTV for 2-4 passengers', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Private trail tour', 'Water and snack', 'Accident insurance']
+            es: ['UTV para 5 pasajeros', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos privados', 'Agua', 'Seguro de accidentes'],
+            en: ['UTV for 5 passengers', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Private trail tour', 'Water', 'Accident insurance']
         },
         bring: {
-            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Gafas de sol', 'Pañuelo o buff para el polvo', 'Protector solar', 'Cambio de ropa'],
-            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Sunglasses', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Pañuelo o buff para el polvo', 'Protector solar', 'Cambio de ropa'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
         },
         info: {
-            es: ['Duración: 3 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 2-4 personas por UTV', 'Precio varía según número de participantes', 'Depósito: $25 por UTV', 'Transporte disponible desde hoteles de la zona'],
-            en: ['Duration: 3 hours', 'Driver\'s license required to drive', 'Capacity: 2-4 people per UTV', 'Price varies by number of participants', 'Deposit: $25 per UTV', 'Transportation available from area hotels']
+            es: ['Duración: 3 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 5 personas por UTV', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
+            en: ['Duration: 3 hours', 'Driver\'s license required to drive', 'Capacity: 5 people per UTV', 'Price varies by number of participants', 'Transportation available (check availability)']
         }
     },
     'cuadraciclo': {
