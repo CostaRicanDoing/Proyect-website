@@ -177,8 +177,8 @@ img {
 }
 
 .logo-img {
-    height: 45px;
-    width: auto;
+    width: 250px;
+    height: auto;
     transition: var(--transition);
 }
 
@@ -188,7 +188,7 @@ img {
 }
 
 .logo-footer {
-    height: 55px;
+    width: 280px;
 }
 
 .nav-list {
@@ -910,11 +910,11 @@ img {
     }
 
     .logo-img {
-        height: 35px;
+        width: 180px;
     }
 
     .logo-footer {
-        height: 45px;
+        width: 200px;
     }
 
     .language-toggle {
