@@ -4,6 +4,14 @@
 // =============================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Hide preloader after 2 seconds
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 2000);
+    }
+
     // Initialize language
     let currentLang = localStorage.getItem('language') || 'es';
     setLanguage(currentLang);
