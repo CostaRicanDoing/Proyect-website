@@ -55,13 +55,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Header scroll effect
+    // Header hide on scroll down, show on scroll up
     const header = document.querySelector('.header');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(10, 10, 10, 0.98)';
-        } else {
-            header.style.background = 'rgba(10, 10, 10, 0.95)';
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                const currentScrollY = window.scrollY;
+
+                // Only hide/show after scrolling past 100px
+                if (currentScrollY > 100) {
+                    if (currentScrollY > lastScrollY) {
+                        // Scrolling down - hide header
+                        header.classList.add('header-hidden');
+                    } else {
+                        // Scrolling up - show header
+                        header.classList.remove('header-hidden');
+                    }
+                } else {
+                    // At top of page - always show header
+                    header.classList.remove('header-hidden');
+                }
+
+                lastScrollY = currentScrollY;
+                ticking = false;
+            });
+            ticking = true;
         }
     });
 
