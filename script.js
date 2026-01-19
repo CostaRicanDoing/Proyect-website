@@ -381,3 +381,300 @@ function showNotification(message) {
     }, 3000);
 }
 
+
+// =============================================
+// TOUR DETAILS MODAL
+// =============================================
+
+// Tour data with details (you can edit this easily)
+const tourData = {
+    'atv-fortuna': {
+        title: { es: 'ATV Tour', en: 'ATV Tour' },
+        image: 'images/atv-to-the-volcano-nueva.webp',
+        badge: { es: 'Aventura', en: 'Adventure' },
+        description: {
+            es: 'Recorre senderos de montaña y cruza ríos a bordo de un ATV. Una experiencia llena de adrenalina con vistas al Volcán Arenal.',
+            en: 'Ride through mountain trails and cross rivers aboard an ATV. An adrenaline-filled experience with views of Arenal Volcano.'
+        },
+        price: { es: 'Desde $130', en: 'From $130' },
+        includes: {
+            es: ['Guía bilingüe', 'Equipo de seguridad (casco, gafas)', 'Agua embotellada', 'Transporte desde tu hotel'],
+            en: ['Bilingual guide', 'Safety equipment (helmet, goggles)', 'Bottled water', 'Transportation from your hotel']
+        },
+        bring: {
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados', 'Cambio de ropa', 'Protector solar', 'Repelente de insectos'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes', 'Change of clothes', 'Sunscreen', 'Insect repellent']
+        },
+        info: {
+            es: ['Duración: 3 horas', 'Edad mínima: 6 años', 'Peso máximo: 250 lbs', 'No requiere experiencia previa'],
+            en: ['Duration: 3 hours', 'Minimum age: 6 years', 'Maximum weight: 250 lbs', 'No prior experience required']
+        }
+    },
+    'canyoning': {
+        title: { es: 'Canyoning', en: 'Canyoning' },
+        image: 'images/canyoning-nueva.webp',
+        badge: { es: 'Extremo', en: 'Extreme' },
+        description: {
+            es: 'Desciende por cascadas naturales haciendo rapel. Siente la emoción de bajar por paredes de roca con el agua cayendo a tu alrededor.',
+            en: 'Descend through natural waterfalls by rappelling. Feel the thrill of going down rock walls with water falling around you.'
+        },
+        price: { es: '$110', en: '$110' },
+        includes: {
+            es: ['Guía certificado', 'Equipo completo de rapel', 'Almuerzo', 'Transporte', 'Fotos del tour'],
+            en: ['Certified guide', 'Complete rappelling equipment', 'Lunch', 'Transportation', 'Tour photos']
+        },
+        bring: {
+            es: ['Traje de baño', 'Zapatos de agua o tenis viejos', 'Toalla', 'Cambio de ropa seca', 'Protector solar biodegradable'],
+            en: ['Swimsuit', 'Water shoes or old sneakers', 'Towel', 'Dry change of clothes', 'Biodegradable sunscreen']
+        },
+        info: {
+            es: ['Duración: 3 horas', '4 cascadas', 'Edad mínima: 8 años', 'Condición física moderada requerida'],
+            en: ['Duration: 3 hours', '4 waterfalls', 'Minimum age: 8 years', 'Moderate physical condition required']
+        }
+    },
+    'zipline-fortuna': {
+        title: { es: 'Zipline', en: 'Zipline' },
+        image: 'images/zipline-la-fortuna-nueva.webp',
+        badge: { es: 'Popular', en: 'Popular' },
+        description: {
+            es: 'Vuela sobre el dosel del bosque tropical con vistas panorámicas del volcán. Múltiples cables para una experiencia completa.',
+            en: 'Fly over the tropical forest canopy with panoramic views of the volcano. Multiple cables for a complete experience.'
+        },
+        price: { es: '$85', en: '$85' },
+        includes: {
+            es: ['Guía profesional', 'Equipo de seguridad completo', '10 cables de tirolesa', 'Transporte'],
+            en: ['Professional guide', 'Complete safety equipment', '10 zipline cables', 'Transportation']
+        },
+        bring: {
+            es: ['Ropa cómoda', 'Zapatos cerrados', 'Protector solar', 'Cámara con correa de seguridad'],
+            en: ['Comfortable clothes', 'Closed-toe shoes', 'Sunscreen', 'Camera with safety strap']
+        },
+        info: {
+            es: ['Duración: Máximo 2 horas', '10 cables', 'Edad mínima: 4 años', 'Peso máximo: 275 lbs'],
+            en: ['Duration: Maximum 2 hours', '10 cables', 'Minimum age: 4 years', 'Maximum weight: 275 lbs']
+        }
+    },
+    'rafting': {
+        title: { es: 'Rafting Clase III', en: 'Class III Rafting' },
+        image: 'images/rafting-class-lll-nueva.webp',
+        badge: { es: 'Clase III', en: 'Class III' },
+        description: {
+            es: 'Navega los rápidos del Río Balsa. Aguas bravas perfectas para aventureros con o sin experiencia previa.',
+            en: 'Navigate the rapids of the Balsa River. White waters perfect for adventurers with or without previous experience.'
+        },
+        price: { es: '$95', en: '$95' },
+        includes: {
+            es: ['Guía certificado en primeros auxilios', 'Equipo completo de rafting', 'Frutas y hidratación', 'Almuerzo', 'Transporte'],
+            en: ['First aid certified guide', 'Complete rafting equipment', 'Fruits and hydration', 'Lunch', 'Transportation']
+        },
+        bring: {
+            es: ['Traje de baño', 'Zapatos que se puedan mojar', 'Cambio de ropa', 'Protector solar biodegradable', 'Toalla'],
+            en: ['Swimsuit', 'Shoes that can get wet', 'Change of clothes', 'Biodegradable sunscreen', 'Towel']
+        },
+        info: {
+            es: ['Duración: Medio día', 'Rápidos Clase II-III', 'Edad mínima: 10 años', 'Saber nadar es recomendado'],
+            en: ['Duration: Half day', 'Class II-III rapids', 'Minimum age: 10 years', 'Swimming ability recommended']
+        }
+    },
+    'cabalgata': {
+        title: { es: 'Cabalgata a la Catarata', en: 'Horseback Ride to Waterfall' },
+        image: 'images/horse-back-riding-waterfall-nueva.webp',
+        badge: { es: 'Naturaleza', en: 'Nature' },
+        description: {
+            es: 'Paseo a caballo por senderos naturales hasta la impresionante Catarata La Fortuna. Ideal para conectar con la naturaleza.',
+            en: 'Horseback ride through natural trails to the impressive La Fortuna Waterfall. Ideal for connecting with nature.'
+        },
+        price: { es: '$80', en: '$80' },
+        includes: {
+            es: ['Caballo dócil y bien entrenado', 'Guía experto', 'Entrada a la catarata', 'Casco de seguridad'],
+            en: ['Gentle, well-trained horse', 'Expert guide', 'Waterfall entrance fee', 'Safety helmet']
+        },
+        bring: {
+            es: ['Pantalón largo', 'Zapatos cerrados', 'Traje de baño (para la catarata)', 'Protector solar', 'Cámara'],
+            en: ['Long pants', 'Closed-toe shoes', 'Swimsuit (for the waterfall)', 'Sunscreen', 'Camera']
+        },
+        info: {
+            es: ['Duración: 3 horas', 'No requiere experiencia', 'Peso máximo: 220 lbs', 'Ideal para familias'],
+            en: ['Duration: 3 hours', 'No experience required', 'Maximum weight: 220 lbs', 'Ideal for families']
+        }
+    },
+    'zipline-guanacaste': {
+        title: { es: 'Zipline', en: 'Zipline' },
+        image: 'images/zipline-kid-friendly-guanacaste-nueva.webp',
+        badge: { es: 'Familiar', en: 'Family' },
+        description: {
+            es: 'Circuito de canopy diseñado especialmente para familias. Seguro, divertido y con cables adaptados para todas las edades.',
+            en: 'Canopy circuit specially designed for families. Safe, fun and with cables adapted for all ages.'
+        },
+        price: { es: '$75', en: '$75' },
+        includes: {
+            es: ['Guía profesional', 'Equipo de seguridad para niños y adultos', 'Agua', 'Transporte'],
+            en: ['Professional guide', 'Safety equipment for children and adults', 'Water', 'Transportation']
+        },
+        bring: {
+            es: ['Ropa cómoda', 'Zapatos cerrados', 'Protector solar', 'Repelente de insectos'],
+            en: ['Comfortable clothes', 'Closed-toe shoes', 'Sunscreen', 'Insect repellent']
+        },
+        info: {
+            es: ['Duración: 2 horas', 'Edad mínima: 2 años', 'Sistema de doble línea para mayor seguridad', 'Ideal para niños'],
+            en: ['Duration: 2 hours', 'Minimum age: 2 years', 'Double line system for extra safety', 'Ideal for children']
+        }
+    },
+    'utv': {
+        title: { es: 'UTV Tour', en: 'UTV Tour' },
+        image: 'images/utv-guanacaste-nueva.jpg',
+        badge: { es: 'Aventura', en: 'Adventure' },
+        description: {
+            es: 'Conduce un vehículo todo terreno por caminos rurales y visita uno de los pueblos más antiguos de Guanacaste. Explora los paisajes del bosque tropical seco.',
+            en: 'Drive an all-terrain vehicle through rural roads and visit one of the oldest towns in Guanacaste. Explore the dry tropical forest landscapes.'
+        },
+        price: { es: 'Desde $365', en: 'From $365' },
+        includes: {
+            es: ['UTV para 2-4 personas', 'Guía bilingüe', 'Equipo de seguridad', 'Visita a pueblo histórico', 'Refrigerio'],
+            en: ['UTV for 2-4 people', 'Bilingual guide', 'Safety equipment', 'Historic town visit', 'Snack']
+        },
+        bring: {
+            es: ['Ropa cómoda', 'Zapatos cerrados', 'Gafas de sol', 'Pañuelo para el polvo', 'Protector solar'],
+            en: ['Comfortable clothes', 'Closed-toe shoes', 'Sunglasses', 'Bandana for dust', 'Sunscreen']
+        },
+        info: {
+            es: ['Duración: 3 horas', 'Licencia de conducir requerida', 'Precio varía según participantes', 'Mínimo 2 personas'],
+            en: ['Duration: 3 hours', 'Driver\'s license required', 'Price varies by participants', 'Minimum 2 people']
+        }
+    },
+    'cuadraciclo': {
+        title: { es: 'Cuadraciclo', en: 'ATV' },
+        image: 'images/atv-guanacaste-nueva.jpg',
+        badge: { es: 'Aventura', en: 'Adventure' },
+        description: {
+            es: 'Explora los paisajes del bosque tropical seco de Guanacaste en cuadraciclo. Atraviesa fincas, ríos y visita uno de los pueblos más antiguos de la región.',
+            en: 'Explore the dry tropical forest landscapes of Guanacaste by ATV. Cross farms, rivers and visit one of the oldest towns in the region.'
+        },
+        price: { es: 'Desde $95', en: 'From $95' },
+        includes: {
+            es: ['Cuadraciclo individual o doble', 'Guía experto', 'Equipo de seguridad', 'Agua'],
+            en: ['Single or double ATV', 'Expert guide', 'Safety equipment', 'Water']
+        },
+        bring: {
+            es: ['Ropa que se pueda ensuciar', 'Zapatos cerrados', 'Gafas de sol', 'Cambio de ropa', 'Protector solar'],
+            en: ['Clothes that can get dirty', 'Closed-toe shoes', 'Sunglasses', 'Change of clothes', 'Sunscreen']
+        },
+        info: {
+            es: ['Duración: 2.5 horas', 'Edad mínima: 6 años como pasajero', 'Precio varía según participantes', 'No requiere experiencia'],
+            en: ['Duration: 2.5 hours', 'Minimum age: 6 years as passenger', 'Price varies by participants', 'No experience required']
+        }
+    },
+    'cascada': {
+        title: { es: 'Cascada La Leona', en: 'La Leona Waterfall' },
+        image: 'images/la-leona-waterfall-nueva.webp',
+        badge: { es: 'Temporada Seca', en: 'Dry Season' },
+        description: {
+            es: 'Caminata por el bosque tropical hasta la espectacular Cascada La Leona. Báñate en sus aguas cristalinas y disfruta del entorno natural.',
+            en: 'Hike through the tropical forest to the spectacular La Leona Waterfall. Swim in its crystal clear waters and enjoy the natural surroundings.'
+        },
+        price: { es: 'Consultar precio', en: 'Ask for price' },
+        includes: {
+            es: ['Guía naturalista', 'Entrada al área protegida', 'Frutas tropicales', 'Agua'],
+            en: ['Naturalist guide', 'Protected area entrance', 'Tropical fruits', 'Water']
+        },
+        bring: {
+            es: ['Zapatos de senderismo', 'Traje de baño', 'Toalla', 'Cámara resistente al agua', 'Protector solar biodegradable'],
+            en: ['Hiking shoes', 'Swimsuit', 'Towel', 'Waterproof camera', 'Biodegradable sunscreen']
+        },
+        info: {
+            es: ['Duración: 3 a 5 horas', 'Disponible solo del 2 de enero al 15 de agosto', 'Condición física moderada', 'Caminata de dificultad media'],
+            en: ['Duration: 3 to 5 hours', 'Available only January 2 to August 15', 'Moderate physical condition', 'Medium difficulty hike']
+        }
+    }
+};
+
+// Initialize modal functionality
+function initTourModal() {
+    const modal = document.getElementById('tour-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const tourCards = document.querySelectorAll('.tour-card[data-tour-id]');
+
+    if (!modal) return;
+
+    // Open modal when clicking on tour card
+    tourCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+            // Don't open modal if clicking on the reserve button
+            if (e.target.closest('.btn')) return;
+            
+            const tourId = this.dataset.tourId;
+            openTourModal(tourId);
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener('click', closeTourModal);
+    
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeTourModal();
+        }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeTourModal();
+        }
+    });
+
+    // Reserve button closes modal and scrolls to contact
+    const reserveBtn = document.getElementById('modal-reserve-btn');
+    if (reserveBtn) {
+        reserveBtn.addEventListener('click', function() {
+            closeTourModal();
+        });
+    }
+}
+
+function openTourModal(tourId) {
+    const modal = document.getElementById('tour-modal');
+    const tour = tourData[tourId];
+    const lang = localStorage.getItem('language') || 'es';
+
+    if (!tour) return;
+
+    // Populate modal with tour data
+    document.getElementById('modal-image').src = tour.image;
+    document.getElementById('modal-image').alt = tour.title[lang];
+    document.getElementById('modal-badge').textContent = tour.badge[lang];
+    document.getElementById('modal-title').textContent = tour.title[lang];
+    document.getElementById('modal-description').textContent = tour.description[lang];
+    document.getElementById('modal-price').textContent = tour.price[lang];
+
+    // Populate lists
+    populateList('modal-includes', tour.includes[lang]);
+    populateList('modal-bring', tour.bring[lang]);
+    populateList('modal-info', tour.info[lang]);
+
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeTourModal() {
+    const modal = document.getElementById('tour-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function populateList(elementId, items) {
+    const list = document.getElementById(elementId);
+    list.innerHTML = '';
+    items.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check"></i> ${item}`;
+        list.appendChild(li);
+    });
+}
+
+// Initialize modal on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initTourModal();
+});

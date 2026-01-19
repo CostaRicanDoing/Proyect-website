@@ -71,7 +71,7 @@
 
             <div class="tours-grid">
                 <!-- ATV Tour -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="atv-fortuna">
                     <div class="tour-image">
                         <img src="images/atv-to-the-volcano-nueva.webp" alt="ATV Tour Volcán Arenal">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
@@ -89,7 +89,7 @@
                 </div>
 
                 <!-- Canyoning -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="canyoning">
                     <div class="tour-image">
                         <img src="images/canyoning-nueva.webp" alt="Canyoning">
                         <div class="tour-badge" data-es="Extremo" data-en="Extreme">Extremo</div>
@@ -108,7 +108,7 @@
                 </div>
 
                 <!-- Zipline -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="zipline-fortuna">
                     <div class="tour-image">
                         <img src="images/zipline-la-fortuna-nueva.webp" alt="Zipline La Fortuna">
                         <div class="tour-badge" data-es="Popular" data-en="Popular">Popular</div>
@@ -126,7 +126,7 @@
                 </div>
 
                 <!-- Rafting -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="rafting">
                     <div class="tour-image">
                         <img src="images/rafting-class-lll-nueva.webp" alt="Rafting Clase III">
                         <div class="tour-badge" data-es="Clase III" data-en="Class III">Clase III</div>
@@ -144,7 +144,7 @@
                 </div>
 
                 <!-- Cabalgata -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="cabalgata">
                     <div class="tour-image">
                         <img src="images/horse-back-riding-waterfall-nueva.webp" alt="Cabalgata a la Catarata">
                         <div class="tour-badge" data-es="Naturaleza" data-en="Nature">Naturaleza</div>
@@ -174,7 +174,7 @@
 
             <div class="tours-grid">
                 <!-- Zipline Kid Friendly -->
-                <div class="tour-card tour-card-featured">
+                <div class="tour-card tour-card-featured" data-tour-id="zipline-guanacaste">
                     <div class="tour-image">
                         <img src="images/zipline-kid-friendly-guanacaste-nueva.webp" alt="Zipline Familiar">
                         <div class="tour-badge badge-family" data-es="Familiar" data-en="Family">Familiar</div>
@@ -192,7 +192,7 @@
                 </div>
 
                 <!-- UTV Tour -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="utv">
                     <div class="tour-image">
                         <img src="images/utv-guanacaste-nueva.jpg" alt="UTV Tour">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
@@ -210,7 +210,7 @@
                 </div>
 
                 <!-- Cuadraciclo -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="cuadraciclo">
                     <div class="tour-image">
                         <img src="images/atv-guanacaste-nueva.jpg" alt="Cuadraciclo">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
@@ -228,7 +228,7 @@
                 </div>
 
                 <!-- Cascada La Leona -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="cascada">
                     <div class="tour-image">
                         <img src="images/la-leona-waterfall-nueva.webp" alt="Cascada La Leona">
                         <div class="tour-badge badge-nature" data-es="Temporada Seca" data-en="Dry Season">Temporada Seca</div>
@@ -440,6 +440,43 @@
     <a href="https://wa.me/50688952387" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Tour Details Modal -->
+    <div id="tour-modal" class="tour-modal">
+        <div class="tour-modal-content">
+            <button class="tour-modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="tour-modal-header">
+                <img id="modal-image" src="" alt="">
+                <div class="tour-modal-badge" id="modal-badge"></div>
+            </div>
+            <div class="tour-modal-body">
+                <h2 id="modal-title"></h2>
+                <p id="modal-description" class="modal-description"></p>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-check-circle"></i> <span data-es="¿Qué incluye?" data-en="What's included?">¿Qué incluye?</span></h3>
+                    <ul id="modal-includes" class="modal-list"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-tshirt"></i> <span data-es="¿Qué llevar?" data-en="What to bring?">¿Qué llevar?</span></h3>
+                    <ul id="modal-bring" class="modal-list"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-info-circle"></i> <span data-es="Información importante" data-en="Important information">Información importante</span></h3>
+                    <ul id="modal-info" class="modal-list"></ul>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="modal-price" id="modal-price"></div>
+                    <a href="#contact" class="btn btn-primary" id="modal-reserve-btn" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
