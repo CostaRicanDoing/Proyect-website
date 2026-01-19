@@ -148,6 +148,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Reset form
             this.reset();
+
+            // Show confirmation with PayPal option
+            const confirmation = document.getElementById('reservation-confirmation');
+            if (confirmation) {
+                contactForm.style.display = 'none';
+                confirmation.style.display = 'block';
+            }
+        });
+    }
+
+    // New reservation button (to show form again)
+    const newReservationBtn = document.getElementById('new-reservation-btn');
+    if (newReservationBtn) {
+        newReservationBtn.addEventListener('click', function() {
+            const confirmation = document.getElementById('reservation-confirmation');
+            const contactForm = document.getElementById('contact-form');
+            if (confirmation && contactForm) {
+                confirmation.style.display = 'none';
+                contactForm.style.display = 'grid';
+            }
         });
     }
 

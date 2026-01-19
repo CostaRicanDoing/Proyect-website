@@ -352,6 +352,21 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-full" data-es="Enviar Consulta" data-en="Send Inquiry">Enviar Consulta</button>
                     </form>
+
+                    <!-- Confirmation message with PayPal (hidden by default) -->
+                    <div id="reservation-confirmation" class="reservation-confirmation" style="display: none;">
+                        <div class="confirmation-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 data-es="¡Reserva Enviada!" data-en="Reservation Sent!">¡Reserva Enviada!</h3>
+                        <p data-es="Gracias por tu reserva. Te contactaremos pronto para confirmar los detalles." data-en="Thank you for your reservation. We will contact you soon to confirm the details.">Gracias por tu reserva. Te contactaremos pronto para confirmar los detalles.</p>
+                        <p data-es="Si deseas realizar el pago ahora, puedes hacerlo a través de PayPal:" data-en="If you wish to make the payment now, you can do so through PayPal:">Si deseas realizar el pago ahora, puedes hacerlo a través de PayPal:</p>
+                        <a href="https://paypal.me/mbonillamontero" target="_blank" class="btn btn-paypal btn-full">
+                            <i class="fab fa-paypal"></i>
+                            <span data-es="Pagar con PayPal" data-en="Pay with PayPal">Pagar con PayPal</span>
+                        </a>
+                        <button id="new-reservation-btn" class="btn btn-secondary btn-full" style="margin-top: 1rem;" data-es="Hacer otra reserva" data-en="Make another reservation">Hacer otra reserva</button>
+                    </div>
                 </div>
 
                 <div class="contact-info">
@@ -376,11 +391,6 @@
                     <a href="https://wa.me/50688952387" target="_blank" class="btn btn-whatsapp btn-full">
                         <i class="fab fa-whatsapp"></i>
                         <span data-es="Contactar por WhatsApp" data-en="Contact via WhatsApp">Contactar por WhatsApp</span>
-                    </a>
-
-                    <a href="https://paypal.me/mbonillamontero" target="_blank" class="btn btn-paypal btn-full">
-                        <i class="fab fa-paypal"></i>
-                        <span data-es="Pagar con PayPal" data-en="Pay with PayPal">Pagar con PayPal</span>
                     </a>
 
                     <p class="help-message">
