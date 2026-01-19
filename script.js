@@ -560,8 +560,8 @@ const tourData = {
             en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
         },
         info: {
-            es: ['Duración: 3 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 5 personas por UTV', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
-            en: ['Duration: 3 hours', 'Driver\'s license required to drive', 'Capacity: 5 people per UTV', 'Price varies by number of participants', 'Transportation available (check availability)']
+            es: ['Duración: aproximadamente 2 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 5 personas por UTV', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
+            en: ['Duration: approximately 2 hours', 'Driver\'s license required to drive', 'Capacity: 5 people per UTV', 'Price varies by number of participants', 'Transportation available (check availability)']
         }
     },
     'cuadraciclo': {
@@ -582,8 +582,8 @@ const tourData = {
             en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
         },
         info: {
-            es: ['Duración: 3 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 1-2 personas por cuadraciclo', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
-            en: ['Duration: 3 hours', 'Driver\'s license required to drive', 'Capacity: 1-2 people per ATV', 'Price varies by number of participants', 'Transportation available (check availability)']
+            es: ['Duración: aproximadamente 2 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 1-2 personas por cuadraciclo', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
+            en: ['Duration: approximately 2 hours', 'Driver\'s license required to drive', 'Capacity: 1-2 people per ATV', 'Price varies by number of participants', 'Transportation available (check availability)']
         }
     },
     'cascada': {
