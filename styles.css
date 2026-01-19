@@ -168,7 +168,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .logo {
@@ -177,7 +177,7 @@ img {
 }
 
 .logo-img {
-    width: 150px;
+    width: 120px;
     height: auto;
     transition: var(--transition);
 }
@@ -919,11 +919,11 @@ img {
 
 @media (max-width: 480px) {
     .header-content {
-        padding: 8px 0;
+        padding: 4px 0;
     }
 
     .logo-img {
-        width: 120px;
+        width: 100px;
     }
 
     .logo-footer {
