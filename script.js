@@ -525,8 +525,8 @@ const tourData = {
         image: 'images/zipline-kid-friendly-guanacaste-nueva.webp',
         badge: { es: 'Familiar', en: 'Family' },
         description: {
-            es: 'Operado por Skyline Canopy Tour. Circuito de 10 cables diseñado para toda la familia. Comienza ascendiendo por una escalera de caracol alrededor de un majestuoso árbol de Guanacaste. El cable más largo tiene 400 metros. Incluye puente colgante.',
-            en: 'Operated by Skyline Canopy Tour. 10-cable circuit designed for the whole family. Starts by ascending a spiral staircase around a majestic Guanacaste tree. The longest cable is 400 meters. Includes hanging bridge.'
+            es: 'Circuito de 10 cables diseñado para toda la familia. Comienza ascendiendo por una escalera de caracol alrededor de un majestuoso árbol de Guanacaste. El cable más largo tiene 400 metros. Incluye puente colgante.',
+            en: '10-cable circuit designed for the whole family. Starts by ascending a spiral staircase around a majestic Guanacaste tree. The longest cable is 400 meters. Includes hanging bridge.'
         },
         price: { es: '$75', en: '$75' },
         includes: {
@@ -547,8 +547,8 @@ const tourData = {
         image: 'images/utv-guanacaste-nueva.jpg',
         badge: { es: 'Aventura', en: 'Adventure' },
         description: {
-            es: 'Operado por Skyline Canopy Tour. Conduce un UTV (side-by-side) por senderos privados del parque y caminos rurales de Guanacaste. Explora el bosque tropical seco con vistas espectaculares. Ideal para grupos y familias.',
-            en: 'Operated by Skyline Canopy Tour. Drive a UTV (side-by-side) through private park trails and rural roads of Guanacaste. Explore the dry tropical forest with spectacular views. Ideal for groups and families.'
+            es: 'Conduce un UTV (side-by-side) por senderos privados y caminos rurales de Guanacaste. Explora el bosque tropical seco con vistas espectaculares. Ideal para grupos y familias.',
+            en: 'Drive a UTV (side-by-side) through private trails and rural roads of Guanacaste. Explore the dry tropical forest with spectacular views. Ideal for groups and families.'
         },
         price: { es: 'Desde $365', en: 'From $365' },
         includes: {
@@ -569,8 +569,8 @@ const tourData = {
         image: 'images/atv-guanacaste-nueva.jpg',
         badge: { es: 'Aventura', en: 'Adventure' },
         description: {
-            es: 'Operado por Skyline Canopy Tour. Aventura en cuadraciclo (ATV) por los senderos privados del parque. Recorre el bosque tropical seco de Guanacaste con adrenalina pura. Disponible en modalidad individual o doble.',
-            en: 'Operated by Skyline Canopy Tour. ATV adventure through private park trails. Ride through the dry tropical forest of Guanacaste with pure adrenaline. Available in single or double mode.'
+            es: 'Aventura en cuadraciclo (ATV) por senderos privados. Recorre el bosque tropical seco de Guanacaste con adrenalina pura. Disponible en modalidad individual o doble.',
+            en: 'ATV adventure through private trails. Ride through the dry tropical forest of Guanacaste with pure adrenaline. Available in single or double mode.'
         },
         price: { es: 'Desde $95', en: 'From $95' },
         includes: {
