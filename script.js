@@ -543,12 +543,12 @@ const tourData = {
         }
     },
     'canyoning': {
-        title: { es: 'Canyoning', en: 'Canyoning' },
+        title: { es: 'Canyoning / Barranquismo', en: 'Canyoning' },
         image: 'images/canyoning-nueva.webp',
         badge: { es: 'Extremo', en: 'Extreme' },
         description: {
-            es: 'Desciende por cascadas naturales haciendo rapel. Siente la emoción de bajar por paredes de roca con el agua cayendo a tu alrededor.',
-            en: 'Descend through natural waterfalls by rappelling. Feel the thrill of going down rock walls with water falling around you.'
+            es: 'Vive una experiencia de barranquismo inolvidable en plena selva tropical. Desciende por impresionantes cascadas, recorre cañones naturales y disfruta de tirolesas mientras te adentras en el corazón del bosque lluvioso. Ideal para principiantes y expertos.',
+            en: 'Live an unforgettable canyoning experience in the tropical rainforest. Descend through impressive waterfalls, explore natural canyons and enjoy ziplines as you venture into the heart of the rainforest. Ideal for beginners and experts.'
         },
         price: { es: '$105', en: '$105' },
         includes: {
