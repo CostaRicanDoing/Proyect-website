@@ -12,6 +12,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     }
 
+    // =============================================
+    // IMAGE PROTECTION - Prevent downloading images
+    // =============================================
+
+    // Disable right-click on images
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Disable drag on images
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Disable keyboard shortcuts for saving images
+    document.addEventListener('keydown', function(e) {
+        // Disable Ctrl+S, Ctrl+Shift+S
+        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
     // Initialize language
     let currentLang = localStorage.getItem('language') || 'es';
     setLanguage(currentLang);
