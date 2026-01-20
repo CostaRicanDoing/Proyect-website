@@ -604,8 +604,8 @@ const tourData = {
             en: ['Long sleeve shirt or t-shirt', 'Shorts or comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
         },
         info: {
-            es: ['Horario: 10:00am', 'Duración: Medio día', 'Rápidos Clase II-III', 'Edad mínima: 10 años', 'Saber nadar es recomendado', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
-            en: ['Schedule: 10:00am', 'Duration: Half day', 'Class II-III rapids', 'Minimum age: 10 years', 'Swimming ability recommended', 'Any item you bring to the tour is at your own responsibility']
+            es: ['Horario: 10:00am', 'Duración: 4 horas y media aprox. (con transporte)', 'Rápidos Clase II-III', 'Edad mínima: 10 años', 'Saber nadar es recomendado', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
+            en: ['Schedule: 10:00am', 'Duration: 4.5 hours approx. (with transportation)', 'Class II-III rapids', 'Minimum age: 10 years', 'Swimming ability recommended', 'Any item you bring to the tour is at your own responsibility']
         }
     },
     'cabalgata': {
