@@ -556,12 +556,12 @@ const tourData = {
             en: ['Lunch (Casado choice: chicken, beef, vegan or vegetarian)', '2 canopy cables of 150m and 400m', '5 rappels of 20, 25, 30, 35 and 60 meters', 'Complete equipment', 'Certified guides', 'Transportation Fortuna and surroundings']
         },
         bring: {
-            es: ['Traje de baño', 'Zapatos de agua o tenis viejos', 'Toalla', 'Cambio de ropa seca', 'Protector solar biodegradable'],
-            en: ['Swimsuit', 'Water shoes or old sneakers', 'Towel', 'Dry change of clothes', 'Biodegradable sunscreen']
+            es: ['Camisa manga larga', 'Pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Ropa de cambio'],
+            en: ['Long sleeve shirt', 'Comfortable pants', 'Water shoes or Chaco-type sandals', 'Change of clothes']
         },
         info: {
-            es: ['Horarios: 7:00am – 10:00am – 1:00pm', 'Duración: 4 horas aprox.', 'Edad mínima: 5 años'],
-            en: ['Schedules: 7:00am – 10:00am – 1:00pm', 'Duration: 4 hours approx.', 'Minimum age: 5 years']
+            es: ['Horarios: 7:00am – 10:00am – 1:00pm', 'Duración: 4 horas aprox.', 'Edad mínima: 5 años', 'No usar bloqueador ni repelente en el rostro (puede irritar los ojos en el agua)', 'No llevar objetos de valor al tour', 'Lockers disponibles para sus pertenencias'],
+            en: ['Schedules: 7:00am – 10:00am – 1:00pm', 'Duration: 4 hours approx.', 'Minimum age: 5 years', 'Do not use sunscreen or repellent on face (may irritate eyes in water)', 'Do not bring valuables to the tour', 'Lockers available for your belongings']
         }
     },
     'zipline-fortuna': {
