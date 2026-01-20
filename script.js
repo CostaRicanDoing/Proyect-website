@@ -550,18 +550,18 @@ const tourData = {
             es: 'Desciende por cascadas naturales haciendo rapel. Siente la emoción de bajar por paredes de roca con el agua cayendo a tu alrededor.',
             en: 'Descend through natural waterfalls by rappelling. Feel the thrill of going down rock walls with water falling around you.'
         },
-        price: { es: '$110', en: '$110' },
+        price: { es: '$105', en: '$105' },
         includes: {
-            es: ['Guía certificado', 'Equipo completo de rapel', 'Almuerzo', 'Transporte', 'Fotos del tour'],
-            en: ['Certified guide', 'Complete rappelling equipment', 'Lunch', 'Transportation', 'Tour photos']
+            es: ['Almuerzo (Casado a elegir: pollo, carne, vegano o vegetariano)', '2 cables de canopy de 150m y 400m', '5 rappels de 20, 25, 30, 35 y 60 metros', 'Equipo completo', 'Guías certificados', 'Transporte Fortuna y alrededores'],
+            en: ['Lunch (Casado choice: chicken, beef, vegan or vegetarian)', '2 canopy cables of 150m and 400m', '5 rappels of 20, 25, 30, 35 and 60 meters', 'Complete equipment', 'Certified guides', 'Transportation Fortuna and surroundings']
         },
         bring: {
             es: ['Traje de baño', 'Zapatos de agua o tenis viejos', 'Toalla', 'Cambio de ropa seca', 'Protector solar biodegradable'],
             en: ['Swimsuit', 'Water shoes or old sneakers', 'Towel', 'Dry change of clothes', 'Biodegradable sunscreen']
         },
         info: {
-            es: ['Duración: 3 horas', '4 cascadas', 'Edad mínima: 8 años', 'Condición física moderada requerida'],
-            en: ['Duration: 3 hours', '4 waterfalls', 'Minimum age: 8 years', 'Moderate physical condition required']
+            es: ['Horarios: 7:00am – 10:00am – 1:00pm', 'Duración: 4 horas aprox.', 'Edad mínima: 5 años'],
+            en: ['Schedules: 7:00am – 10:00am – 1:00pm', 'Duration: 4 hours approx.', 'Minimum age: 5 years']
         }
     },
     'zipline-fortuna': {
