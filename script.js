@@ -556,8 +556,8 @@ const tourData = {
             en: ['Lunch (Casado choice: chicken, beef, vegan or vegetarian)', '2 canopy cables of 150m and 400m', '5 rappels of 20, 25, 30, 35 and 60 meters', 'Complete equipment', 'Certified guides', 'Transportation Fortuna and surroundings']
         },
         bring: {
-            es: ['Camisa manga larga', 'Pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
-            en: ['Long sleeve shirt', 'Comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
+            es: ['Camisa manga larga (protección contra cuerdas)', 'Pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
+            en: ['Long sleeve shirt (rope protection)', 'Comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
         },
         info: {
             es: ['Horarios: 7:00am – 10:00am – 1:00pm', 'Duración: 4 horas aprox.', 'Edad mínima: 5 años', 'No usar bloqueador ni repelente en el rostro (puede irritar los ojos en el agua)', 'Lockers disponibles para sus pertenencias', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
@@ -600,8 +600,8 @@ const tourData = {
             en: ['First aid certified guide', 'Complete rafting equipment', 'Fruits and hydration', 'Lunch', 'Transportation']
         },
         bring: {
-            es: ['Camisa manga larga o camiseta', 'Shorts o pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
-            en: ['Long sleeve shirt or t-shirt', 'Shorts or comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
+            es: ['Camisa manga larga (para protección solar)', 'Shorts o pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
+            en: ['Long sleeve shirt (for sun protection)', 'Shorts or comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
         },
         info: {
             es: ['Horario: 10:00am', 'Duración: 4 horas y media aprox. (con transporte)', 'Rápidos Clase II-III', 'Edad mínima: 10 años', 'Saber nadar es recomendado', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
