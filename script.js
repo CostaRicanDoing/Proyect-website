@@ -594,18 +594,18 @@ const tourData = {
             es: 'Vive la emoción del rafting navegando por ríos rodeados de selva tropical y paisajes espectaculares cerca de Arenal y La Fortuna. Rápidos clase II-III ideales para principiantes y nivel intermedio. Podrás observar aves, monos y vida silvestre durante el recorrido.',
             en: 'Experience the thrill of rafting through rivers surrounded by tropical jungle and spectacular landscapes near Arenal and La Fortuna. Class II-III rapids ideal for beginners and intermediate level. You can observe birds, monkeys and wildlife along the way.'
         },
-        price: { es: '$95', en: '$95' },
+        price: { es: '$78', en: '$78' },
         includes: {
             es: ['Guía certificado en primeros auxilios', 'Equipo completo de rafting', 'Frutas y hidratación', 'Almuerzo', 'Transporte'],
             en: ['First aid certified guide', 'Complete rafting equipment', 'Fruits and hydration', 'Lunch', 'Transportation']
         },
         bring: {
-            es: ['Traje de baño', 'Zapatos que se puedan mojar', 'Cambio de ropa', 'Protector solar biodegradable', 'Toalla'],
-            en: ['Swimsuit', 'Shoes that can get wet', 'Change of clothes', 'Biodegradable sunscreen', 'Towel']
+            es: ['Camisa manga larga o camiseta', 'Shorts o pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
+            en: ['Long sleeve shirt or t-shirt', 'Shorts or comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
         },
         info: {
-            es: ['Duración: Medio día', 'Rápidos Clase II-III', 'Edad mínima: 10 años', 'Saber nadar es recomendado'],
-            en: ['Duration: Half day', 'Class II-III rapids', 'Minimum age: 10 years', 'Swimming ability recommended']
+            es: ['Horario: 10:00am', 'Duración: Medio día', 'Rápidos Clase II-III', 'Edad mínima: 10 años', 'Saber nadar es recomendado', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
+            en: ['Schedule: 10:00am', 'Duration: Half day', 'Class II-III rapids', 'Minimum age: 10 years', 'Swimming ability recommended', 'Any item you bring to the tour is at your own responsibility']
         }
     },
     'cabalgata': {
