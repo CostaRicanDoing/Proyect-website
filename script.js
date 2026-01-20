@@ -587,12 +587,12 @@ const tourData = {
         }
     },
     'rafting': {
-        title: { es: 'Rafting Clase III', en: 'Class III Rafting' },
+        title: { es: 'Rafting de Aventura', en: 'Adventure Rafting' },
         image: 'images/rafting-class-lll-nueva.webp',
-        badge: { es: 'Clase III', en: 'Class III' },
+        badge: { es: 'Clase II-III', en: 'Class II-III' },
         description: {
-            es: 'Navega los rápidos del Río Balsa. Aguas bravas perfectas para aventureros con o sin experiencia previa.',
-            en: 'Navigate the rapids of the Balsa River. White waters perfect for adventurers with or without previous experience.'
+            es: 'Vive la emoción del rafting navegando por ríos rodeados de selva tropical y paisajes espectaculares cerca de Arenal y La Fortuna. Rápidos clase II-III ideales para principiantes y nivel intermedio. Podrás observar aves, monos y vida silvestre durante el recorrido.',
+            en: 'Experience the thrill of rafting through rivers surrounded by tropical jungle and spectacular landscapes near Arenal and La Fortuna. Class II-III rapids ideal for beginners and intermediate level. You can observe birds, monkeys and wildlife along the way.'
         },
         price: { es: '$95', en: '$95' },
         includes: {
