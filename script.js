@@ -556,12 +556,12 @@ const tourData = {
             en: ['Lunch (Casado choice: chicken, beef, vegan or vegetarian)', '2 canopy cables of 150m and 400m', '5 rappels of 20, 25, 30, 35 and 60 meters', 'Complete equipment', 'Certified guides', 'Transportation Fortuna and surroundings']
         },
         bring: {
-            es: ['Camisa manga larga', 'Pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Ropa de cambio'],
-            en: ['Long sleeve shirt', 'Comfortable pants', 'Water shoes or Chaco-type sandals', 'Change of clothes']
+            es: ['Camisa manga larga', 'Pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
+            en: ['Long sleeve shirt', 'Comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
         },
         info: {
-            es: ['Horarios: 7:00am – 10:00am – 1:00pm', 'Duración: 4 horas aprox.', 'Edad mínima: 5 años', 'No usar bloqueador ni repelente en el rostro (puede irritar los ojos en el agua)', 'No llevar objetos de valor al tour', 'Lockers disponibles para sus pertenencias'],
-            en: ['Schedules: 7:00am – 10:00am – 1:00pm', 'Duration: 4 hours approx.', 'Minimum age: 5 years', 'Do not use sunscreen or repellent on face (may irritate eyes in water)', 'Do not bring valuables to the tour', 'Lockers available for your belongings']
+            es: ['Horarios: 7:00am – 10:00am – 1:00pm', 'Duración: 4 horas aprox.', 'Edad mínima: 5 años', 'No usar bloqueador ni repelente en el rostro (puede irritar los ojos en el agua)', 'Lockers disponibles para sus pertenencias', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
+            en: ['Schedules: 7:00am – 10:00am – 1:00pm', 'Duration: 4 hours approx.', 'Minimum age: 5 years', 'Do not use sunscreen or repellent on face (may irritate eyes in water)', 'Lockers available for your belongings', 'Any item you bring to the tour is at your own responsibility']
         }
     },
     'zipline-fortuna': {
