@@ -596,16 +596,16 @@ const tourData = {
         },
         price: { es: '$78', en: '$78' },
         includes: {
-            es: ['Guía certificado en primeros auxilios', 'Equipo completo de rafting', 'Frutas y hidratación', 'Almuerzo', 'Transporte'],
-            en: ['First aid certified guide', 'Complete rafting equipment', 'Fruits and hydration', 'Lunch', 'Transportation']
+            es: ['Guía certificado', 'Equipo completo de rafting', 'Frutas y hidratación', 'Almuerzo', 'Transporte'],
+            en: ['Certified guide', 'Complete rafting equipment', 'Fruits and hydration', 'Lunch', 'Transportation']
         },
         bring: {
             es: ['Camisa manga larga (para protección solar)', 'Shorts o pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
             en: ['Long sleeve shirt (for sun protection)', 'Shorts or comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
         },
         info: {
-            es: ['Horario: 10:00am', 'Duración: 4 horas y media aprox. (con transporte)', 'Rápidos Clase II-III', 'Edad mínima: 10 años', 'No usar bloqueador, repelente ni cremas (causan resbalones en la balsa)', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
-            en: ['Schedule: 10:00am', 'Duration: 4.5 hours approx. (with transportation)', 'Class II-III rapids', 'Minimum age: 10 years', 'Do not use sunscreen, repellent or creams (cause slipping on the raft)', 'Any item you bring to the tour is at your own responsibility']
+            es: ['Horario: 10:00am', 'Duración: 4 horas y media aprox. (con transporte)', 'Rápidos Clase II-III', 'Edad mínima: 6 años', 'No usar bloqueador, repelente ni cremas (causan resbalones en la balsa)', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
+            en: ['Schedule: 10:00am', 'Duration: 4.5 hours approx. (with transportation)', 'Class II-III rapids', 'Minimum age: 6 years', 'Do not use sunscreen, repellent or creams (cause slipping on the raft)', 'Any item you bring to the tour is at your own responsibility']
         }
     },
     'cabalgata': {
