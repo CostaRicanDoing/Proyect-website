@@ -4,8 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Costa Rican Doing - Tours de Aventura en Costa Rica</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="images/hero.webp" as="image" type="image/webp">
+    <link rel="preload" href="images/logo.png" as="image">
+
+    <!-- Fonts with display swap for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -71,29 +81,15 @@
 
             <div class="tours-grid">
                 <!-- ATV Tour -->
-                <div class="tour-card">
-                    <div class="tour-image tour-carousel" data-tour="atv-fortuna">
-                        <div class="carousel-container">
-                            <img src="images/atv-to-the-volcano-1.webp" alt="ATV Tour Volcán Arenal" class="carousel-slide active">
-                            <img src="images/atv-to-the-volcano-2.webp" alt="ATV Tour Senderos" class="carousel-slide">
-                            <img src="images/atv-to-the-volcano-3.webp" alt="ATV Tour Aventura" class="carousel-slide">
-                            <img src="images/atv-to-the-volcano-4.webp" alt="ATV Tour Naturaleza" class="carousel-slide">
-                        </div>
-                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
+                <div class="tour-card" data-tour-id="atv-fortuna">
+                    <div class="tour-image">
+                        <img src="images/atv-to-the-volcano-nueva.webp" alt="ATV Tour Volcán Arenal" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
                     </div>
                     <div class="tour-content">
                         <h3>ATV Tour</h3>
                         <p data-es="Recorre senderos de montaña y cruza ríos a bordo de un ATV. Una experiencia llena de adrenalina con vistas al Volcán Arenal." data-en="Ride through mountain trails and cross rivers aboard an ATV. An adrenaline-filled experience with views of Arenal Volcano.">Recorre senderos de montaña y cruza ríos a bordo de un ATV. Una experiencia llena de adrenalina con vistas al Volcán Arenal.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="3 horas" data-en="3 hours">3 horas</span></span>
                             <span><i class="fas fa-mountain"></i> <span data-es="Visita al Volcán Arenal" data-en="Arenal Volcano visit">Visita al Volcán Arenal</span></span>
                         </div>
                         <div class="tour-price" data-es="Desde $130" data-en="From $130">Desde $130</div>
@@ -101,66 +97,34 @@
                     </div>
                 </div>
 
-                <!-- Canyoning -->
-                <div class="tour-card">
-                    <div class="tour-image tour-carousel" data-tour="canyoning">
-                        <div class="carousel-container">
-                            <img src="images/canyoning-1.webp" alt="Canyoning Cascada" class="carousel-slide active">
-                            <img src="images/canyoning-2.webp" alt="Canyoning Rapel" class="carousel-slide">
-                            <img src="images/canyoning-3.webp" alt="Canyoning Aventura" class="carousel-slide">
-                            <img src="images/canyoning-4.webp" alt="Canyoning Naturaleza" class="carousel-slide">
-                            <img src="images/canyoning-5.webp" alt="Canyoning Extremo" class="carousel-slide">
-                        </div>
-                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
+                <!-- Canyoning / Barranquismo -->
+                <div class="tour-card" data-tour-id="canyoning">
+                    <div class="tour-image">
+                        <img src="images/canyoning-nueva.webp" alt="Canyoning Barranquismo Costa Rica" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Extremo" data-en="Extreme">Extremo</div>
                     </div>
                     <div class="tour-content">
-                        <h3>Canyoning</h3>
-                        <p data-es="Desciende por cascadas naturales haciendo rapel. Siente la emoción de bajar por paredes de roca con el agua cayendo a tu alrededor." data-en="Descend through natural waterfalls by rappelling. Feel the thrill of going down rock walls with water falling around you.">Desciende por cascadas naturales haciendo rapel. Siente la emoción de bajar por paredes de roca con el agua cayendo a tu alrededor.</p>
+                        <h3 data-es="Canyoning / Barranquismo" data-en="Canyoning">Canyoning / Barranquismo</h3>
+                        <p data-es="Vive una experiencia de barranquismo inolvidable en plena selva tropical. Desciende por cascadas, recorre cañones naturales y disfruta de tirolesas. Ideal para principiantes y expertos." data-en="Live an unforgettable canyoning experience in the tropical rainforest. Descend through waterfalls, explore natural canyons and enjoy ziplines. Ideal for beginners and experts.">Vive una experiencia de barranquismo inolvidable en plena selva tropical. Desciende por cascadas, recorre cañones naturales y disfruta de tirolesas. Ideal para principiantes y expertos.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="3 horas" data-en="3 hours">3 horas</span></span>
-                            <span><i class="fas fa-mountain"></i> <span data-es="4 cascadas" data-en="4 waterfalls">4 cascadas</span></span>
+                            <span><i class="fas fa-mountain"></i> <span data-es="5 rappels" data-en="5 rappels">5 rappels</span></span>
                             <span><i class="fas fa-utensils"></i> <span data-es="Almuerzo incluido" data-en="Lunch included">Almuerzo incluido</span></span>
                         </div>
-                        <div class="tour-price">$110</div>
+                        <div class="tour-price">$105</div>
                         <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
                     </div>
                 </div>
 
                 <!-- Zipline -->
-                <div class="tour-card">
-                    <div class="tour-image tour-carousel" data-tour="zipline-fortuna">
-                        <div class="carousel-container">
-                            <img src="images/zipline-la-fortuna-1.webp" alt="Zipline La Fortuna" class="carousel-slide active">
-                            <img src="images/zipline-la-fortuna-2.webp" alt="Zipline Bosque" class="carousel-slide">
-                            <img src="images/zipline-la-fortuna-3.webp" alt="Zipline Aventura" class="carousel-slide">
-                            <img src="images/zipline-la-fortuna-4.webp" alt="Zipline Volcán" class="carousel-slide">
-                            <img src="images/zipline-la-fortuna-5.webp" alt="Zipline Canopy" class="carousel-slide">
-                        </div>
-                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
+                <div class="tour-card" data-tour-id="zipline-fortuna">
+                    <div class="tour-image">
+                        <img src="images/zipline-la-fortuna-nueva.webp" alt="Zipline La Fortuna" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Popular" data-en="Popular">Popular</div>
                     </div>
                     <div class="tour-content">
                         <h3>Zipline</h3>
                         <p data-es="Vuela sobre el dosel del bosque tropical con vistas panorámicas del volcán. Múltiples cables para una experiencia completa." data-en="Fly over the tropical forest canopy with panoramic views of the volcano. Multiple cables for a complete experience.">Vuela sobre el dosel del bosque tropical con vistas panorámicas del volcán. Múltiples cables para una experiencia completa.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="Máximo 2 horas" data-en="Maximum 2 hours">Máximo 2 horas</span></span>
                             <span><i class="fas fa-wind"></i> <span data-es="10 cables" data-en="10 cables">10 cables</span></span>
                         </div>
                         <div class="tour-price">$85</div>
@@ -168,38 +132,54 @@
                     </div>
                 </div>
 
-                <!-- Rafting -->
-                <div class="tour-card">
+                <!-- Rafting de Aventura -->
+                <div class="tour-card" data-tour-id="rafting">
                     <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=600&h=400&fit=crop" alt="Rafting">
-                        <div class="tour-badge" data-es="Clase III" data-en="Class III">Clase III</div>
+                        <img src="images/rafting-class-lll-nueva.webp" alt="Rafting de Aventura Costa Rica La Fortuna" loading="lazy" width="400" height="220">
+                        <div class="tour-badge" data-es="Clase II-III" data-en="Class II-III">Clase II-III</div>
                     </div>
                     <div class="tour-content">
-                        <h3 data-es="Rafting Clase III" data-en="Class III Rafting">Rafting Clase III</h3>
-                        <p data-es="Navega los rápidos del Río Balsa. Aguas bravas perfectas para aventureros con o sin experiencia previa." data-en="Navigate the rapids of the Balsa River. White waters perfect for adventurers with or without previous experience.">Navega los rápidos del Río Balsa. Aguas bravas perfectas para aventureros con o sin experiencia previa.</p>
+                        <h3 data-es="Rafting de Aventura" data-en="Adventure Rafting">Rafting de Aventura</h3>
+                        <p data-es="Vive la emoción del rafting navegando por ríos rodeados de selva tropical cerca de Arenal. Ideal para principiantes y nivel intermedio. Observa aves, monos y vida silvestre." data-en="Experience the thrill of rafting through rivers surrounded by tropical jungle near Arenal. Ideal for beginners and intermediate level. Observe birds, monkeys and wildlife.">Vive la emoción del rafting navegando por ríos rodeados de selva tropical cerca de Arenal. Ideal para principiantes y nivel intermedio. Observa aves, monos y vida silvestre.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="Medio día" data-en="Half day">Medio día</span></span>
-                            <span><i class="fas fa-utensils"></i> <span data-es="Frutas, hidratación y almuerzo" data-en="Fruits, hydration and lunch">Frutas, hidratación y almuerzo</span></span>
+                            <span><i class="fas fa-water"></i> <span data-es="Rápidos Clase II-III" data-en="Class II-III Rapids">Rápidos Clase II-III</span></span>
+                            <span><i class="fas fa-utensils"></i> <span data-es="Almuerzo incluido" data-en="Lunch included">Almuerzo incluido</span></span>
                         </div>
-                        <div class="tour-price">$95</div>
+                        <div class="tour-price">$78</div>
                         <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
                     </div>
                 </div>
 
                 <!-- Cabalgata -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="cabalgata">
                     <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=600&h=400&fit=crop" alt="Cabalgata">
+                        <img src="images/horse-back-riding-waterfall-nueva.webp" alt="Cabalgata a la Catarata" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Naturaleza" data-en="Nature">Naturaleza</div>
                     </div>
                     <div class="tour-content">
                         <h3 data-es="Cabalgata a la Catarata" data-en="Horseback Ride to Waterfall">Cabalgata a la Catarata</h3>
                         <p data-es="Paseo a caballo por senderos naturales hasta la impresionante Catarata La Fortuna. Ideal para conectar con la naturaleza." data-en="Horseback ride through natural trails to the impressive La Fortuna Waterfall. Ideal for connecting with nature.">Paseo a caballo por senderos naturales hasta la impresionante Catarata La Fortuna. Ideal para conectar con la naturaleza.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="3 horas" data-en="3 hours">3 horas</span></span>
                             <span><i class="fas fa-water"></i> <span data-es="Visita a la Catarata La Fortuna" data-en="La Fortuna Waterfall visit">Visita a la Catarata La Fortuna</span></span>
                         </div>
                         <div class="tour-price">$80</div>
+                        <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                    </div>
+                </div>
+
+                <!-- Río Celeste -->
+                <div class="tour-card" data-tour-id="rio-celeste">
+                    <div class="tour-image">
+                        <img src="images/rio-celeste-nueva.webp" alt="Río Celeste" loading="lazy" width="400" height="220">
+                        <div class="tour-badge badge-nature" data-es="Naturaleza" data-en="Nature">Naturaleza</div>
+                    </div>
+                    <div class="tour-content">
+                        <h3 data-es="Río Celeste" data-en="Río Celeste">Río Celeste</h3>
+                        <p data-es="Visita el famoso río de color turquesa en el Parque Nacional Volcán Tenorio. Un fenómeno natural único causado por minerales volcánicos." data-en="Visit the famous turquoise-colored river in Tenorio Volcano National Park. A unique natural phenomenon caused by volcanic minerals.">Visita el famoso río de color turquesa en el Parque Nacional Volcán Tenorio. Un fenómeno natural único causado por minerales volcánicos.</p>
+                        <div class="tour-details">
+                            <span><i class="fas fa-water"></i> <span data-es="Catarata y río celeste" data-en="Waterfall and turquoise river">Catarata y río celeste</span></span>
+                        </div>
+                        <div class="tour-price">$120</div>
                         <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
                     </div>
                 </div>
@@ -217,31 +197,15 @@
 
             <div class="tours-grid">
                 <!-- Zipline Kid Friendly -->
-                <div class="tour-card tour-card-featured">
-                    <div class="tour-image tour-carousel" data-tour="zipline-guanacaste">
-                        <div class="carousel-container">
-                            <img src="images/zipline-guanacaste/zipline-01.jpg" alt="Zipline Guanacaste" class="carousel-slide active">
-                            <img src="images/zipline-guanacaste/zipline-02.jpg" alt="Zipline Puente" class="carousel-slide">
-                            <img src="images/zipline-guanacaste/zipline-03.jpg" alt="Zipline Atardecer" class="carousel-slide">
-                            <img src="images/zipline-guanacaste/zipline-04.jpg" alt="Zipline Rappel" class="carousel-slide">
-                            <img src="images/zipline-guanacaste/zipline-05.jpg" alt="Zipline Familia" class="carousel-slide">
-                        </div>
-                        <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                        </div>
+                <div class="tour-card tour-card-featured" data-tour-id="zipline-guanacaste">
+                    <div class="tour-image">
+                        <img src="images/zipline-kid-friendly-guanacaste-nueva.webp" alt="Zipline Familiar" loading="lazy" width="400" height="220">
                         <div class="tour-badge badge-family" data-es="Familiar" data-en="Family">Familiar</div>
                     </div>
                     <div class="tour-content">
-                        <h3 data-es="Zipline Guanacaste" data-en="Guanacaste Zipline">Zipline Guanacaste</h3>
+                        <h3 data-es="Zipline" data-en="Zipline">Zipline</h3>
                         <p data-es="Circuito de canopy diseñado especialmente para familias. Seguro, divertido y con cables adaptados para todas las edades." data-en="Canopy circuit specially designed for families. Safe, fun and with cables adapted for all ages.">Circuito de canopy diseñado especialmente para familias. Seguro, divertido y con cables adaptados para todas las edades.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="2 horas" data-en="2 hours">2 horas</span></span>
                             <span><i class="fas fa-child"></i> <span data-es="Desde 2 años" data-en="Ages 2+">Desde 2 años</span></span>
                         </div>
                         <div class="tour-price">$75</div>
@@ -249,17 +213,16 @@
                     </div>
                 </div>
 
-                <!-- UTV Cultural Tour -->
-                <div class="tour-card">
+                <!-- UTV Tour -->
+                <div class="tour-card" data-tour-id="utv">
                     <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&h=400&fit=crop" alt="UTV Cultural Tour">
-                        <div class="tour-badge" data-es="Cultural" data-en="Cultural">Cultural</div>
+                        <img src="images/utv-guanacaste-nueva.jpg" alt="UTV Tour" loading="lazy" width="400" height="220">
+                        <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
                     </div>
                     <div class="tour-content">
-                        <h3 data-es="UTV Tour Cultural" data-en="Cultural UTV Tour">UTV Tour Cultural</h3>
+                        <h3 data-es="UTV Tour" data-en="UTV Tour">UTV Tour</h3>
                         <p data-es="Conduce un vehículo todo terreno por caminos rurales y visita uno de los pueblos más antiguos de Guanacaste. Explora los paisajes del bosque tropical seco." data-en="Drive an all-terrain vehicle through rural roads and visit one of the oldest towns in Guanacaste. Explore the dry tropical forest landscapes.">Conduce un vehículo todo terreno por caminos rurales y visita uno de los pueblos más antiguos de Guanacaste. Explora los paisajes del bosque tropical seco.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="3 horas" data-en="3 hours">3 horas</span></span>
                             <span><i class="fas fa-landmark"></i> <span data-es="Pueblo histórico" data-en="Historic town">Pueblo histórico</span></span>
                         </div>
                         <div class="tour-price" data-es="Desde $365 (precio varía según participantes)" data-en="From $365 (price varies by participants)">Desde $365</div>
@@ -267,17 +230,16 @@
                     </div>
                 </div>
 
-                <!-- ATV Guanacaste -->
-                <div class="tour-card">
+                <!-- Cuadraciclo -->
+                <div class="tour-card" data-tour-id="cuadraciclo">
                     <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&h=400&fit=crop" alt="ATV Tour Guanacaste">
+                        <img src="images/atv-guanacaste-nueva.jpg" alt="Cuadraciclo" loading="lazy" width="400" height="220">
                         <div class="tour-badge" data-es="Aventura" data-en="Adventure">Aventura</div>
                     </div>
                     <div class="tour-content">
-                        <h3 data-es="ATV Guanacaste" data-en="Guanacaste ATV">ATV Guanacaste</h3>
+                        <h3 data-es="Cuadraciclo" data-en="ATV">Cuadraciclo</h3>
                         <p data-es="Explora los paisajes del bosque tropical seco de Guanacaste en cuadraciclo. Atraviesa fincas, ríos y visita uno de los pueblos más antiguos de la región." data-en="Explore the dry tropical forest landscapes of Guanacaste by ATV. Cross farms, rivers and visit one of the oldest towns in the region.">Explora los paisajes del bosque tropical seco de Guanacaste en cuadraciclo. Atraviesa fincas, ríos y visita uno de los pueblos más antiguos de la región.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="2.5 horas" data-en="2.5 hours">2.5 horas</span></span>
                             <span><i class="fas fa-tree"></i> <span data-es="Bosque tropical seco" data-en="Dry tropical forest">Bosque tropical seco</span></span>
                         </div>
                         <div class="tour-price" data-es="Desde $95 (precio varía según participantes)" data-en="From $95 (price varies by participants)">Desde $95</div>
@@ -286,16 +248,15 @@
                 </div>
 
                 <!-- Cascada La Leona -->
-                <div class="tour-card">
+                <div class="tour-card" data-tour-id="cascada">
                     <div class="tour-image">
-                        <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=600&h=400&fit=crop" alt="Cascada La Leona">
+                        <img src="images/la-leona-waterfall-nueva.webp" alt="Cascada La Leona" loading="lazy" width="400" height="220">
                         <div class="tour-badge badge-nature" data-es="Temporada Seca" data-en="Dry Season">Temporada Seca</div>
                     </div>
                     <div class="tour-content">
                         <h3 data-es="Cascada La Leona" data-en="La Leona Waterfall">Cascada La Leona</h3>
                         <p data-es="Caminata por el bosque tropical hasta la espectacular Cascada La Leona. Báñate en sus aguas cristalinas y disfruta del entorno natural." data-en="Hike through the tropical forest to the spectacular La Leona Waterfall. Swim in its crystal clear waters and enjoy the natural surroundings.">Caminata por el bosque tropical hasta la espectacular Cascada La Leona. Báñate en sus aguas cristalinas y disfruta del entorno natural.</p>
                         <div class="tour-details">
-                            <span><i class="fas fa-clock"></i> <span data-es="3 a 5 horas" data-en="3 to 5 hours">3 a 5 horas</span></span>
                             <span><i class="fas fa-calendar-alt"></i> <span data-es="Solo 2 ene - 15 ago" data-en="Only Jan 2 - Aug 15">Solo 2 ene - 15 ago</span></span>
                         </div>
                         <a href="#contact" class="btn btn-secondary" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
@@ -348,7 +309,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/hero.webp" alt="Costa Rican Doing - Aventura en Costa Rica">
+                    <img src="images/cascadas-nueva.webp" alt="Costa Rican Doing - Aventura en Costa Rica" loading="lazy" width="600" height="400">
                 </div>
             </div>
         </div>
@@ -379,37 +340,89 @@
                         </div>
                         <div class="form-group">
                             <label for="tour" data-es="Tour de Interes" data-en="Tour of Interest">Tour de Interes</label>
-                            <select id="tour" name="tour">
-                                <option value="" data-es="Selecciona un tour" data-en="Select a tour">Selecciona un tour</option>
+                            <select id="tour" name="tour" required>
+                                <option value="" data-price="0" data-es="Selecciona un tour" data-en="Select a tour">Selecciona un tour</option>
                                 <optgroup label="La Fortuna">
-                                    <option value="atv-fortuna">ATV Tour</option>
-                                    <option value="canyoning">Canyoning</option>
-                                    <option value="zipline-fortuna">Zipline</option>
-                                    <option value="rafting" data-es="Rafting Clase III" data-en="Class III Rafting">Rafting Clase III</option>
-                                    <option value="cabalgata" data-es="Cabalgata a la Catarata" data-en="Horseback Ride to Waterfall">Cabalgata a la Catarata</option>
+                                    <option value="atv-fortuna" data-price="130">ATV Tour - $130</option>
+                                    <option value="canyoning" data-price="105">Canyoning / Barranquismo - $105</option>
+                                    <option value="zipline-fortuna" data-price="85">Zipline - $85</option>
+                                    <option value="rafting" data-price="78">Rafting de Aventura - $78</option>
+                                    <option value="cabalgata" data-price="80">Cabalgata a la Catarata - $80</option>
+                                    <option value="rio-celeste" data-price="120">Río Celeste - $120</option>
                                 </optgroup>
                                 <optgroup label="Guanacaste">
-                                    <option value="zipline-kids" data-es="Zipline para Ninos" data-en="Kid Friendly Zipline">Zipline para Ninos</option>
-                                    <option value="utv">UTV Tour</option>
-                                    <option value="atv-guanacaste" data-es="ATV Guanacaste" data-en="Guanacaste ATV">ATV Guanacaste</option>
-                                    <option value="cascada" data-es="Cascada La Leona" data-en="La Leona Waterfall">Cascada La Leona</option>
+                                    <option value="zipline-guanacaste" data-price="75">Zipline - $75</option>
+                                    <option value="utv" data-price="365" data-price-type="fixed">UTV Tour - $365 (por vehículo)</option>
+                                    <option value="cuadraciclo" data-price="95">Cuadraciclo - $95</option>
+                                    <option value="cascada" data-price="0">Cascada La Leona - Consultar</option>
                                 </optgroup>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="date" data-es="Fecha Preferida" data-en="Preferred Date">Fecha Preferida</label>
-                            <input type="date" id="date" name="date">
+                            <label for="date" data-es="Fecha de Reserva" data-en="Reservation Date">Fecha de Reserva</label>
+                            <input type="date" id="date" name="date" required>
                         </div>
                         <div class="form-group">
                             <label for="people" data-es="Numero de Personas" data-en="Number of People">Numero de Personas</label>
-                            <input type="number" id="people" name="people" min="1" max="20" value="2">
+                            <input type="number" id="people" name="people" min="1" max="20" value="1" required>
                         </div>
+
+                        <!-- Price Summary -->
+                        <div class="form-group form-group-full price-summary" id="price-summary" style="display: none;">
+                            <div class="price-breakdown">
+                                <div class="price-row">
+                                    <span id="tour-name-display">Tour</span>
+                                    <span>x <span id="people-count">1</span> <span data-es="persona(s)" data-en="person(s)">persona(s)</span></span>
+                                </div>
+                                <div class="price-total">
+                                    <span data-es="Total a pagar:" data-en="Total to pay:">Total a pagar:</span>
+                                    <span id="total-price">$0</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group form-group-full">
-                            <label for="message" data-es="Mensaje" data-en="Message">Mensaje</label>
-                            <textarea id="message" name="message" rows="4"></textarea>
+                            <label for="message" data-es="Mensaje (opcional)" data-en="Message (optional)">Mensaje (opcional)</label>
+                            <textarea id="message" name="message" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full" data-es="Enviar Consulta" data-en="Send Inquiry">Enviar Consulta</button>
+                        <button type="submit" class="btn btn-primary btn-full" id="submit-btn" data-es="Continuar al Pago" data-en="Continue to Payment">Continuar al Pago</button>
                     </form>
+
+                    <!-- Confirmation message with PayPal (hidden by default) -->
+                    <div id="reservation-confirmation" class="reservation-confirmation" style="display: none;">
+                        <div class="confirmation-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3 data-es="¡Confirma tu Reserva!" data-en="Confirm your Reservation!">¡Confirma tu Reserva!</h3>
+
+                        <div class="payment-summary">
+                            <div class="summary-row">
+                                <span data-es="Tour:" data-en="Tour:">Tour:</span>
+                                <span id="confirm-tour-name"></span>
+                            </div>
+                            <div class="summary-row">
+                                <span data-es="Fecha:" data-en="Date:">Fecha:</span>
+                                <span id="confirm-date"></span>
+                            </div>
+                            <div class="summary-row">
+                                <span data-es="Personas:" data-en="People:">Personas:</span>
+                                <span id="confirm-people"></span>
+                            </div>
+                            <div class="summary-row summary-total">
+                                <span data-es="Total:" data-en="Total:">Total:</span>
+                                <span id="confirm-total"></span>
+                            </div>
+                        </div>
+
+                        <p data-es="Haz clic en el botón para completar tu pago de forma segura con PayPal:" data-en="Click the button to complete your secure payment with PayPal:">Haz clic en el botón para completar tu pago de forma segura con PayPal:</p>
+
+                        <button type="button" id="paypal-pay-btn" class="btn btn-paypal btn-full">
+                            <i class="fab fa-paypal"></i>
+                            <span data-es="Pagar con PayPal" data-en="Pay with PayPal">Pagar con PayPal</span>
+                        </button>
+
+                        <button id="new-reservation-btn" class="btn btn-secondary btn-full" style="margin-top: 1rem;" data-es="Modificar reserva" data-en="Modify reservation">Modificar reserva</button>
+                    </div>
                 </div>
 
                 <div class="contact-info">
@@ -430,16 +443,6 @@
                             </li>
                         </ul>
                     </div>
-
-                    <a href="https://wa.me/50688952387" target="_blank" class="btn btn-whatsapp btn-full">
-                        <i class="fab fa-whatsapp"></i>
-                        <span data-es="Contactar por WhatsApp" data-en="Contact via WhatsApp">Contactar por WhatsApp</span>
-                    </a>
-
-                    <a href="https://paypal.me/mbonillamontero" target="_blank" class="btn btn-paypal btn-full">
-                        <i class="fab fa-paypal"></i>
-                        <span data-es="Pagar con PayPal" data-en="Pay with PayPal">Pagar con PayPal</span>
-                    </a>
 
                     <p class="help-message">
                         <a href="https://wa.me/50688952387" target="_blank" data-es="¿Problemas para reservar? Escríbenos" data-en="Having trouble booking? Contact us">¿Problemas para reservar? Escríbenos</a>
@@ -484,10 +487,42 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/50688952387" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Tour Details Modal -->
+    <div id="tour-modal" class="tour-modal">
+        <div class="tour-modal-content">
+            <button class="tour-modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="tour-modal-header">
+                <img id="modal-image" src="" alt="">
+                <div class="tour-modal-badge" id="modal-badge"></div>
+            </div>
+            <div class="tour-modal-body">
+                <h2 id="modal-title"></h2>
+                <p id="modal-description" class="modal-description"></p>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-check-circle"></i> <span data-es="¿Qué incluye?" data-en="What's included?">¿Qué incluye?</span></h3>
+                    <ul id="modal-includes" class="modal-list"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-tshirt"></i> <span data-es="¿Qué llevar?" data-en="What to bring?">¿Qué llevar?</span></h3>
+                    <ul id="modal-bring" class="modal-list"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-info-circle"></i> <span data-es="Información importante" data-en="Important information">Información importante</span></h3>
+                    <ul id="modal-info" class="modal-list"></ul>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="modal-price" id="modal-price"></div>
+                    <a href="#contact" class="btn btn-primary" id="modal-reserve-btn" data-es="Reservar Ahora" data-en="Book Now">Reservar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

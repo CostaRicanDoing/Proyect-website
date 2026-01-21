@@ -12,6 +12,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     }
 
+    // =============================================
+    // IMAGE PROTECTION - Prevent downloading images
+    // =============================================
+
+    // Disable right-click on images
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Disable drag on images
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Disable keyboard shortcuts for saving images
+    document.addEventListener('keydown', function(e) {
+        // Disable Ctrl+S, Ctrl+Shift+S
+        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
     // Initialize language
     let currentLang = localStorage.getItem('language') || 'es';
     setLanguage(currentLang);
@@ -104,6 +133,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Price Calculator
+    const tourSelect = document.getElementById('tour');
+    const peopleInput = document.getElementById('people');
+    const priceSummary = document.getElementById('price-summary');
+    const tourNameDisplay = document.getElementById('tour-name-display');
+    const peopleCount = document.getElementById('people-count');
+    const totalPrice = document.getElementById('total-price');
+
+    let currentTotal = 0;
+    let currentTourName = '';
+
+    function updatePriceCalculator() {
+        if (!tourSelect || !peopleInput) return;
+
+        const selectedOption = tourSelect.options[tourSelect.selectedIndex];
+        const price = parseFloat(selectedOption.dataset.price) || 0;
+        const priceType = selectedOption.dataset.priceType || 'per-person';
+        const people = parseInt(peopleInput.value) || 1;
+        currentTourName = selectedOption.text.split(' - ')[0];
+
+        if (price > 0) {
+            if (priceType === 'fixed') {
+                // Fixed price (like UTV)
+                currentTotal = price;
+            } else {
+                // Per person price
+                currentTotal = price * people;
+            }
+
+            tourNameDisplay.textContent = currentTourName;
+            peopleCount.textContent = people;
+            totalPrice.textContent = '$' + currentTotal;
+            priceSummary.style.display = 'block';
+        } else {
+            priceSummary.style.display = 'none';
+            currentTotal = 0;
+        }
+    }
+
+    if (tourSelect) {
+        tourSelect.addEventListener('change', updatePriceCalculator);
+    }
+    if (peopleInput) {
+        peopleInput.addEventListener('input', updatePriceCalculator);
+    }
+
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -113,43 +188,118 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
-
-            // Create WhatsApp message
             const lang = localStorage.getItem('language') || 'es';
-            let message = '';
 
-            if (lang === 'es') {
-                message = `Hola! Me gustaria hacer una reserva:\n\n`;
-                message += `Nombre: ${data.name}\n`;
-                message += `Email: ${data.email}\n`;
-                if (data.phone) message += `Telefono: ${data.phone}\n`;
-                if (data.tour) message += `Tour: ${data.tour}\n`;
-                if (data.date) message += `Fecha: ${data.date}\n`;
-                if (data.people) message += `Personas: ${data.people}\n`;
-                if (data.message) message += `Mensaje: ${data.message}\n`;
-            } else {
-                message = `Hello! I would like to make a reservation:\n\n`;
-                message += `Name: ${data.name}\n`;
-                message += `Email: ${data.email}\n`;
-                if (data.phone) message += `Phone: ${data.phone}\n`;
-                if (data.tour) message += `Tour: ${data.tour}\n`;
-                if (data.date) message += `Date: ${data.date}\n`;
-                if (data.people) message += `People: ${data.people}\n`;
-                if (data.message) message += `Message: ${data.message}\n`;
+            // Check if tour has a price
+            if (currentTotal === 0) {
+                // No price - redirect to WhatsApp for consultation
+                let message = '';
+                if (lang === 'es') {
+                    message = `Hola! Me gustaria consultar sobre una reserva:\n\n`;
+                    message += `Nombre: ${data.name}\n`;
+                    message += `Email: ${data.email}\n`;
+                    if (data.phone) message += `Telefono: ${data.phone}\n`;
+                    message += `Tour: ${currentTourName || data.tour}\n`;
+                    if (data.date) message += `Fecha: ${data.date}\n`;
+                    if (data.people) message += `Personas: ${data.people}\n`;
+                    if (data.message) message += `Mensaje: ${data.message}\n`;
+                } else {
+                    message = `Hello! I would like to inquire about a reservation:\n\n`;
+                    message += `Name: ${data.name}\n`;
+                    message += `Email: ${data.email}\n`;
+                    if (data.phone) message += `Phone: ${data.phone}\n`;
+                    message += `Tour: ${currentTourName || data.tour}\n`;
+                    if (data.date) message += `Date: ${data.date}\n`;
+                    if (data.people) message += `People: ${data.people}\n`;
+                    if (data.message) message += `Message: ${data.message}\n`;
+                }
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/50688952387?text=${encodedMessage}`, '_blank');
+                showNotification(lang === 'es' ? 'Redirigiendo a WhatsApp...' : 'Redirecting to WhatsApp...');
+                return;
             }
 
-            // Encode message and open WhatsApp
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/50688952387?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
+            // Show confirmation with payment details
+            const confirmation = document.getElementById('reservation-confirmation');
+            document.getElementById('confirm-tour-name').textContent = currentTourName;
+            document.getElementById('confirm-date').textContent = data.date || (lang === 'es' ? 'Por confirmar' : 'To be confirmed');
+            document.getElementById('confirm-people').textContent = data.people;
+            document.getElementById('confirm-total').textContent = '$' + currentTotal;
 
-            // Show success message
-            showNotification(lang === 'es' ? 'Redirigiendo a WhatsApp...' : 'Redirecting to WhatsApp...');
+            // Store PayPal amount for button click
+            window.paypalAmount = currentTotal;
 
-            // Reset form
-            this.reset();
+            // Store reservation data for potential WhatsApp notification
+            window.reservationData = {
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                tour: currentTourName,
+                date: data.date,
+                people: data.people,
+                total: currentTotal,
+                message: data.message
+            };
+
+            // Hide form, show confirmation
+            contactForm.style.display = 'none';
+            confirmation.style.display = 'block';
+
+            showNotification(lang === 'es' ? 'Revisa los detalles y procede al pago' : 'Review details and proceed to payment');
         });
     }
+
+    // New reservation button (to show form again)
+    const newReservationBtn = document.getElementById('new-reservation-btn');
+    if (newReservationBtn) {
+        newReservationBtn.addEventListener('click', function() {
+            const confirmation = document.getElementById('reservation-confirmation');
+            const contactForm = document.getElementById('contact-form');
+            if (confirmation && contactForm) {
+                confirmation.style.display = 'none';
+                contactForm.style.display = 'grid';
+            }
+        });
+    }
+
+    // PayPal button click handler
+    const paypalBtn = document.getElementById('paypal-pay-btn');
+    if (paypalBtn) {
+        paypalBtn.addEventListener('click', function() {
+            if (window.paypalAmount && window.paypalAmount > 0) {
+                const paypalUrl = `https://www.paypal.me/mbonillamontero/${window.paypalAmount}`;
+                window.open(paypalUrl, '_blank');
+            }
+        });
+    }
+
+    // Pre-select tour when clicking "Reservar Ahora" from a tour card
+    const reserveButtons = document.querySelectorAll('.tour-card .btn-secondary');
+    reserveButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const tourCard = this.closest('.tour-card');
+            if (tourCard && tourCard.dataset.tourId) {
+                const tourId = tourCard.dataset.tourId;
+
+                // Use setTimeout to ensure the DOM is ready after scroll
+                setTimeout(() => {
+                    const tourSelect = document.getElementById('tour');
+                    if (tourSelect) {
+                        // Find and select the matching option
+                        for (let i = 0; i < tourSelect.options.length; i++) {
+                            if (tourSelect.options[i].value === tourId) {
+                                tourSelect.selectedIndex = i;
+                                tourSelect.value = tourId; // Explicitly set the value
+                                // Trigger change event to update price calculator and form validation
+                                tourSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                                break;
+                            }
+                        }
+                    }
+                }, 150);
+            }
+        });
+    });
 
     // Intersection Observer for animations
     const observerOptions = {
@@ -169,11 +319,13 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Set minimum date for date input
+    // Set minimum date for date input (48 hours / 2 days from now)
     const dateInput = document.getElementById('date');
     if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
+        const minDate = new Date();
+        minDate.setDate(minDate.getDate() + 2); // Add 2 days (48 hours)
+        dateInput.setAttribute('min', minDate.toISOString().split('T')[0]);
+        dateInput.setAttribute('required', 'true');
     }
 
     // Initialize Tour Carousels
@@ -361,3 +513,348 @@ function showNotification(message) {
     }, 3000);
 }
 
+
+// =============================================
+// TOUR DETAILS MODAL
+// =============================================
+
+// Tour data with details (you can edit this easily)
+const tourData = {
+    'atv-fortuna': {
+        title: { es: 'ATV Tour', en: 'ATV Tour' },
+        image: 'images/atv-to-the-volcano-nueva.webp',
+        badge: { es: 'Aventura', en: 'Adventure' },
+        description: {
+            es: 'Recorre senderos de montaña y cruza ríos a bordo de un ATV. Una experiencia llena de adrenalina con vistas al Volcán Arenal.',
+            en: 'Ride through mountain trails and cross rivers aboard an ATV. An adrenaline-filled experience with views of Arenal Volcano.'
+        },
+        price: { es: 'Desde $130', en: 'From $130' },
+        includes: {
+            es: ['Guía bilingüe', 'Equipo de seguridad (casco, gafas)', 'Agua embotellada', 'Transporte desde tu hotel'],
+            en: ['Bilingual guide', 'Safety equipment (helmet, goggles)', 'Bottled water', 'Transportation from your hotel']
+        },
+        bring: {
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados', 'Cambio de ropa', 'Protector solar', 'Repelente de insectos'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes', 'Change of clothes', 'Sunscreen', 'Insect repellent']
+        },
+        info: {
+            es: ['Duración: 3 horas', 'Edad mínima: 6 años', 'Peso máximo: 250 lbs', 'No requiere experiencia previa'],
+            en: ['Duration: 3 hours', 'Minimum age: 6 years', 'Maximum weight: 250 lbs', 'No prior experience required']
+        }
+    },
+    'canyoning': {
+        title: { es: 'Canyoning / Barranquismo', en: 'Canyoning' },
+        image: 'images/canyoning-nueva.webp',
+        badge: { es: 'Extremo', en: 'Extreme' },
+        description: {
+            es: 'Vive una experiencia de barranquismo inolvidable en plena selva tropical. Desciende por impresionantes cascadas, recorre cañones naturales y disfruta de tirolesas mientras te adentras en el corazón del bosque lluvioso. Ideal para principiantes y expertos.',
+            en: 'Live an unforgettable canyoning experience in the tropical rainforest. Descend through impressive waterfalls, explore natural canyons and enjoy ziplines as you venture into the heart of the rainforest. Ideal for beginners and experts.'
+        },
+        price: { es: '$105', en: '$105' },
+        includes: {
+            es: ['Almuerzo (Casado a elegir: pollo, carne, vegano o vegetariano)', '2 cables de canopy de 150m y 400m', '5 rappels de 20, 25, 30, 35 y 60 metros', 'Equipo completo', 'Guías certificados', 'Transporte Fortuna y alrededores'],
+            en: ['Lunch (Casado choice: chicken, beef, vegan or vegetarian)', '2 canopy cables of 150m and 400m', '5 rappels of 20, 25, 30, 35 and 60 meters', 'Complete equipment', 'Certified guides', 'Transportation Fortuna and surroundings']
+        },
+        bring: {
+            es: ['Camisa manga larga (protección contra cuerdas)', 'Pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
+            en: ['Long sleeve shirt (rope protection)', 'Comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
+        },
+        info: {
+            es: ['Horarios: 7:00am – 10:00am – 1:00pm', 'Duración: 4 horas aprox.', 'Edad mínima: 5 años', 'No usar bloqueador ni repelente en el rostro (puede irritar los ojos en el agua)', 'Lockers disponibles para sus pertenencias', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
+            en: ['Schedules: 7:00am – 10:00am – 1:00pm', 'Duration: 4 hours approx.', 'Minimum age: 5 years', 'Do not use sunscreen or repellent on face (may irritate eyes in water)', 'Lockers available for your belongings', 'Any item you bring to the tour is at your own responsibility']
+        }
+    },
+    'zipline-fortuna': {
+        title: { es: 'Zipline', en: 'Zipline' },
+        image: 'images/zipline-la-fortuna-nueva.webp',
+        badge: { es: 'Popular', en: 'Popular' },
+        description: {
+            es: 'Vuela sobre el dosel del bosque tropical con vistas panorámicas del volcán. Múltiples cables para una experiencia completa.',
+            en: 'Fly over the tropical forest canopy with panoramic views of the volcano. Multiple cables for a complete experience.'
+        },
+        price: { es: '$85', en: '$85' },
+        includes: {
+            es: ['Guía profesional', 'Equipo de seguridad completo', '10 cables de tirolesa', 'Transporte'],
+            en: ['Professional guide', 'Complete safety equipment', '10 zipline cables', 'Transportation']
+        },
+        bring: {
+            es: ['Ropa cómoda', 'Zapatos cerrados', 'Protector solar', 'Cámara con correa de seguridad'],
+            en: ['Comfortable clothes', 'Closed-toe shoes', 'Sunscreen', 'Camera with safety strap']
+        },
+        info: {
+            es: ['Duración: Máximo 2 horas', '10 cables', 'Edad mínima: 4 años', 'Peso máximo: 275 lbs'],
+            en: ['Duration: Maximum 2 hours', '10 cables', 'Minimum age: 4 years', 'Maximum weight: 275 lbs']
+        }
+    },
+    'rafting': {
+        title: { es: 'Rafting de Aventura', en: 'Adventure Rafting' },
+        image: 'images/rafting-class-lll-nueva.webp',
+        badge: { es: 'Clase II-III', en: 'Class II-III' },
+        description: {
+            es: 'Vive la emoción del rafting navegando por ríos rodeados de selva tropical y paisajes espectaculares cerca de Arenal y La Fortuna. Rápidos clase II-III ideales para principiantes y nivel intermedio. Podrás observar aves, monos y vida silvestre durante el recorrido.',
+            en: 'Experience the thrill of rafting through rivers surrounded by tropical jungle and spectacular landscapes near Arenal and La Fortuna. Class II-III rapids ideal for beginners and intermediate level. You can observe birds, monkeys and wildlife along the way.'
+        },
+        price: { es: '$78', en: '$78' },
+        includes: {
+            es: ['Guía certificado', 'Equipo completo de rafting', 'Frutas y hidratación', 'Almuerzo', 'Transporte'],
+            en: ['Certified guide', 'Complete rafting equipment', 'Fruits and hydration', 'Lunch', 'Transportation']
+        },
+        bring: {
+            es: ['Camisa manga larga (para protección solar)', 'Shorts o pantalones cómodos', 'Zapatos de agua o sandalias tipo Chaco', 'Toalla pequeña', 'Ropa de cambio', 'Bolsa impermeable pequeña (para cámara o teléfono)'],
+            en: ['Long sleeve shirt (for sun protection)', 'Shorts or comfortable pants', 'Water shoes or Chaco-type sandals', 'Small towel', 'Change of clothes', 'Small waterproof bag (for camera or phone)']
+        },
+        info: {
+            es: ['Horario: 10:00am', 'Duración: 4 horas y media aprox. (con transporte)', 'Rápidos Clase II-III', 'Edad mínima: 6 años', 'No usar bloqueador, repelente ni cremas (causan resbalones en la balsa)', 'Todo artículo que lleve al tour es bajo su propia responsabilidad'],
+            en: ['Schedule: 10:00am', 'Duration: 4.5 hours approx. (with transportation)', 'Class II-III rapids', 'Minimum age: 6 years', 'Do not use sunscreen, repellent or creams (cause slipping on the raft)', 'Any item you bring to the tour is at your own responsibility']
+        }
+    },
+    'cabalgata': {
+        title: { es: 'Cabalgata a la Catarata', en: 'Horseback Ride to Waterfall' },
+        image: 'images/horse-back-riding-waterfall-nueva.webp',
+        badge: { es: 'Naturaleza', en: 'Nature' },
+        description: {
+            es: 'Paseo a caballo por senderos naturales hasta la impresionante Catarata La Fortuna. Ideal para conectar con la naturaleza.',
+            en: 'Horseback ride through natural trails to the impressive La Fortuna Waterfall. Ideal for connecting with nature.'
+        },
+        price: { es: '$80', en: '$80' },
+        includes: {
+            es: ['Caballo dócil y bien entrenado', 'Guía experto', 'Entrada a la catarata', 'Casco de seguridad'],
+            en: ['Gentle, well-trained horse', 'Expert guide', 'Waterfall entrance fee', 'Safety helmet']
+        },
+        bring: {
+            es: ['Pantalón largo', 'Zapatos cerrados', 'Traje de baño (para la catarata)', 'Protector solar', 'Cámara'],
+            en: ['Long pants', 'Closed-toe shoes', 'Swimsuit (for the waterfall)', 'Sunscreen', 'Camera']
+        },
+        info: {
+            es: ['Duración: 3 horas', 'No requiere experiencia', 'Peso máximo: 220 lbs', 'Ideal para familias'],
+            en: ['Duration: 3 hours', 'No experience required', 'Maximum weight: 220 lbs', 'Ideal for families']
+        }
+    },
+    'rio-celeste': {
+        title: { es: 'Río Celeste', en: 'Río Celeste' },
+        image: 'images/rio-celeste-nueva.webp',
+        badge: { es: 'Naturaleza', en: 'Nature' },
+        description: {
+            es: 'Visita el famoso río de color turquesa en el Parque Nacional Volcán Tenorio. Un fenómeno natural único causado por minerales volcánicos que le dan al río su característico color celeste.',
+            en: 'Visit the famous turquoise-colored river in Tenorio Volcano National Park. A unique natural phenomenon caused by volcanic minerals that give the river its characteristic sky-blue color.'
+        },
+        price: { es: '$120', en: '$120' },
+        includes: {
+            es: ['Transporte desde La Fortuna', 'Guía naturalista bilingüe', 'Entrada al Parque Nacional Volcán Tenorio', 'Desayuno y almuerzo', 'Agua y snacks'],
+            en: ['Transportation from La Fortuna', 'Bilingual naturalist guide', 'Tenorio Volcano National Park entrance fee', 'Breakfast and lunch', 'Water and snacks']
+        },
+        bring: {
+            es: ['Zapatos de senderismo (obligatorio)', 'Ropa cómoda y ligera', 'Impermeable o poncho', 'Protector solar biodegradable', 'Repelente de insectos', 'Cámara', 'Traje de baño (para áreas permitidas)'],
+            en: ['Hiking shoes (required)', 'Comfortable, light clothing', 'Rain jacket or poncho', 'Biodegradable sunscreen', 'Insect repellent', 'Camera', 'Swimsuit (for permitted areas)']
+        },
+        info: {
+            es: ['Duración: Día completo (8-10 horas)', 'Caminata de 6 km (ida y vuelta)', 'Dificultad: Moderada', 'Está prohibido bañarse en la catarata principal', 'Senderos pueden estar resbalosos', 'Salida temprano: 6:00 AM'],
+            en: ['Duration: Full day (8-10 hours)', '6 km hike (round trip)', 'Difficulty: Moderate', 'Swimming is prohibited at the main waterfall', 'Trails can be slippery', 'Early departure: 6:00 AM']
+        }
+    },
+    'zipline-guanacaste': {
+        title: { es: 'Zipline', en: 'Zipline' },
+        image: 'images/zipline-kid-friendly-guanacaste-nueva.webp',
+        badge: { es: 'Familiar', en: 'Family' },
+        description: {
+            es: 'Circuito de 10 cables diseñado para toda la familia. Comienza ascendiendo por una escalera de caracol alrededor de un majestuoso árbol de Guanacaste. El cable más largo tiene 400 metros. Incluye puente colgante.',
+            en: '10-cable circuit designed for the whole family. Starts by ascending a spiral staircase around a majestic Guanacaste tree. The longest cable is 400 meters. Includes hanging bridge.'
+        },
+        price: { es: '$75', en: '$75' },
+        includes: {
+            es: ['10 cables de tirolesa (el más largo de 400m)', 'Guías bilingües', 'Equipo de seguridad completo', 'Escalera de caracol y puente colgante', 'Agua y toalla fría al finalizar'],
+            en: ['10 zipline cables (longest 400m)', 'Bilingual guides', 'Complete safety equipment', 'Spiral staircase and hanging bridge', 'Water and cold towel at the end']
+        },
+        bring: {
+            es: ['Ropa cómoda', 'Zapatos cerrados (obligatorio)', 'Protector solar', 'Repelente de insectos'],
+            en: ['Comfortable clothes', 'Closed-toe shoes (required)', 'Sunscreen', 'Insect repellent']
+        },
+        info: {
+            es: ['Duración: aproximadamente 2 horas', 'Edad mínima: 2 años', 'Peso máximo: 300 libras (136 kg)', 'Primera tirolesa a 20 metros de altura', 'Transporte disponible (consultar con 12 horas de anticipación)'],
+            en: ['Duration: approximately 2 hours', 'Minimum age: 2 years', 'Maximum weight: 300 lbs (136 kg)', 'First zipline at 20 meters height', 'Transportation available (check availability 12 hours in advance)']
+        }
+    },
+    'utv': {
+        title: { es: 'UTV Tour', en: 'UTV Tour' },
+        image: 'images/utv-guanacaste-nueva.jpg',
+        badge: { es: 'Aventura', en: 'Adventure' },
+        description: {
+            es: 'Conduce un UTV (side-by-side) por senderos privados y caminos rurales de Guanacaste. Explora el bosque tropical seco con vistas espectaculares. Ideal para grupos y familias.',
+            en: 'Drive a UTV (side-by-side) through private trails and rural roads of Guanacaste. Explore the dry tropical forest with spectacular views. Ideal for groups and families.'
+        },
+        price: { es: 'Desde $365', en: 'From $365' },
+        includes: {
+            es: ['UTV para 5 pasajeros', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos privados', 'Agua', 'Seguro de accidentes'],
+            en: ['UTV for 5 passengers', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Private trail tour', 'Water', 'Accident insurance']
+        },
+        bring: {
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Pañuelo o buff para el polvo', 'Protector solar', 'Cambio de ropa'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
+        },
+        info: {
+            es: ['Duración: aproximadamente 2 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 5 personas por UTV', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
+            en: ['Duration: approximately 2 hours', 'Driver\'s license required to drive', 'Capacity: 5 people per UTV', 'Price varies by number of participants', 'Transportation available (check availability)']
+        }
+    },
+    'cuadraciclo': {
+        title: { es: 'Cuadraciclo', en: 'ATV' },
+        image: 'images/atv-guanacaste-nueva.jpg',
+        badge: { es: 'Aventura', en: 'Adventure' },
+        description: {
+            es: 'Aventura en cuadraciclo (ATV) por senderos privados. Recorre el bosque tropical seco de Guanacaste con adrenalina pura. Disponible en modalidad individual o doble.',
+            en: 'ATV adventure through private trails. Ride through the dry tropical forest of Guanacaste with pure adrenaline. Available in single or double mode.'
+        },
+        price: { es: 'Desde $95', en: 'From $95' },
+        includes: {
+            es: ['Cuadraciclo individual o doble', 'Guía bilingüe certificado', 'Equipo de seguridad (casco, gafas)', 'Recorrido por senderos privados', 'Agua', 'Seguro de accidentes'],
+            en: ['Single or double ATV', 'Certified bilingual guide', 'Safety equipment (helmet, goggles)', 'Private trail tour', 'Water', 'Accident insurance']
+        },
+        bring: {
+            es: ['Ropa cómoda que se pueda ensuciar', 'Zapatos cerrados (obligatorio)', 'Pañuelo o buff para el polvo', 'Protector solar', 'Cambio de ropa'],
+            en: ['Comfortable clothes that can get dirty', 'Closed-toe shoes (required)', 'Bandana or buff for dust', 'Sunscreen', 'Change of clothes']
+        },
+        info: {
+            es: ['Duración: aproximadamente 2 horas', 'Licencia de conducir requerida para manejar', 'Capacidad: 1-2 personas por cuadraciclo', 'Precio varía según número de participantes', 'Transporte disponible (consultar disponibilidad)'],
+            en: ['Duration: approximately 2 hours', 'Driver\'s license required to drive', 'Capacity: 1-2 people per ATV', 'Price varies by number of participants', 'Transportation available (check availability)']
+        }
+    },
+    'cascada': {
+        title: { es: 'Cascada La Leona', en: 'La Leona Waterfall' },
+        image: 'images/la-leona-waterfall-nueva.webp',
+        badge: { es: 'Temporada Seca', en: 'Dry Season' },
+        description: {
+            es: 'Caminata por el bosque tropical hasta la espectacular Cascada La Leona. Báñate en sus aguas cristalinas y disfruta del entorno natural.',
+            en: 'Hike through the tropical forest to the spectacular La Leona Waterfall. Swim in its crystal clear waters and enjoy the natural surroundings.'
+        },
+        price: { es: 'Consultar precio', en: 'Ask for price' },
+        includes: {
+            es: ['Guía naturalista', 'Entrada al área protegida', 'Frutas tropicales', 'Agua'],
+            en: ['Naturalist guide', 'Protected area entrance', 'Tropical fruits', 'Water']
+        },
+        bring: {
+            es: ['Zapatos de senderismo', 'Traje de baño', 'Toalla', 'Cámara resistente al agua', 'Protector solar biodegradable'],
+            en: ['Hiking shoes', 'Swimsuit', 'Towel', 'Waterproof camera', 'Biodegradable sunscreen']
+        },
+        info: {
+            es: ['Duración: 3 a 5 horas', 'Disponible solo del 2 de enero al 15 de agosto', 'Condición física moderada', 'Caminata de dificultad media'],
+            en: ['Duration: 3 to 5 hours', 'Available only January 2 to August 15', 'Moderate physical condition', 'Medium difficulty hike']
+        }
+    }
+};
+
+// Initialize modal functionality
+function initTourModal() {
+    const modal = document.getElementById('tour-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const tourCards = document.querySelectorAll('.tour-card[data-tour-id]');
+
+    if (!modal) return;
+
+    // Open modal when clicking on tour card
+    tourCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+            // Don't open modal if clicking on the reserve button
+            if (e.target.closest('.btn')) return;
+            
+            const tourId = this.dataset.tourId;
+            openTourModal(tourId);
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener('click', closeTourModal);
+    
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeTourModal();
+        }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeTourModal();
+        }
+    });
+
+    // Reserve button closes modal and scrolls to contact, and pre-selects the tour
+    const reserveBtn = document.getElementById('modal-reserve-btn');
+    if (reserveBtn) {
+        reserveBtn.addEventListener('click', function() {
+            // Get the current tour from the modal title
+            const modalTitle = document.getElementById('modal-title');
+            if (modalTitle) {
+                const tourName = modalTitle.textContent;
+                // Find the matching tour ID from tourData
+                for (const [tourId, data] of Object.entries(tourData)) {
+                    if (data.title.es === tourName || data.title.en === tourName) {
+                        // Pre-select tour in form after modal closes
+                        setTimeout(() => {
+                            const tourSelect = document.getElementById('tour');
+                            if (tourSelect) {
+                                for (let i = 0; i < tourSelect.options.length; i++) {
+                                    if (tourSelect.options[i].value === tourId) {
+                                        tourSelect.selectedIndex = i;
+                                        tourSelect.value = tourId;
+                                        tourSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                                        break;
+                                    }
+                                }
+                            }
+                        }, 150);
+                        break;
+                    }
+                }
+            }
+            closeTourModal();
+        });
+    }
+}
+
+function openTourModal(tourId) {
+    const modal = document.getElementById('tour-modal');
+    const tour = tourData[tourId];
+    const lang = localStorage.getItem('language') || 'es';
+
+    if (!tour) return;
+
+    // Populate modal with tour data
+    document.getElementById('modal-image').src = tour.image;
+    document.getElementById('modal-image').alt = tour.title[lang];
+    document.getElementById('modal-badge').textContent = tour.badge[lang];
+    document.getElementById('modal-title').textContent = tour.title[lang];
+    document.getElementById('modal-description').textContent = tour.description[lang];
+    document.getElementById('modal-price').textContent = tour.price[lang];
+
+    // Populate lists
+    populateList('modal-includes', tour.includes[lang]);
+    populateList('modal-bring', tour.bring[lang]);
+    populateList('modal-info', tour.info[lang]);
+
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeTourModal() {
+    const modal = document.getElementById('tour-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function populateList(elementId, items) {
+    const list = document.getElementById(elementId);
+    list.innerHTML = '';
+    items.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fas fa-check"></i> ${item}`;
+        list.appendChild(li);
+    });
+}
+
+// Initialize modal on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initTourModal();
+});
+// Updated: Tue Jan 20 03:44:50 UTC 2026
