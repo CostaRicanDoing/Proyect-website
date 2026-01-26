@@ -1608,3 +1608,56 @@ img {
     color: var(--color-primary);
     font-size: 1.4rem;
 }
+
+/* =============================================
+   NOTIFICATION SYSTEM
+   ============================================= */
+.notification {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: var(--color-primary);
+    color: var(--color-dark);
+    padding: 15px 25px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    z-index: 10000;
+    animation: notificationSlideIn 0.3s ease forwards;
+    box-shadow: 0 4px 20px rgba(124, 181, 24, 0.4);
+    max-width: 90vw;
+}
+
+.notification-exit {
+    animation: notificationSlideOut 0.3s ease forwards;
+}
+
+@keyframes notificationSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes notificationSlideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .notification {
+        bottom: 80px;
+        right: 15px;
+        left: 15px;
+        text-align: center;
+    }
+}

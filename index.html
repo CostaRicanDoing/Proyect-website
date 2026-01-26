@@ -5,18 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Costa Rican Doing - Tours de Aventura en Costa Rica</title>
 
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Tours de aventura en Costa Rica: ATV, Rafting, Zipline, Canyoning y más. Explora La Fortuna y Guanacaste con guías expertos. Reserva ahora tu aventura.">
+    <meta name="keywords" content="tours Costa Rica, aventura, rafting, zipline, ATV, La Fortuna, Guanacaste, turismo, volcán Arenal">
+    <meta name="author" content="Costa Rican Doing">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Costa Rican Doing - Tours de Aventura en Costa Rica">
+    <meta property="og:description" content="Tours de aventura en Costa Rica: ATV, Rafting, Zipline, Canyoning y más. Explora La Fortuna y Guanacaste.">
+    <meta property="og:image" content="images/hero.webp">
+    <meta property="og:locale" content="es_CR">
+
     <!-- Preload critical assets -->
     <link rel="preload" href="images/hero.webp" as="image" type="image/webp">
     <link rel="preload" href="images/logo.png" as="image">
 
     <!-- Fonts with display swap for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Fallback fonts in case CDN fails -->
+    <style>
+        /* Font fallback */
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -488,14 +512,15 @@
     </footer>
 
     <!-- Tour Details Modal -->
-    <div id="tour-modal" class="tour-modal">
-        <div class="tour-modal-content">
-            <button class="tour-modal-close" id="modal-close">
-                <i class="fas fa-times"></i>
+    <!-- Tour Details Modal with ARIA accessibility -->
+    <div id="tour-modal" class="tour-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="tour-modal-content" role="document">
+            <button class="tour-modal-close" id="modal-close" aria-label="Cerrar modal" type="button">
+                <i class="fas fa-times" aria-hidden="true"></i>
             </button>
             <div class="tour-modal-header">
-                <img id="modal-image" src="" alt="">
-                <div class="tour-modal-badge" id="modal-badge"></div>
+                <img id="modal-image" src="" alt="" loading="lazy">
+                <div class="tour-modal-badge" id="modal-badge" aria-label="Categoría del tour"></div>
             </div>
             <div class="tour-modal-body">
                 <h2 id="modal-title"></h2>
@@ -524,6 +549,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
