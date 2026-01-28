@@ -1,0 +1,196 @@
+/* =============================================
+   RESPONSIVE DESIGN - Media Queries
+   ============================================= */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image {
+        order: -1;
+        max-height: 400px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav {
+        position: fixed;
+        top: 55px;
+        left: 0;
+        width: 100%;
+        background: var(--color-dark);
+        padding: 20px;
+        transform: translateX(-100%);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid var(--color-gray-dark);
+    }
+
+    /* Ajustar posicion del nav cuando header esta expandido (scroll) */
+    .header.header-scrolled .nav {
+        top: 75px;
+    }
+
+    .nav.active {
+        transform: translateX(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header.header-scrolled .nav-list,
+    .header:not(.header-scrolled) .nav-list {
+        gap: 20px;
+    }
+
+    .header.header-scrolled .nav-list a,
+    .header:not(.header-scrolled) .nav-list a {
+        font-size: 1rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Header movil - compacto (arriba) */
+    .header:not(.header-scrolled) .header-content {
+        min-height: 55px;
+        padding: 5px 0;
+    }
+
+    /* Header movil - expandido (scroll) */
+    .header.header-scrolled .header-content {
+        min-height: 75px;
+        padding: 10px 0;
+    }
+
+    /* Logo movil compacto (arriba) */
+    .header:not(.header-scrolled) .logo-header {
+        width: 110px;
+        max-height: 35px;
+    }
+
+    /* Logo movil expandido (scroll) */
+    .header.header-scrolled .logo-header {
+        width: 150px;
+        max-height: 48px;
+    }
+
+    /* Ocultar boton reserve en movil */
+    .btn-reserve-header {
+        display: none;
+    }
+
+    .tours-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-container {
+        padding: 25px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .hero-content {
+        padding: 140px 20px 80px;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .tours-section,
+    .about-section,
+    .contact-section {
+        padding: 70px 0;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    /* Header movil pequeno - compacto (arriba) */
+    .header:not(.header-scrolled) .header-content {
+        min-height: 50px;
+        padding: 4px 0;
+    }
+
+    /* Header movil pequeno - expandido (scroll) */
+    .header.header-scrolled .header-content {
+        min-height: 65px;
+        padding: 8px 0;
+    }
+
+    /* Logo movil pequeno compacto (arriba) */
+    .header:not(.header-scrolled) .logo-header {
+        width: 90px;
+        max-height: 28px;
+    }
+
+    /* Logo movil pequeno expandido (scroll) */
+    .header.header-scrolled .logo-header {
+        width: 130px;
+        max-height: 42px;
+    }
+
+    .logo-footer {
+        width: 200px;
+    }
+
+    .language-toggle {
+        gap: 5px;
+    }
+
+    .lang-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .nav {
+        top: 50px;
+    }
+
+    .header.header-scrolled .nav {
+        top: 65px;
+    }
+
+    .hero-content {
+        padding: 120px 20px 60px;
+    }
+}

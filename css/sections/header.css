@@ -1,0 +1,154 @@
+/* =============================================
+   HEADER SECTION
+   ============================================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-fixed);
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header compacto (cuando esta arriba de la pagina) */
+.header:not(.header-scrolled) {
+    background: rgba(10, 10, 10, 0.7);
+}
+
+/* Header expandido (cuando se hace scroll) */
+.header.header-scrolled {
+    background: rgba(10, 10, 10, 0.98);
+    border-bottom: 1px solid var(--color-gray-dark);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    padding: 8px 0;
+}
+
+.header.header-hidden {
+    transform: translateY(-100%);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    min-height: 70px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header compacto - contenido ajustado (arriba de la pagina) */
+.header:not(.header-scrolled) .header-content {
+    min-height: 60px;
+    padding: 5px 0;
+}
+
+/* Header expandido - contenido mas espacioso (al hacer scroll) */
+.header.header-scrolled .header-content {
+    min-height: 100px;
+    padding: 15px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: auto;
+    object-fit: contain;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Logo del Header - Compacto (arriba de la pagina) */
+.logo-header {
+    width: 150px;
+    max-height: 45px;
+}
+
+/* Logo del Header expandido (al hacer scroll) */
+.header.header-scrolled .logo-header {
+    width: 220px;
+    max-height: 70px;
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Nav compacto (arriba de la pagina) */
+.header:not(.header-scrolled) .nav-list {
+    gap: 30px;
+}
+
+/* Nav expandido (al hacer scroll) */
+.header.header-scrolled .nav-list {
+    gap: 45px;
+}
+
+.nav-list a {
+    font-weight: 600;
+    color: var(--color-white);
+    padding: 8px 0;
+    position: relative;
+    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Links mas pequenos arriba de la pagina */
+.header:not(.header-scrolled) .nav-list a {
+    font-size: 0.9rem;
+}
+
+/* Links mas grandes cuando esta scrolled */
+.header.header-scrolled .nav-list a {
+    font-size: 1rem;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: var(--transition);
+}
+
+.nav-list a:hover::after {
+    width: 100%;
+}
+
+.nav-list a:hover {
+    color: var(--color-primary);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Boton reserve compacto (arriba de pagina) */
+.header:not(.header-scrolled) .btn-reserve-header {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+}
+
+/* Boton reserve expandido (al hacer scroll) */
+.header.header-scrolled .btn-reserve-header {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+}

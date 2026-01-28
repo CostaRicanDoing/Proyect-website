@@ -1,0 +1,18 @@
+/* =============================================
+   TOURS SECTION
+   ============================================= */
+
+.tours-section {
+    padding: 100px 0;
+    background: var(--color-black);
+}
+
+.tours-section-alt {
+    background: var(--color-dark);
+}
+
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+}

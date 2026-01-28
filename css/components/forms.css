@@ -1,0 +1,182 @@
+/* =============================================
+   FORMS COMPONENT
+   ============================================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--color-white);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 14px 16px;
+    background: var(--color-gray-dark);
+    border: 1px solid var(--color-gray);
+    border-radius: var(--radius);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(124, 181, 24, 0.2);
+}
+
+.form-group select option {
+    background: var(--color-gray-dark);
+}
+
+/* Price Summary */
+.price-summary {
+    background: var(--color-gray-dark);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 2px solid var(--color-primary);
+}
+
+.price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-gray-light);
+    font-size: 0.95rem;
+}
+
+.price-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--color-gray);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.price-total span:last-child {
+    color: var(--color-primary);
+}
+
+/* Payment Summary in Confirmation */
+.payment-summary {
+    background: var(--color-gray-dark);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid var(--color-gray);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    color: var(--color-gray-light);
+    border-bottom: 1px solid var(--color-gray-dark);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row span:last-child {
+    color: var(--color-white);
+    font-weight: 600;
+}
+
+.summary-total {
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 2px solid var(--color-primary) !important;
+    font-size: 1.2rem;
+}
+
+.summary-total span:last-child {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+}
+
+/* Reservation Confirmation */
+.reservation-confirmation {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-dark-alt);
+    border-radius: 12px;
+    border: 1px solid var(--color-gray-dark);
+}
+
+.reservation-confirmation .confirmation-icon {
+    font-size: 4rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.reservation-confirmation h3 {
+    color: var(--color-white);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.reservation-confirmation p {
+    color: var(--color-gray-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.reservation-confirmation .btn-paypal {
+    margin-top: 1rem;
+}
+
+/* Help Message */
+.help-message {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background: var(--color-gray-dark);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-gray);
+}
+
+.help-message a {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.help-message a::before {
+    content: '\f232';
+    font-family: 'Font Awesome 6 Brands';
+    font-size: 1.4rem;
+    color: var(--color-whatsapp);
+}
+
+.help-message a:hover {
+    color: var(--color-whatsapp);
+}
