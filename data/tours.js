@@ -264,7 +264,7 @@ const TOURS_DATA = {
             en: 'Drive an all-terrain vehicle through rural roads and visit one of the oldest towns in Guanacaste. Explore the dry tropical forest landscapes.'
         },
         price: 365,
-        priceDisplay: { es: 'Desde $365 (precio varia segun participantes)', en: 'From $365 (price varies by participants)' },
+        priceDisplay: { es: '$365', en: '$365' },
         priceType: 'fixed',
         details: [
             { icon: 'fa-landmark', text: { es: 'Pueblo historico', en: 'Historic town' } }
@@ -298,7 +298,7 @@ const TOURS_DATA = {
             en: 'Explore the dry tropical forest landscapes of Guanacaste by ATV. Cross farms, rivers and visit one of the oldest towns in the region.'
         },
         price: 95,
-        priceDisplay: { es: 'Desde $95 (precio varia segun participantes)', en: 'From $95 (price varies by participants)' },
+        priceDisplay: { es: '$95', en: '$95' },
         priceType: 'per-person',
         details: [
             { icon: 'fa-tree', text: { es: 'Bosque tropical seco', en: 'Dry tropical forest' } }
