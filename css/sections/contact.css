@@ -68,3 +68,14 @@
     color: var(--color-primary);
     width: 30px;
 }
+
+.contact-email {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-email:hover {
+    color: #5fd666;
+    text-decoration: underline;
+}
