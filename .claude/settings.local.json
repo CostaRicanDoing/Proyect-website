@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git)",
+      "Read(//c/Users/jason/OneDrive/Desktop/**)",
+      "Bash(npx create-next-app@14 costaricandoing --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git)",
+      "Bash(npx create-next-app@14 crd-next --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git)",
+      "Bash(npx create-next-app@14 \"C:/Users/jason/OneDrive/Desktop/crd-next\" --typescript --tailwind --eslint --app --import-alias=\"@/*\" --no-git)",
+      "Bash(cp -r \"C:/Users/jason/OneDrive/Desktop/crd-next/.\" \"C:/Users/jason/OneDrive/Desktop/Proyecto CR DOING/\")",
+      "Bash(rm -rf \"C:/Users/jason/OneDrive/Desktop/crd-next\")",
+      "Bash(npm install *)",
+      "Bash(npx shadcn@latest init --defaults)",
+      "Bash(npx shadcn@latest add card badge input textarea select separator navigation-menu --no-prompt)",
+      "Bash(npx shadcn@latest add card badge input textarea select separator)"
+    ]
+  }
+}
