@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { MapPin, Phone, Mail, Instagram, Facebook, Youtube } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -17,14 +17,14 @@ export default function Footer() {
               Your local adventure experts in Costa Rica. ATV, zipline, rafting and more — unforgettable experiences await.
             </p>
             <div className="flex gap-3">
-              <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-orange-500 transition-colors">
-                <Instagram size={20} />
+              <a href="https://instagram.com/costaricandoing" aria-label="Instagram" className="text-gray-400 hover:text-orange-500 transition-colors text-sm font-medium">
+                IG
               </a>
-              <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-orange-500 transition-colors">
-                <Facebook size={20} />
+              <a href="https://facebook.com/costaricandoing" aria-label="Facebook" className="text-gray-400 hover:text-orange-500 transition-colors text-sm font-medium">
+                FB
               </a>
-              <a href="#" aria-label="YouTube" className="text-gray-400 hover:text-orange-500 transition-colors">
-                <Youtube size={20} />
+              <a href="https://youtube.com/@costaricandoing" aria-label="YouTube" className="text-gray-400 hover:text-orange-500 transition-colors text-sm font-medium">
+                YT
               </a>
             </div>
           </div>

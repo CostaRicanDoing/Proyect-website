@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, Users, MapPin, Star } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 import { Tour } from '@/types'
 import { formatPrice, cn } from '@/lib/utils'
 

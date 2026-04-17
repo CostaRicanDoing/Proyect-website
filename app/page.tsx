@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { ChevronRight, Shield, Clock, Star, Users } from 'lucide-react'
 import TourCard from '@/components/tours/TourCard'
 import { getFeaturedTours } from '@/data/tours'

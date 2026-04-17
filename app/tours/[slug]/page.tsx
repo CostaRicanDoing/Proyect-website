@@ -1,12 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Clock, Users, MapPin, CheckCircle2, XCircle, ChevronLeft } from 'lucide-react'
 import { getTourBySlug, tours } from '@/data/tours'
 import { formatPrice } from '@/lib/utils'
 import BookingForm from '@/components/forms/BookingForm'
-import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 
 interface PageProps {
