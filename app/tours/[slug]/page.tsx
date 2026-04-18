@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Clock, Users, MapPin, CheckCircle2, XCircle, ChevronLeft } from 'lucide-react'
 import { getTourBySlug, tours } from '@/data/tours'
 import { formatPrice } from '@/lib/utils'
@@ -42,11 +43,16 @@ export default function TourDetailPage({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero image */}
-      <div className="relative h-64 sm:h-80 lg:h-96 bg-green-200">
-        <div className="absolute inset-0 bg-green-100 flex items-center justify-center">
-          <p className="text-green-600 text-sm font-medium">[ Tour Photo: {tour.title} ]</p>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+      <div className="relative h-64 sm:h-80 lg:h-96 bg-green-900">
+        <Image
+          src={tour.image}
+          alt={tour.title}
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
           <Link
             href="/tours"
@@ -82,6 +88,25 @@ export default function TourDetailPage({ params }: PageProps) {
               </span>
             </div>
           </div>
+
+          {/* Gallery */}
+          {tour.gallery.length > 1 && (
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+              <div className="grid grid-cols-3 gap-2">
+                {tour.gallery.slice(0, 6).map((img, i) => (
+                  <div key={i} className="relative aspect-square rounded-lg overflow-hidden bg-gray-100">
+                    <Image
+                      src={img}
+                      alt={`${tour.title} photo ${i + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 33vw, 200px"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Description */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">

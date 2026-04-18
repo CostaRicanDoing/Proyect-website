@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ChevronRight, Shield, Clock, Star, Users } from 'lucide-react'
 import TourCard from '@/components/tours/TourCard'
 import { getFeaturedTours } from '@/data/tours'
@@ -10,6 +11,14 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-green-900 via-green-800 to-green-700 overflow-hidden">
+        <Image
+          src="/images/hero.webp"
+          alt="Costa Rica adventure tours"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="relative z-20 max-w-4xl mx-auto px-4 text-center text-white">
           <span className="inline-block bg-orange-500 text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
@@ -118,8 +127,14 @@ export default function HomePage() {
               <ChevronRight size={18} />
             </Link>
           </div>
-          <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden bg-green-100 flex items-center justify-center">
-            <p className="text-green-700 font-medium text-sm">[ Photo: Local Guide ]</p>
+          <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden">
+            <Image
+              src="/images/horse-back-riding-waterfall-nueva.webp"
+              alt="Local Costa Rica adventure guide"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
