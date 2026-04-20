@@ -1,26 +1,30 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 
-const SPLASH_KEY = 'crd_splash_seen'
-
 export default function SplashScreen() {
-  const [visible, setVisible] = useState(false)
-  const [fadeOut, setFadeOut] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Only show once per browser session
-    const seen = sessionStorage.getItem(SPLASH_KEY)
-    if (seen) return
+    const el = ref.current
+    if (!el) return
 
-    setVisible(true)
-    sessionStorage.setItem(SPLASH_KEY, '1')
+    // Already seen this session — hide immediately
+    if (sessionStorage.getItem('crd_splash')) {
+      el.style.display = 'none'
+      return
+    }
 
-    // Start fade-out after 2 seconds
-    const fadeTimer = setTimeout(() => setFadeOut(true), 2000)
-    // Fully remove from DOM after fade completes
-    const hideTimer = setTimeout(() => setVisible(false), 2600)
+    sessionStorage.setItem('crd_splash', '1')
+
+    const fadeTimer = setTimeout(() => {
+      el.style.opacity = '0'
+    }, 2400)
+
+    const hideTimer = setTimeout(() => {
+      el.style.display = 'none'
+    }, 3100)
 
     return () => {
       clearTimeout(fadeTimer)
@@ -28,27 +32,20 @@ export default function SplashScreen() {
     }
   }, [])
 
-  if (!visible) return null
-
   return (
     <div
+      ref={ref}
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
-      style={{
-        opacity: fadeOut ? 0 : 1,
-        transition: 'opacity 0.6s ease-out',
-        pointerEvents: fadeOut ? 'none' : 'all',
-      }}
+      style={{ transition: 'opacity 0.7s ease-out' }}
     >
-      <div className="animate-heartbeat">
+      <div style={{ animation: 'crd-pulse 2s ease-in-out infinite' }}>
         <Image
           src="/logo.png"
           alt="Costa Rican Doing"
-          width={320}
-          height={160}
+          width={300}
+          height={150}
           priority
-          style={{
-            filter: 'drop-shadow(0 0 24px rgba(101, 200, 0, 0.6))',
-          }}
+          style={{ filter: 'drop-shadow(0 0 20px rgba(101,200,0,0.55))' }}
         />
       </div>
     </div>
