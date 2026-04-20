@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
@@ -9,9 +10,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
-              <span className="text-xl font-bold text-white">
-                Costa Rican<span className="text-orange-500"> Doing</span>
-              </span>
+              <Image
+                src="/logo.png"
+                alt="Costa Rican Doing"
+                width={140}
+                height={60}
+                className="h-10 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
               Your local adventure experts in Costa Rica. ATV, zipline, rafting and more — unforgettable experiences await.
