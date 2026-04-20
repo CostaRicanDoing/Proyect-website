@@ -7,32 +7,61 @@ import { getTourBySlug, tours } from '@/data/tours'
 import { formatPrice } from '@/lib/utils'
 import BookingForm from '@/components/forms/BookingForm'
 import { Separator } from '@/components/ui/separator'
+import { getTranslations, isValidLocale, locales } from '@/lib/translations'
+import type { Locale } from '@/types'
 
 interface PageProps {
-  params: { slug: string }
+  params: { slug: string; locale: string }
 }
 
 export async function generateStaticParams() {
-  return tours.map((tour) => ({ slug: tour.slug }))
+  const combos: Array<{ locale: string; slug: string }> = []
+  for (const locale of locales) {
+    for (const tour of tours) combos.push({ locale, slug: tour.slug })
+  }
+  return combos
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  if (!isValidLocale(params.locale)) return {}
   const tour = getTourBySlug(params.slug)
   if (!tour) return {}
+  const locale = params.locale as Locale
+  const title = locale === 'es' ? tour.titleEs : tour.title
+  const description = locale === 'es' ? tour.descriptionEs : tour.description
   return {
-    title: tour.title,
-    description: tour.description,
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/tours/${tour.slug}`,
+      languages: {
+        en: `/en/tours/${tour.slug}`,
+        es: `/es/tours/${tour.slug}`,
+        'x-default': `/en/tours/${tour.slug}`,
+      },
+    },
     openGraph: {
-      title: tour.title,
-      description: tour.description,
+      title,
+      description,
       images: [{ url: tour.image }],
     },
   }
 }
 
 export default function TourDetailPage({ params }: PageProps) {
+  if (!isValidLocale(params.locale)) notFound()
   const tour = getTourBySlug(params.slug)
   if (!tour) notFound()
+  const locale = params.locale as Locale
+  const t = getTranslations(locale)
+
+  const title = locale === 'es' ? tour.titleEs : tour.title
+  const description = locale === 'es' ? tour.descriptionEs : tour.description
+  const duration = locale === 'es' ? tour.durationEs : tour.duration
+  const highlights = locale === 'es' ? tour.highlightsEs : tour.highlights
+  const includes = locale === 'es' ? tour.includesEs : tour.includes
+  const excludes = locale === 'es' ? tour.excludesEs : tour.excludes
+  const difficultyLabel = t.tour.difficulty[tour.difficulty]
 
   const difficultyColor = {
     Easy: 'bg-green-100 text-green-700',
@@ -42,11 +71,10 @@ export default function TourDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero image */}
       <div className="relative h-64 sm:h-80 lg:h-96 bg-green-900">
         <Image
           src={tour.image}
-          alt={tour.title}
+          alt={title}
           fill
           priority
           className="object-cover"
@@ -55,41 +83,38 @@ export default function TourDetailPage({ params }: PageProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
           <Link
-            href="/tours"
+            href={`/${locale}/tours`}
             className="inline-flex items-center gap-1 text-white/80 hover:text-white text-sm mb-2 transition-colors"
           >
             <ChevronLeft size={16} />
-            All Tours
+            {t.tour.allTours}
           </Link>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white">{tour.title}</h1>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white">{title}</h1>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
-        {/* Main content */}
         <div className="lg:col-span-2 space-y-8">
-          {/* Quick info */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
             <div className="flex flex-wrap gap-4 text-sm text-gray-600">
               <span className="flex items-center gap-2">
                 <Clock size={16} className="text-green-600" />
-                {tour.duration}
+                {duration}
               </span>
               <span className="flex items-center gap-2">
                 <Users size={16} className="text-green-600" />
-                Max {tour.maxGroupSize} people
+                {t.tour.maxPeople(tour.maxGroupSize)}
               </span>
               <span className="flex items-center gap-2">
                 <MapPin size={16} className="text-green-600" />
                 {tour.location}
               </span>
               <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${difficultyColor}`}>
-                {tour.difficulty}
+                {difficultyLabel}
               </span>
             </div>
           </div>
 
-          {/* Gallery */}
           {tour.gallery.length > 1 && (
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
               <div className="grid grid-cols-3 gap-2">
@@ -97,7 +122,7 @@ export default function TourDetailPage({ params }: PageProps) {
                   <div key={i} className="relative aspect-square rounded-lg overflow-hidden bg-gray-100">
                     <Image
                       src={img}
-                      alt={`${tour.title} photo ${i + 1}`}
+                      alt={`${title} photo ${i + 1}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 768px) 33vw, 200px"
@@ -108,17 +133,15 @@ export default function TourDetailPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Description */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">About This Tour</h2>
-            <p className="text-gray-600 leading-relaxed">{tour.description}</p>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">{t.tour.about}</h2>
+            <p className="text-gray-600 leading-relaxed">{description}</p>
           </div>
 
-          {/* Highlights */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Highlights</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">{t.tour.highlights}</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {tour.highlights.map((h) => (
+              {highlights.map((h) => (
                 <li key={h} className="flex items-start gap-2 text-gray-700 text-sm">
                   <span className="text-orange-500 font-bold mt-0.5">★</span>
                   {h}
@@ -127,15 +150,14 @@ export default function TourDetailPage({ params }: PageProps) {
             </ul>
           </div>
 
-          {/* Includes / Excludes */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                 <CheckCircle2 size={18} className="text-green-600" />
-                What&apos;s Included
+                {t.tour.included}
               </h3>
               <ul className="space-y-1.5">
-                {tour.includes.map((item) => (
+                {includes.map((item) => (
                   <li key={item} className="text-sm text-gray-600 flex items-start gap-2">
                     <span className="text-green-500 mt-0.5">✓</span>
                     {item}
@@ -146,10 +168,10 @@ export default function TourDetailPage({ params }: PageProps) {
             <div>
               <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                 <XCircle size={18} className="text-red-400" />
-                Not Included
+                {t.tour.notIncluded}
               </h3>
               <ul className="space-y-1.5">
-                {tour.excludes.map((item) => (
+                {excludes.map((item) => (
                   <li key={item} className="text-sm text-gray-600 flex items-start gap-2">
                     <span className="text-red-400 mt-0.5">✗</span>
                     {item}
@@ -159,9 +181,8 @@ export default function TourDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Meeting point */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold text-gray-900 mb-2">Meeting Point</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">{t.tour.meetingPoint}</h2>
             <p className="text-gray-600 flex items-center gap-2">
               <MapPin size={16} className="text-orange-500 shrink-0" />
               {tour.meetingPoint}
@@ -169,20 +190,19 @@ export default function TourDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Sidebar: booking form */}
         <div className="lg:col-span-1">
           <div className="sticky top-20 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
             <div className="flex items-baseline justify-between mb-6">
               <div>
                 <span className="text-3xl font-extrabold text-green-700">{formatPrice(tour.price)}</span>
-                <span className="text-gray-400 text-sm ml-1">/ person</span>
+                <span className="text-gray-400 text-sm ml-1">{t.common.perPerson}</span>
               </div>
               <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${difficultyColor}`}>
-                {tour.difficulty}
+                {difficultyLabel}
               </span>
             </div>
             <Separator className="mb-6" />
-            <BookingForm tourId={tour.id} tourName={tour.title} price={tour.price} />
+            <BookingForm tourId={tour.id} tourName={title} price={tour.price} locale={locale} />
           </div>
         </div>
       </div>

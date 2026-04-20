@@ -1,38 +1,77 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Menu, X, Globe } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getTranslations } from '@/lib/translations'
+import type { Locale } from '@/types'
 
 const navLinks = [
-  { href: '/tours', label: 'Tours', labelEs: 'Tours' },
-  { href: '/blog', label: 'Blog', labelEs: 'Blog' },
-  { href: '/about', label: 'About', labelEs: 'Nosotros' },
-  { href: '/contact', label: 'Contact', labelEs: 'Contacto' },
+  { href: '/tours', key: 'tours' as const },
+  { href: '/blog', key: 'blog' as const },
+  { href: '/about', key: 'about' as const },
+  { href: '/contact', key: 'contact' as const },
 ]
 
 interface HeaderProps {
-  locale?: 'en' | 'es'
-  onLocaleChange?: (locale: 'en' | 'es') => void
+  locale?: Locale
 }
 
-export default function Header({ locale = 'en', onLocaleChange }: HeaderProps) {
+export default function Header({ locale = 'en' }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname() || `/${locale}`
+  const t = getTranslations(locale)
+
+  // Shrink on scroll (Sky Adventures style)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Build the "other locale" URL by swapping the /en or /es segment
+  const otherLocale: Locale = locale === 'en' ? 'es' : 'en'
+  const switchHref = (() => {
+    const segments = pathname.split('/')
+    if (segments[1] === 'en' || segments[1] === 'es') {
+      segments[1] = otherLocale
+      return segments.join('/') || `/${otherLocale}`
+    }
+    return `/${otherLocale}${pathname === '/' ? '' : pathname}`
+  })()
+
+  const withLocale = (href: string) => `/${locale}${href}`
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+    <header
+      className={cn(
+        'sticky top-0 z-50 bg-black/95 backdrop-blur-sm border-b transition-all duration-300',
+        scrolled ? 'border-white/10 shadow-lg' : 'border-transparent'
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div
+          className={cn(
+            'flex items-center justify-between transition-all duration-300',
+            scrolled ? 'h-14' : 'h-20'
+          )}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href={`/${locale}`} className="flex items-center">
             <Image
               src="/logo.png"
               alt="Costa Rican Doing"
-              width={140}
-              height={60}
-              className="h-10 w-auto object-contain"
+              width={180}
+              height={80}
+              className={cn(
+                'w-auto object-contain transition-all duration-300',
+                scrolled ? 'h-9' : 'h-14'
+              )}
               priority
             />
           </Link>
@@ -42,39 +81,39 @@ export default function Header({ locale = 'en', onLocaleChange }: HeaderProps) {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
-                className="text-gray-700 hover:text-green-700 font-medium transition-colors"
+                href={withLocale(link.href)}
+                className="text-gray-200 hover:text-orange-400 font-medium transition-colors"
               >
-                {locale === 'es' ? link.labelEs : link.label}
+                {t.nav[link.key]}
               </Link>
             ))}
           </nav>
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            {/* Language toggle */}
-            <button
-              onClick={() => onLocaleChange?.(locale === 'en' ? 'es' : 'en')}
-              className="flex items-center gap-1 text-sm text-gray-600 hover:text-green-700 transition-colors"
-              aria-label="Toggle language"
+            {/* Language toggle — navigates to the same page in the other locale */}
+            <Link
+              href={switchHref}
+              className="flex items-center gap-1 text-sm text-gray-300 hover:text-orange-400 transition-colors"
+              aria-label={t.nav.toggleLanguage}
             >
               <Globe size={16} />
               <span className="font-medium">{locale === 'en' ? 'ES' : 'EN'}</span>
-            </button>
+            </Link>
 
             {/* CTA */}
             <Link
-              href="/tours"
+              href={withLocale('/tours')}
               className="hidden md:inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors text-sm"
             >
-              {locale === 'es' ? 'Ver Tours' : 'Book Now'}
+              {t.common.bookNow}
             </Link>
 
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden p-2 text-gray-700"
+              className="md:hidden p-2 text-gray-200"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
+              aria-label={t.nav.toggleMenu}
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -85,7 +124,7 @@ export default function Header({ locale = 'en', onLocaleChange }: HeaderProps) {
       {/* Mobile menu */}
       <div
         className={cn(
-          'md:hidden border-t border-gray-100 bg-white overflow-hidden transition-all duration-300',
+          'md:hidden border-t border-white/10 bg-black overflow-hidden transition-all duration-300',
           mobileOpen ? 'max-h-64' : 'max-h-0'
         )}
       >
@@ -93,19 +132,19 @@ export default function Header({ locale = 'en', onLocaleChange }: HeaderProps) {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
-              className="py-2 px-3 text-gray-700 hover:text-green-700 hover:bg-green-50 rounded-md font-medium transition-colors"
+              href={withLocale(link.href)}
+              className="py-2 px-3 text-gray-200 hover:text-orange-400 hover:bg-white/5 rounded-md font-medium transition-colors"
               onClick={() => setMobileOpen(false)}
             >
-              {locale === 'es' ? link.labelEs : link.label}
+              {t.nav[link.key]}
             </Link>
           ))}
           <Link
-            href="/tours"
+            href={withLocale('/tours')}
             className="mt-2 py-2 px-3 bg-orange-500 text-white text-center font-semibold rounded-lg"
             onClick={() => setMobileOpen(false)}
           >
-            {locale === 'es' ? 'Ver Tours' : 'Book Now'}
+            {t.common.bookNow}
           </Link>
         </nav>
       </div>

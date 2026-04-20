@@ -4,43 +4,64 @@ import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 import { getBlogPostBySlug, blogPosts } from '@/data/blog'
 import { formatDate } from '@/lib/utils'
+import { getTranslations, isValidLocale, locales } from '@/lib/translations'
+import type { Locale } from '@/types'
 
 interface PageProps {
-  params: { slug: string }
+  params: { locale: string; slug: string }
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }))
+  return locales.flatMap((locale) =>
+    blogPosts.map((post) => ({ locale, slug: post.slug }))
+  )
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  if (!isValidLocale(params.locale)) return {}
   const post = getBlogPostBySlug(params.slug)
   if (!post) return {}
+  const locale = params.locale as Locale
+  const title = locale === 'es' ? post.titleEs : post.title
+  const excerpt = locale === 'es' ? post.excerptEs : post.excerpt
   return {
-    title: post.title,
-    description: post.excerpt,
+    title,
+    description: excerpt,
+    alternates: {
+      canonical: `/${locale}/blog/${post.slug}`,
+      languages: {
+        en: `/en/blog/${post.slug}`,
+        es: `/es/blog/${post.slug}`,
+        'x-default': `/en/blog/${post.slug}`,
+      },
+    },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title,
+      description: excerpt,
       images: [{ url: post.image }],
     },
   }
 }
 
 export default function BlogPostPage({ params }: PageProps) {
+  if (!isValidLocale(params.locale)) notFound()
   const post = getBlogPostBySlug(params.slug)
   if (!post) notFound()
+  const locale = params.locale as Locale
+  const t = getTranslations(locale)
+  const title = locale === 'es' ? post.titleEs : post.title
+  const excerpt = locale === 'es' ? post.excerptEs : post.excerpt
+  const content = locale === 'es' ? post.contentEs : post.content
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
       <div className="relative h-64 sm:h-80 bg-green-100 flex items-center justify-center">
-        <p className="text-green-600 text-sm">[Blog post image]</p>
+        <p className="text-green-600 text-sm">{t.blog.blogPostImagePlaceholder}</p>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         <div className="absolute bottom-4 left-4">
-          <Link href="/blog" className="flex items-center gap-1 text-white/80 hover:text-white text-sm transition-colors">
+          <Link href={`/${locale}/blog`} className="flex items-center gap-1 text-white/80 hover:text-white text-sm transition-colors">
             <ChevronLeft size={16} />
-            Blog
+            {t.blog.backToBlog}
           </Link>
         </div>
       </div>
@@ -49,9 +70,7 @@ export default function BlogPostPage({ params }: PageProps) {
         <span className="text-xs text-orange-500 font-semibold uppercase tracking-wider">
           {post.category}
         </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 mb-4">
-          {post.title}
-        </h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 mb-4">{title}</h1>
         <div className="flex items-center gap-3 text-sm text-gray-400 mb-8">
           <span>{post.author}</span>
           <span>·</span>
@@ -59,16 +78,11 @@ export default function BlogPostPage({ params }: PageProps) {
         </div>
 
         <div className="prose prose-lg prose-green max-w-none text-gray-700">
-          <p className="text-xl text-gray-600 leading-relaxed mb-6">{post.excerpt}</p>
-          <p className="leading-relaxed">{post.content}</p>
-          <p className="leading-relaxed mt-4">
-            Costa Rica offers incredible biodiversity, stunning natural landscapes, and world-class adventure activities.
-            Whether you&apos;re a first-time visitor or a repeat traveler, there&apos;s always something new to discover in this
-            beautiful country.
-          </p>
+          <p className="text-xl text-gray-600 leading-relaxed mb-6">{excerpt}</p>
+          <p className="leading-relaxed">{content}</p>
+          <p className="leading-relaxed mt-4">{t.blog.extraParagraph}</p>
         </div>
 
-        {/* Tags */}
         <div className="flex flex-wrap gap-2 mt-10 pt-6 border-t border-gray-100">
           {post.tags.map((tag) => (
             <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
@@ -77,15 +91,14 @@ export default function BlogPostPage({ params }: PageProps) {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="mt-12 bg-green-50 border border-green-200 rounded-2xl p-6 text-center">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">Ready to experience Costa Rica?</h3>
-          <p className="text-gray-600 mb-4">Book one of our adventure tours and create your own story.</p>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">{t.blog.ctaTitle}</h3>
+          <p className="text-gray-600 mb-4">{t.blog.ctaSubtitle}</p>
           <Link
-            href="/tours"
+            href={`/${locale}/tours`}
             className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-colors"
           >
-            View Our Tours
+            {t.common.viewOurTours}
           </Link>
         </div>
       </div>

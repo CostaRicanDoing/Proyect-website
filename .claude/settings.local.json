@@ -13,7 +13,8 @@
       "Bash(npx shadcn@latest add card badge input textarea select separator navigation-menu --no-prompt)",
       "Bash(npx shadcn@latest add card badge input textarea select separator)",
       "Bash(npm run *)",
-      "WebFetch(domain:skyadventures.travel)"
+      "WebFetch(domain:skyadventures.travel)",
+      "Bash(npx next *)"
     ]
   }
 }

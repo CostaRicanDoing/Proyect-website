@@ -3,30 +3,41 @@ import { tours } from '@/data/tours'
 import { blogPosts } from '@/data/blog'
 
 const BASE_URL = 'https://costaricandoing.com'
+const LOCALES = ['en', 'es'] as const
+
+type Entry = MetadataRoute.Sitemap[number]
+
+function entry(path: string, priority: number, changeFrequency: Entry['changeFrequency'], lastModified: Date = new Date()): Entry[] {
+  return LOCALES.map((locale) => ({
+    url: `${BASE_URL}/${locale}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+    alternates: {
+      languages: {
+        en: `${BASE_URL}/en${path}`,
+        es: `${BASE_URL}/es${path}`,
+        'x-default': `${BASE_URL}/en${path}`,
+      },
+    },
+  }))
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = [
-    { url: BASE_URL, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 1.0 },
-    { url: `${BASE_URL}/tours`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.6 },
-    { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.6 },
-    { url: `${BASE_URL}/terms`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
+  const staticPaths: Array<[string, number, Entry['changeFrequency']]> = [
+    ['', 1.0, 'weekly'],
+    ['/tours', 0.9, 'weekly'],
+    ['/blog', 0.7, 'weekly'],
+    ['/about', 0.6, 'monthly'],
+    ['/contact', 0.6, 'monthly'],
+    ['/terms', 0.3, 'yearly'],
   ]
 
-  const tourPages = tours.map((tour) => ({
-    url: `${BASE_URL}/tours/${tour.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
+  const staticEntries = staticPaths.flatMap(([p, pr, cf]) => entry(p, pr, cf))
+  const tourEntries = tours.flatMap((t) => entry(`/tours/${t.slug}`, 0.8, 'monthly'))
+  const blogEntries = blogPosts.flatMap((p) =>
+    entry(`/blog/${p.slug}`, 0.6, 'monthly', new Date(p.publishedAt))
+  )
 
-  const blogPages = blogPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  return [...staticPages, ...tourPages, ...blogPages]
+  return [...staticEntries, ...tourEntries, ...blogEntries]
 }

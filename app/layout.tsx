@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-import SplashScreen from '@/components/layout/SplashScreen'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// Base metadata that applies to every locale.
+// Per-locale metadata (including hreflang alternates and <html lang>)
+// is set in app/[locale]/layout.tsx.
 export const metadata: Metadata = {
   title: {
     default: 'Costa Rican Doing — Adventure Tours in Costa Rica',
@@ -24,21 +24,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Costa Rican Doing' }],
   creator: 'Costa Rican Doing',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://costaricandoing.com',
-    siteName: 'Costa Rican Doing',
-    title: 'Costa Rican Doing — Adventure Tours in Costa Rica',
-    description:
-      'Book the best adventure tours in Costa Rica. ATV, zipline, white water rafting, waterfall hikes and combo packages.',
-    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Costa Rican Doing — Adventure Tours in Costa Rica',
-    description: 'Book the best adventure tours in Costa Rica.',
-  },
   robots: {
     index: true,
     follow: true,
@@ -47,6 +32,16 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://costaricandoing.com'),
 }
 
+/**
+ * Next.js App Router requires <html> and <body> to live in the root layout.
+ * The `lang` attribute cannot be dynamic from a nested layout, so we render
+ * <html> here without a lang and let middleware + the [locale] layout
+ * ensure a locale is always present. A script-free alternative would be a
+ * per-request `lang` rewrite, but since every page is served from
+ * /en/* or /es/*, search engines get the correct signal via the
+ * `alternates.languages` metadata set in app/[locale]/layout.tsx and the
+ * hreflang entries in the sitemap.
+ */
 export default function RootLayout({
   children,
 }: {
@@ -55,10 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
-        <SplashScreen />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   )
