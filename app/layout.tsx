@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import SplashScreen from '@/components/layout/SplashScreen'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -55,7 +54,33 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
-        <SplashScreen />
+        {/* Splash — inline in server HTML so it shows before any JS runs */}
+        <div id="crd-splash" style={{
+          position: 'fixed', inset: 0, zIndex: 9999,
+          background: '#000',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transition: 'opacity 0.7s ease-out',
+        }}>
+          <img
+            src="/logo.png"
+            alt="Costa Rican Doing"
+            style={{
+              width: 300,
+              animation: 'crd-pulse 2s ease-in-out infinite',
+              filter: 'drop-shadow(0 0 20px rgba(101,200,0,0.55))',
+            }}
+          />
+        </div>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function(){
+            var el = document.getElementById('crd-splash');
+            if (!el) return;
+            if (sessionStorage.getItem('crd_splash')) { el.style.display='none'; return; }
+            sessionStorage.setItem('crd_splash','1');
+            setTimeout(function(){ el.style.opacity='0'; }, 2400);
+            setTimeout(function(){ el.style.display='none'; }, 3100);
+          })();
+        `}} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
