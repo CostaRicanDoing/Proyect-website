@@ -57,8 +57,8 @@ export default function ContactForm({ locale = 'en', tourName, className }: Cont
 
   if (status === 'success') {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
-        <p className="text-green-700 font-medium">{tx.success}</p>
+      <div className="bg-lime-50 border border-lime-200 rounded-xl p-6 text-center">
+        <p className="text-lime-700 font-medium">{tx.success}</p>
       </div>
     )
   }
@@ -126,7 +126,7 @@ export default function ContactForm({ locale = 'en', tourName, className }: Cont
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full py-3 bg-green-700 hover:bg-green-800 disabled:opacity-60 text-white font-semibold rounded-lg transition-colors"
+        className="w-full py-3 bg-lime-600 hover:bg-gray-900 disabled:opacity-60 text-white font-semibold rounded-lg transition-colors"
       >
         {status === 'sending' ? tx.sending : tx.submit}
       </button>

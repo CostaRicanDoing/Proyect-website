@@ -85,7 +85,7 @@ export default function Header({ locale = 'en' }: HeaderProps) {
               <Link
                 key={link.href}
                 href={withLocale(link.href)}
-                className="text-gray-200 hover:text-orange-400 font-medium transition-colors"
+                className="text-gray-200 hover:text-lime-500 font-medium transition-colors"
               >
                 {t.nav[link.key]}
               </Link>
@@ -97,7 +97,7 @@ export default function Header({ locale = 'en' }: HeaderProps) {
             {/* Language toggle — navigates to the same page in the other locale */}
             <Link
               href={switchHref}
-              className="flex items-center gap-1 text-sm text-gray-300 hover:text-orange-400 transition-colors"
+              className="flex items-center gap-1 text-sm text-gray-300 hover:text-lime-500 transition-colors"
               aria-label={t.nav.toggleLanguage}
             >
               <Globe size={16} />
@@ -107,7 +107,7 @@ export default function Header({ locale = 'en' }: HeaderProps) {
             {/* CTA */}
             <Link
               href={withLocale('/tours')}
-              className="hidden md:inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors text-sm"
+              className="hidden md:inline-flex items-center px-4 py-2 bg-lime-500 hover:bg-lime-600 text-white font-semibold rounded-lg transition-colors text-sm"
             >
               {t.common.bookNow}
             </Link>
@@ -136,7 +136,7 @@ export default function Header({ locale = 'en' }: HeaderProps) {
             <Link
               key={link.href}
               href={withLocale(link.href)}
-              className="py-2 px-3 text-gray-200 hover:text-orange-400 hover:bg-white/5 rounded-md font-medium transition-colors"
+              className="py-2 px-3 text-gray-200 hover:text-lime-500 hover:bg-white/5 rounded-md font-medium transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {t.nav[link.key]}
@@ -144,7 +144,7 @@ export default function Header({ locale = 'en' }: HeaderProps) {
           ))}
           <Link
             href={withLocale('/tours')}
-            className="mt-2 py-2 px-3 bg-orange-500 text-white text-center font-semibold rounded-lg"
+            className="mt-2 py-2 px-3 bg-lime-500 text-white text-center font-semibold rounded-lg"
             onClick={() => setMobileOpen(false)}
           >
             {t.common.bookNow}

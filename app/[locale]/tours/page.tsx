@@ -42,7 +42,7 @@ export default function ToursPage({ params }: { params: { locale: string } }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-800 text-white py-14 px-4 text-center">
+      <div className="bg-gray-900 text-white py-14 px-4 text-center">
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">{t.tours.title}</h1>
         <p className="text-white/80 text-lg max-w-xl mx-auto">{t.tours.subtitle}</p>
       </div>
@@ -52,7 +52,7 @@ export default function ToursPage({ params }: { params: { locale: string } }) {
           {categories.map((cat) => (
             <span
               key={cat.value}
-              className="px-4 py-2 rounded-full border border-green-700 text-green-700 text-sm font-medium cursor-pointer hover:bg-green-700 hover:text-white transition-colors"
+              className="px-4 py-2 rounded-full border border-lime-600 text-lime-700 text-sm font-medium cursor-pointer hover:bg-lime-600 hover:text-white transition-colors"
             >
               {cat.label}
             </span>

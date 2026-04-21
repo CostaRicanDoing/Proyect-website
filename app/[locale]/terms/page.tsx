@@ -27,7 +27,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-green-800 text-white py-14 px-4 text-center">
+      <div className="bg-gray-900 text-white py-14 px-4 text-center">
         <h1 className="text-4xl font-extrabold mb-2">{t.terms.title}</h1>
         <p className="text-white/70 text-sm">{t.terms.lastUpdated}</p>
       </div>
@@ -69,7 +69,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
           <h2 className="text-xl font-bold text-gray-900 mb-3">{t.terms.contactHeading}</h2>
           <p className="text-gray-600">
             {t.terms.contactPrefix}{' '}
-            <a href="mailto:info@costaricandoing.com" className="text-green-700 hover:underline">
+            <a href="mailto:info@costaricandoing.com" className="text-lime-700 hover:underline">
               info@costaricandoing.com
             </a>
             .

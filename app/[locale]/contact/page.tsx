@@ -29,7 +29,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-800 text-white py-14 px-4 text-center">
+      <div className="bg-gray-900 text-white py-14 px-4 text-center">
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">{t.contact.title}</h1>
         <p className="text-white/80 text-lg max-w-xl mx-auto">{t.contact.subtitle}</p>
       </div>
@@ -39,8 +39,8 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.contact.getInTouch}</h2>
           <div className="space-y-5 mb-8">
             <div className="flex items-start gap-4">
-              <div className="p-2.5 bg-green-100 rounded-lg shrink-0">
-                <MapPin size={20} className="text-green-700" />
+              <div className="p-2.5 bg-lime-100 rounded-lg shrink-0">
+                <MapPin size={20} className="text-lime-700" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900">{t.contact.location}</p>
@@ -48,30 +48,30 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="p-2.5 bg-green-100 rounded-lg shrink-0">
-                <Phone size={20} className="text-green-700" />
+              <div className="p-2.5 bg-lime-100 rounded-lg shrink-0">
+                <Phone size={20} className="text-lime-700" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900">{t.contact.phone}</p>
-                <a href="tel:+50688888888" className="text-green-700 hover:text-green-800 text-sm transition-colors">
-                  +506 8888-8888
+                <a href="https://wa.me/50688952387" target="_blank" rel="noopener noreferrer" className="text-lime-700 hover:text-lime-600 text-sm transition-colors">
+                  +506 8895-2387 (WhatsApp)
                 </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="p-2.5 bg-green-100 rounded-lg shrink-0">
-                <Mail size={20} className="text-green-700" />
+              <div className="p-2.5 bg-lime-100 rounded-lg shrink-0">
+                <Mail size={20} className="text-lime-700" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900">{t.contact.email}</p>
-                <a href="mailto:info@costaricandoing.com" className="text-green-700 hover:text-green-800 text-sm transition-colors">
+                <a href="mailto:info@costaricandoing.com" className="text-lime-700 hover:text-lime-700 text-sm transition-colors">
                   info@costaricandoing.com
                 </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="p-2.5 bg-green-100 rounded-lg shrink-0">
-                <Clock size={20} className="text-green-700" />
+              <div className="p-2.5 bg-lime-100 rounded-lg shrink-0">
+                <Clock size={20} className="text-lime-700" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900">{t.contact.hours}</p>
@@ -80,8 +80,8 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
             </div>
           </div>
 
-          <div className="h-56 bg-green-100 rounded-2xl flex items-center justify-center border border-green-200">
-            <p className="text-green-600 text-sm">{t.contact.mapPlaceholder}</p>
+          <div className="h-56 bg-lime-100 rounded-2xl flex items-center justify-center border border-lime-200">
+            <p className="text-lime-600 text-sm">{t.contact.mapPlaceholder}</p>
           </div>
         </div>
 

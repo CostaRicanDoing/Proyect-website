@@ -30,7 +30,7 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-800 text-white py-14 px-4 text-center">
+      <div className="bg-gray-900 text-white py-14 px-4 text-center">
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">{t.blog.title}</h1>
         <p className="text-white/80 text-lg max-w-xl mx-auto">{t.blog.subtitle}</p>
       </div>
@@ -42,14 +42,14 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
           return (
             <Link key={post.id} href={`/${locale}/blog/${post.slug}`} className="group block">
               <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
-                <div className="relative h-48 bg-green-100 flex items-center justify-center">
-                  <p className="text-green-600 text-xs">{t.blog.blogImagePlaceholder}</p>
+                <div className="relative h-48 bg-lime-100 flex items-center justify-center">
+                  <p className="text-lime-600 text-xs">{t.blog.blogImagePlaceholder}</p>
                 </div>
                 <div className="p-5">
-                  <span className="text-xs text-orange-500 font-semibold uppercase tracking-wider">
+                  <span className="text-xs text-lime-500 font-semibold uppercase tracking-wider">
                     {post.category}
                   </span>
-                  <h2 className="font-bold text-gray-900 text-lg mt-1 mb-2 group-hover:text-green-700 transition-colors line-clamp-2">
+                  <h2 className="font-bold text-gray-900 text-lg mt-1 mb-2 group-hover:text-lime-700 transition-colors line-clamp-2">
                     {title}
                   </h2>
                   <p className="text-gray-500 text-sm line-clamp-2 mb-3">{excerpt}</p>

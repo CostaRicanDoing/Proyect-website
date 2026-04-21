@@ -32,7 +32,7 @@ export default function BookingConfirmationPage({
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-16">
       <div className="max-w-lg w-full bg-white rounded-2xl shadow-sm border border-gray-100 p-10 text-center">
         <div className="flex justify-center mb-6">
-          <CheckCircle2 size={64} className="text-green-500" />
+          <CheckCircle2 size={64} className="text-lime-500" />
         </div>
         <h1 className="text-3xl font-extrabold text-gray-900 mb-3">{t.bookingConfirmation.title}</h1>
         <p className="text-gray-600 text-lg mb-2">{t.bookingConfirmation.subtitle}</p>
@@ -40,12 +40,12 @@ export default function BookingConfirmationPage({
           {t.bookingConfirmation.body1} <strong>{t.bookingConfirmation.body24h}</strong> {t.bookingConfirmation.body2}
         </p>
 
-        <div className="bg-green-50 border border-green-200 rounded-xl p-5 text-left mb-8">
+        <div className="bg-lime-50 border border-lime-200 rounded-xl p-5 text-left mb-8">
           <h2 className="font-bold text-gray-900 mb-3">{t.bookingConfirmation.nextTitle}</h2>
           <ol className="space-y-2 text-sm text-gray-600">
             {t.bookingConfirmation.steps.map((step, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="font-bold text-green-600 shrink-0">{i + 1}.</span>
+                <span className="font-bold text-lime-600 shrink-0">{i + 1}.</span>
                 {step}
               </li>
             ))}
@@ -55,7 +55,7 @@ export default function BookingConfirmationPage({
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href={`/${locale}/tours`}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-lime-500 hover:bg-lime-600 text-white font-bold rounded-lg transition-colors"
           >
             {t.common.browseMoreTours}
             <ChevronRight size={18} />

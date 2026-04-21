@@ -24,10 +24,10 @@ export async function generateMetadata({
 }
 
 const icons = [
-  <Shield key="s" size={28} className="text-green-600" />,
-  <Heart key="h" size={28} className="text-orange-500" />,
-  <Globe key="g" size={28} className="text-green-600" />,
-  <Users key="u" size={28} className="text-orange-500" />,
+  <Shield key="s" size={28} className="text-lime-600" />,
+  <Heart key="h" size={28} className="text-lime-500" />,
+  <Globe key="g" size={28} className="text-lime-600" />,
+  <Users key="u" size={28} className="text-lime-500" />,
 ]
 
 export default function AboutPage({ params }: { params: { locale: string } }) {
@@ -37,7 +37,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-green-800 text-white py-16 px-4 text-center">
+      <div className="bg-gray-900 text-white py-16 px-4 text-center">
         <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">{t.about.title}</h1>
         <p className="text-white/80 text-lg max-w-xl mx-auto">{t.about.subtitle}</p>
       </div>
@@ -45,7 +45,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
       <section className="max-w-4xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-orange-500 font-semibold text-sm uppercase tracking-wider">{t.about.storyTag}</span>
+            <span className="text-lime-500 font-semibold text-sm uppercase tracking-wider">{t.about.storyTag}</span>
             <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-4">{t.about.storyTitle}</h2>
             <p className="text-gray-600 leading-relaxed mb-4">{t.about.storyP1}</p>
             <p className="text-gray-600 leading-relaxed mb-4">{t.about.storyP2}</p>
@@ -83,7 +83,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
         <p className="text-gray-500 text-lg mb-8 max-w-lg mx-auto">{t.about.ctaSubtitle}</p>
         <Link
           href={`/${locale}/tours`}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl text-lg transition-colors"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-lime-500 hover:bg-lime-600 text-white font-bold rounded-xl text-lg transition-colors"
         >
           {t.common.seeAllTours}
           <ChevronRight size={20} />

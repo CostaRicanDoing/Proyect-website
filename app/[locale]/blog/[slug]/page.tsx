@@ -55,8 +55,8 @@ export default function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="relative h-64 sm:h-80 bg-green-100 flex items-center justify-center">
-        <p className="text-green-600 text-sm">{t.blog.blogPostImagePlaceholder}</p>
+      <div className="relative h-64 sm:h-80 bg-lime-100 flex items-center justify-center">
+        <p className="text-lime-600 text-sm">{t.blog.blogPostImagePlaceholder}</p>
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         <div className="absolute bottom-4 left-4">
           <Link href={`/${locale}/blog`} className="flex items-center gap-1 text-white/80 hover:text-white text-sm transition-colors">
@@ -67,7 +67,7 @@ export default function BlogPostPage({ params }: PageProps) {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-12">
-        <span className="text-xs text-orange-500 font-semibold uppercase tracking-wider">
+        <span className="text-xs text-lime-500 font-semibold uppercase tracking-wider">
           {post.category}
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 mb-4">{title}</h1>
@@ -77,7 +77,7 @@ export default function BlogPostPage({ params }: PageProps) {
           <span>{formatDate(post.publishedAt)}</span>
         </div>
 
-        <div className="prose prose-lg prose-green max-w-none text-gray-700">
+        <div className="prose prose-lg prose-lime max-w-none text-gray-700">
           <p className="text-xl text-gray-600 leading-relaxed mb-6">{excerpt}</p>
           <p className="leading-relaxed">{content}</p>
           <p className="leading-relaxed mt-4">{t.blog.extraParagraph}</p>
@@ -91,12 +91,12 @@ export default function BlogPostPage({ params }: PageProps) {
           ))}
         </div>
 
-        <div className="mt-12 bg-green-50 border border-green-200 rounded-2xl p-6 text-center">
+        <div className="mt-12 bg-lime-50 border border-lime-200 rounded-2xl p-6 text-center">
           <h3 className="text-xl font-bold text-gray-900 mb-2">{t.blog.ctaTitle}</h3>
           <p className="text-gray-600 mb-4">{t.blog.ctaSubtitle}</p>
           <Link
             href={`/${locale}/tours`}
-            className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-lime-500 hover:bg-lime-600 text-white font-bold rounded-lg transition-colors"
           >
             {t.common.viewOurTours}
           </Link>

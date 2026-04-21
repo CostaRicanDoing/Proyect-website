@@ -11,8 +11,8 @@ interface TourCardProps {
 }
 
 const categoryColors: Record<string, string> = {
-  atv: 'bg-orange-100 text-orange-700',
-  zipline: 'bg-green-100 text-green-700',
+  atv: 'bg-lime-100 text-lime-700',
+  zipline: 'bg-lime-100 text-lime-700',
   rafting: 'bg-blue-100 text-blue-700',
   waterfall: 'bg-cyan-100 text-cyan-700',
   combo: 'bg-purple-100 text-purple-700',
@@ -53,7 +53,7 @@ export default function TourCard({ tour, locale = 'en', className }: TourCardPro
           </div>
           {tour.featured && (
             <div className="absolute top-3 right-3">
-              <span className="flex items-center gap-1 bg-orange-500 text-white px-2.5 py-1 rounded-full text-xs font-semibold">
+              <span className="flex items-center gap-1 bg-lime-500 text-white px-2.5 py-1 rounded-full text-xs font-semibold">
                 <Star size={10} fill="white" />
                 {locale === 'es' ? 'Destacado' : 'Featured'}
               </span>
@@ -63,32 +63,32 @@ export default function TourCard({ tour, locale = 'en', className }: TourCardPro
 
         {/* Content */}
         <div className="p-5">
-          <h3 className="font-bold text-gray-900 text-lg leading-tight mb-2 group-hover:text-green-700 transition-colors">
+          <h3 className="font-bold text-gray-900 text-lg leading-tight mb-2 group-hover:text-lime-700 transition-colors">
             {title}
           </h3>
           <p className="text-gray-500 text-sm line-clamp-2 mb-4">{description}</p>
 
           <div className="flex flex-wrap gap-3 text-xs text-gray-500 mb-4">
             <span className="flex items-center gap-1">
-              <Clock size={13} className="text-green-600" />
+              <Clock size={13} className="text-lime-600" />
               {duration}
             </span>
             <span className="flex items-center gap-1">
-              <Users size={13} className="text-green-600" />
+              <Users size={13} className="text-lime-600" />
               {locale === 'es' ? `Máx ${tour.maxGroupSize}` : `Max ${tour.maxGroupSize}`}
             </span>
             <span className="flex items-center gap-1">
-              <MapPin size={13} className="text-green-600" />
+              <MapPin size={13} className="text-lime-600" />
               {tour.location}
             </span>
           </div>
 
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-2xl font-bold text-green-700">{formatPrice(tour.price)}</span>
+              <span className="text-2xl font-bold text-lime-700">{formatPrice(tour.price)}</span>
               <span className="text-gray-400 text-xs ml-1">/ {locale === 'es' ? 'persona' : 'person'}</span>
             </div>
-            <span className="inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-lg transition-colors">
+            <span className="inline-flex items-center px-4 py-2 bg-lime-500 hover:bg-lime-600 text-white text-sm font-semibold rounded-lg transition-colors">
               {locale === 'es' ? 'Reservar' : 'Book Now'}
             </span>
           </div>

@@ -41,12 +41,12 @@ export default function BookingForm({ tourId, tourName, price, locale = 'en' }: 
 
   if (status === 'success') {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
+      <div className="bg-lime-50 border border-lime-200 rounded-xl p-6 text-center">
         <div className="text-4xl mb-3">🎉</div>
-        <h3 className="text-green-800 font-bold text-lg mb-1">
+        <h3 className="text-lime-700 font-bold text-lg mb-1">
           {locale === 'es' ? '¡Reserva enviada!' : 'Booking Request Sent!'}
         </h3>
-        <p className="text-green-700 text-sm">
+        <p className="text-lime-700 text-sm">
           {locale === 'es'
             ? 'Te contactaremos en menos de 24 horas para confirmar.'
             : "We'll contact you within 24 hours to confirm your booking."}
@@ -157,7 +157,7 @@ export default function BookingForm({ tourId, tourName, price, locale = 'en' }: 
       </div>
 
       {/* Price summary */}
-      <div className="bg-green-50 rounded-lg p-4 border border-green-100">
+      <div className="bg-lime-50 rounded-lg p-4 border border-lime-100">
         <div className="flex justify-between text-sm text-gray-600 mb-1">
           <span>{adults} adult{adults !== 1 ? 's' : ''} × ${price}</span>
           <span>${adults * price}</span>
@@ -168,16 +168,16 @@ export default function BookingForm({ tourId, tourName, price, locale = 'en' }: 
             <span>${children * price}</span>
           </div>
         )}
-        <div className="flex justify-between font-bold text-gray-900 border-t border-green-200 pt-2 mt-2">
+        <div className="flex justify-between font-bold text-gray-900 border-t border-lime-200 pt-2 mt-2">
           <span>{locale === 'es' ? 'Total estimado' : 'Estimated Total'}</span>
-          <span className="text-green-700">${total} USD</span>
+          <span className="text-lime-700">${total} USD</span>
         </div>
       </div>
 
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full py-3 bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white font-bold rounded-lg transition-colors text-lg"
+        className="w-full py-3 bg-lime-500 hover:bg-lime-600 disabled:opacity-60 text-white font-bold rounded-lg transition-colors text-lg"
       >
         {status === 'sending'
           ? (locale === 'es' ? 'Enviando...' : 'Sending...')

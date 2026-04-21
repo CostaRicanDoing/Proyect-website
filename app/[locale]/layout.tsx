@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import SplashScreen from '@/components/layout/SplashScreen'
+import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import { isValidLocale, locales } from '@/lib/translations'
 import type { Locale } from '@/types'
 
@@ -71,6 +72,7 @@ export default function LocaleLayout({
       <Header locale={locale} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale} />
+      <WhatsAppButton locale={locale} />
     </>
   )
 }

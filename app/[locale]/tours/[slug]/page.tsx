@@ -64,14 +64,14 @@ export default function TourDetailPage({ params }: PageProps) {
   const difficultyLabel = t.tour.difficulty[tour.difficulty]
 
   const difficultyColor = {
-    Easy: 'bg-green-100 text-green-700',
+    Easy: 'bg-lime-100 text-lime-700',
     Moderate: 'bg-yellow-100 text-yellow-700',
     Challenging: 'bg-red-100 text-red-700',
   }[tour.difficulty]
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="relative h-64 sm:h-80 lg:h-96 bg-green-900">
+      <div className="relative h-64 sm:h-80 lg:h-96 bg-gray-900">
         <Image
           src={tour.image}
           alt={title}
@@ -98,15 +98,15 @@ export default function TourDetailPage({ params }: PageProps) {
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
             <div className="flex flex-wrap gap-4 text-sm text-gray-600">
               <span className="flex items-center gap-2">
-                <Clock size={16} className="text-green-600" />
+                <Clock size={16} className="text-lime-600" />
                 {duration}
               </span>
               <span className="flex items-center gap-2">
-                <Users size={16} className="text-green-600" />
+                <Users size={16} className="text-lime-600" />
                 {t.tour.maxPeople(tour.maxGroupSize)}
               </span>
               <span className="flex items-center gap-2">
-                <MapPin size={16} className="text-green-600" />
+                <MapPin size={16} className="text-lime-600" />
                 {tour.location}
               </span>
               <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${difficultyColor}`}>
@@ -143,7 +143,7 @@ export default function TourDetailPage({ params }: PageProps) {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {highlights.map((h) => (
                 <li key={h} className="flex items-start gap-2 text-gray-700 text-sm">
-                  <span className="text-orange-500 font-bold mt-0.5">★</span>
+                  <span className="text-lime-500 font-bold mt-0.5">★</span>
                   {h}
                 </li>
               ))}
@@ -153,13 +153,13 @@ export default function TourDetailPage({ params }: PageProps) {
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                <CheckCircle2 size={18} className="text-green-600" />
+                <CheckCircle2 size={18} className="text-lime-600" />
                 {t.tour.included}
               </h3>
               <ul className="space-y-1.5">
                 {includes.map((item) => (
                   <li key={item} className="text-sm text-gray-600 flex items-start gap-2">
-                    <span className="text-green-500 mt-0.5">✓</span>
+                    <span className="text-lime-500 mt-0.5">✓</span>
                     {item}
                   </li>
                 ))}
@@ -184,7 +184,7 @@ export default function TourDetailPage({ params }: PageProps) {
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
             <h2 className="text-xl font-bold text-gray-900 mb-2">{t.tour.meetingPoint}</h2>
             <p className="text-gray-600 flex items-center gap-2">
-              <MapPin size={16} className="text-orange-500 shrink-0" />
+              <MapPin size={16} className="text-lime-500 shrink-0" />
               {tour.meetingPoint}
             </p>
           </div>
@@ -194,7 +194,7 @@ export default function TourDetailPage({ params }: PageProps) {
           <div className="sticky top-20 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
             <div className="flex items-baseline justify-between mb-6">
               <div>
-                <span className="text-3xl font-extrabold text-green-700">{formatPrice(tour.price)}</span>
+                <span className="text-3xl font-extrabold text-lime-700">{formatPrice(tour.price)}</span>
                 <span className="text-gray-400 text-sm ml-1">{t.common.perPerson}</span>
               </div>
               <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${difficultyColor}`}>
