@@ -14,7 +14,9 @@
       "Bash(npx shadcn@latest add card badge input textarea select separator)",
       "Bash(npm run *)",
       "WebFetch(domain:skyadventures.travel)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(sed -i 's/className=\"w-5 h-5 fill-current\"/className=\"w-6 h-6 fill-current\"/g' components/layout/Footer.tsx)",
+      "Read(//c/c/Users/jason/OneDrive/Desktop/Proyecto CR DOING/components/layout/**)"
     ]
   }
 }
