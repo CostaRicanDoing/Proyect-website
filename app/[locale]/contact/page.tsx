@@ -64,8 +64,8 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
               </div>
               <div>
                 <p className="font-semibold text-gray-900">{t.contact.email}</p>
-                <a href="mailto:info@costaricandoing.com" className="text-lime-700 hover:text-lime-700 text-sm transition-colors">
-                  info@costaricandoing.com
+                <a href="mailto:reservations@costaricandoing.com" className="text-lime-700 hover:text-lime-700 text-sm transition-colors">
+                  reservations@costaricandoing.com
                 </a>
               </div>
             </div>

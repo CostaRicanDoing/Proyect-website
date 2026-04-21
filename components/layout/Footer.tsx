@@ -104,7 +104,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-lime-500 shrink-0" />
-                <a href="mailto:info@costaricandoing.com" className="hover:text-lime-500 transition-colors">info@costaricandoing.com</a>
+                <a href="mailto:reservations@costaricandoing.com" className="hover:text-lime-500 transition-colors">reservations@costaricandoing.com</a>
               </li>
             </ul>
           </div>

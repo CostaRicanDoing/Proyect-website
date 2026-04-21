@@ -16,7 +16,9 @@
       "WebFetch(domain:skyadventures.travel)",
       "Bash(npx next *)",
       "Bash(sed -i 's/className=\"w-5 h-5 fill-current\"/className=\"w-6 h-6 fill-current\"/g' components/layout/Footer.tsx)",
-      "Read(//c/c/Users/jason/OneDrive/Desktop/Proyecto CR DOING/components/layout/**)"
+      "Read(//c/c/Users/jason/OneDrive/Desktop/Proyecto CR DOING/components/layout/**)",
+      "Bash(sed -i 's/info@costaricandoing\\\\.com/reservations@costaricandoing.com/g' components/layout/Footer.tsx \"app/[locale]/contact/page.tsx\" \"app/[locale]/terms/page.tsx\")",
+      "Read(//c/c/Users/jason/OneDrive/Desktop/Proyecto CR DOING/**)"
     ]
   }
 }

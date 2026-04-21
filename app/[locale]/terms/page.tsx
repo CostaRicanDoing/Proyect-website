@@ -69,8 +69,8 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
           <h2 className="text-xl font-bold text-gray-900 mb-3">{t.terms.contactHeading}</h2>
           <p className="text-gray-600">
             {t.terms.contactPrefix}{' '}
-            <a href="mailto:info@costaricandoing.com" className="text-lime-700 hover:underline">
-              info@costaricandoing.com
+            <a href="mailto:reservations@costaricandoing.com" className="text-lime-700 hover:underline">
+              reservations@costaricandoing.com
             </a>
             .
           </p>
