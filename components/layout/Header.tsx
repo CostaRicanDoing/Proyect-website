@@ -70,7 +70,10 @@ export default function Header({ locale = 'en' }: HeaderProps) {
               height={80}
               className={cn(
                 'w-auto object-contain transition-all duration-300',
-                scrolled ? 'h-9' : 'h-14'
+                // Mobile: contenido (no se desborda). Desktop: más grande, sobresale sutil.
+                scrolled
+                  ? 'h-10 md:h-12'
+                  : 'h-12 md:h-[72px]'
               )}
               priority
             />
