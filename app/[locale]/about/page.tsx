@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ChevronRight, Heart, Shield, Globe, Users } from 'lucide-react'
 import { getTranslations, isValidLocale } from '@/lib/translations'
@@ -50,8 +51,14 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
             <p className="text-gray-600 leading-relaxed mb-4">{t.about.storyP2}</p>
             <p className="text-gray-600 leading-relaxed">{t.about.storyP3}</p>
           </div>
-          <div className="h-72 bg-green-100 rounded-2xl flex items-center justify-center">
-            <p className="text-green-600 text-sm">{t.about.teamPhotoPlaceholder}</p>
+          <div className="relative h-72 lg:h-96 rounded-2xl overflow-hidden">
+            <Image
+              src="/images/cascadas-nueva.webp"
+              alt={locale === 'es' ? 'Fundadores de Costa Rican Doing en la catarata' : 'Costa Rican Doing founders at the waterfall'}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>

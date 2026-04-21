@@ -224,8 +224,9 @@ export const translations = {
         atv: 'ATV La Fortuna',
         zipline: 'Zipline La Fortuna',
         rafting: 'White Water Rafting',
-        waterfall: 'Waterfall Tour',
-        combo: 'ATV + Zipline Combo',
+        safariFloat: 'Safari Float',
+        canyoning: 'Canyoning',
+        horseback: 'Horseback Riding',
       },
     },
     notFound: {
@@ -459,8 +460,9 @@ export const translations = {
         atv: 'ATV La Fortuna',
         zipline: 'Tirolesa La Fortuna',
         rafting: 'Rafting en Aguas Bravas',
-        waterfall: 'Tour de Catarata',
-        combo: 'Combo ATV + Tirolesa',
+        safariFloat: 'Safari Float',
+        canyoning: 'Canyoning',
+        horseback: 'Cabalgata',
       },
     },
     notFound: {

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ChevronRight, Shield, Clock, Star, Users } from 'lucide-react'
 import TourCard from '@/components/tours/TourCard'
-import { getFeaturedTours } from '@/data/tours'
+import { tours } from '@/data/tours'
 import { getTranslations, isValidLocale } from '@/lib/translations'
 import type { Locale } from '@/types'
 
@@ -11,7 +11,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   if (!isValidLocale(params.locale)) notFound()
   const locale = params.locale as Locale
   const t = getTranslations(locale)
-  const featuredTours = getFeaturedTours()
+  const featuredTours = tours
 
   const trust = [
     { icon: <Shield size={22} className="text-green-600" />, label: t.home.trust.safety, sub: t.home.trust.safetySub },

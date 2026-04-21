@@ -67,8 +67,13 @@ export default function BookingForm({ tourId, tourName, price, locale = 'en' }: 
           type="date"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
-          min={new Date().toISOString().split('T')[0]}
+          min={new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString().split('T')[0]}
         />
+        <p className="text-xs text-gray-400 mt-1">
+          {locale === 'es'
+            ? 'Las reservas requieren al menos 48 horas de anticipación.'
+            : 'Bookings require at least 48 hours advance notice.'}
+        </p>
       </div>
 
       {/* Guests */}

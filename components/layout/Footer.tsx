@@ -48,8 +48,9 @@ export default function Footer({ locale = 'en' }: FooterProps) {
               <li><Link href={lp('/tours/atv-la-fortuna')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.atv}</Link></li>
               <li><Link href={lp('/tours/zipline-la-fortuna')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.zipline}</Link></li>
               <li><Link href={lp('/tours/white-water-rafting')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.rafting}</Link></li>
-              <li><Link href={lp('/tours/la-fortuna-waterfall')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.waterfall}</Link></li>
-              <li><Link href={lp('/tours/atv-zipline-combo')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.combo}</Link></li>
+              <li><Link href={lp('/tours/safari-float')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.safariFloat}</Link></li>
+              <li><Link href={lp('/tours/canyoning-la-fortuna')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.canyoning}</Link></li>
+              <li><Link href={lp('/tours/horseback-riding-waterfall')} className="hover:text-orange-500 transition-colors">{t.footer.tourLinks.horseback}</Link></li>
             </ul>
           </div>
 
